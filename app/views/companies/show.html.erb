@@ -1,0 +1,7 @@
+<h1>Company show</h1>
+
+<%# oculta o link edit se o usuario nao for o user da company %>
+<% if policy(@company).edit? %>
+  <%= link_to "Edit this company", edit_restaurant_path(@restaurant) %> |
+<% end %>
+<%= button_to "Destroy this company", @restaurant, method: :delete if policy(@restaurant).destroy? %>
