@@ -1,6 +1,5 @@
 class Company < ApplicationRecord
   belongs_to :user
-
   has_many :events
   validates :title, :phone, presence: true, uniqueness: true
   validates :address, :category, presence: true
