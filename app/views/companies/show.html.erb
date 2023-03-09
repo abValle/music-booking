@@ -2,6 +2,6 @@
 
 <%# oculta o link edit se o usuario nao for o user da company %>
 <% if policy(@company).edit? %>
-  <%= link_to "Edit this company", edit_restaurant_path(@restaurant) %> |
+  <%= link_to "Edit this company", edit_company_path(@company) %> |
 <% end %>
-<%= button_to "Destroy this company", @restaurant, method: :delete if policy(@restaurant).destroy? %>
+<%= button_to "Destroy this company", @company, method: :delete if policy(@company).destroy? %>
