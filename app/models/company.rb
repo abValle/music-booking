@@ -4,7 +4,7 @@ class Company < ApplicationRecord
   has_many :events
   validates :title, :phone, presence: true, uniqueness: true
   validates :address, :category, presence: true
-  validates :description, presence: true, length: { minimum: 20 }
+  validates :description, presence: true, length: { minimum: 5 }
   validate :permited_phone, if: -> { phone.present? }
 
   private
