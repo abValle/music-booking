@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+
   resources :companies, except: :destroy
   resources :musicians, except: :destroy
   resources :proposals
@@ -18,6 +19,13 @@ Rails.application.routes.draw do
   # INSERIR EVENT -> myEvents do Musician
   # INSERIR no event do COMPANY,(my Events COMPANY), link pro profile do Musician
   # -------------------
+
+  resources :musicians, except: :destroy, do 
+    resource :events, only %i[show index]
+  resources :companies, do
+    resources :events, only: %i[new create show destroy]
+  end
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
