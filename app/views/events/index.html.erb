@@ -1,7 +1,6 @@
 <h1>Events index</h1>
-
 <ol>
   <% @events.each do |event| %>
-   <li><%= event.title_event %></li>
+    <li><%= link_to "#{event.title_event}", event_path(event) %></li>
   <% end %>
 </ol>
