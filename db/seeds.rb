@@ -14,7 +14,7 @@ puts 'cleaning db...'
 
 puts 'Creating 10 fake users and companies...'
   User.create!(
-    email:    Faker::Internet.email,
+    email:    "a@a.com",
     password: "123123"
     )
 
@@ -25,6 +25,17 @@ puts 'Creating 10 fake users and companies...'
     category: Faker::Music.genre,
     description: Faker::Lorem.sentence(word_count: 20),
     user: User.last
+  )
+
+  Event.create!(
+    start_date: Date.new(1990,2,3) ,
+    end_date: Date.new(1990,2,3),
+    start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now) ,
+    end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+    price: 300,
+    title_event: Faker::FunnyName.name ,
+    description_event: Faker::Lorem.sentence(word_count: 20),
+    company: Company.last
   )
 
 10.times do

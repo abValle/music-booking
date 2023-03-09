@@ -4,9 +4,14 @@ Rails.application.routes.draw do
 
   resources :companies, except: :destroy
   resources :musicians, except: :destroy
+  resources :companies do
+    # resources :events, only: %i[edit update destroy]
+  end
   resources :proposals
+  resources :events
+  # , only: %i[show index new]
 
-  # ---- pseudocode----
+    # ---- pseudocode----
   # proposal criada quando cada musico se candidata!
   # COMPANY: recebe notificação de Proposal criada
   # Abrimos a possibilidade de abrir um chat.
@@ -19,13 +24,6 @@ Rails.application.routes.draw do
   # INSERIR EVENT -> myEvents do Musician
   # INSERIR no event do COMPANY,(my Events COMPANY), link pro profile do Musician
   # -------------------
-
-  resources :musicians, except: :destroy, do 
-    resource :events, only %i[show index]
-  resources :companies, do
-    resources :events, only: %i[new create show destroy]
-  end
-
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
