@@ -6,19 +6,11 @@ class MusicianPolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    true
-  end
-
   def create?
-    true
+    !user.boolean_company
   end
 
   def show?
     record.user == user
-  end
-
-  def create?
-    true
   end
 end
