@@ -1,4 +1,7 @@
-<h1>Company index</h1>
+<h1>Events index</h1>
 
-<%# oculta o link edit se o usuario nao for o user da company %>
-
+<ol>
+  <% @events.each do |event| %>
+   <li><%= event.title_event %></li>
+  <% end %>
+</ol>
