@@ -6,12 +6,8 @@ class CompanyPolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    true
-  end
-
   def create?
-    true
+    user.boolean_company
   end
 
   # def update?

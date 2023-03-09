@@ -1,6 +1,6 @@
 class Company < ApplicationRecord
   belongs_to :user
-  has_many :events
+  has_many :events, dependent: :destroy
   validates :title, :phone, presence: true, uniqueness: true
   validates :address, :category, presence: true
   validates :description, presence: true, length: { minimum: 5 }

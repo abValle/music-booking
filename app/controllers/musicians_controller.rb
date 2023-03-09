@@ -3,7 +3,7 @@ class MusiciansController < ApplicationController
 
   def new
     @musician = Musician.new
-    authorize @musician
+    authorize(@musician)
   end
 
   def create
@@ -22,11 +22,6 @@ class MusiciansController < ApplicationController
     authorize(@musician)
   end
 
-  def new
-    @musician = Musician.new
-    authorize(@musician)
-  end
-
   private
 
   def set_musician
@@ -34,7 +29,6 @@ class MusiciansController < ApplicationController
   end
 
   def musician_params
-    params.require(:musician).permit( :first_name, :last_name, :phone, :nickname, :address, :category, :birth_date, :description, :phone, :rating, :user_id )
+    params.require(:musician).permit(:first_name, :last_name, :phone, :nickname, :address, :category, :birth_date, :description, :phone, :rating, :user_id)
   end
-
 end
