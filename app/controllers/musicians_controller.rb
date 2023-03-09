@@ -22,6 +22,11 @@ class MusiciansController < ApplicationController
     authorize(@musician)
   end
 
+  def new
+    @musician = Musician.new
+    authorize(@musician)
+  end
+
   private
 
   def set_musician
