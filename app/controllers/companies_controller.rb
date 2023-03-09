@@ -19,10 +19,10 @@ class CompaniesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def show
+    authorize @company
   end
 
   def edit
