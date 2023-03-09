@@ -28,9 +28,9 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    authorize @event
     event = Event.find(params[:id])
     event.destroy
-    authorize @event
     redirect_to board_path(event), status: :see_other, notice: "Event was successfully deleted."
   end
 
