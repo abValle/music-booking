@@ -1,6 +1,4 @@
 class CompaniesController < ApplicationController
-
-  
   def index
     @company = Company.all
     @company = policy_scope(Company)
@@ -12,12 +10,19 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    # @company = Company.new(company_params)
-    # @company.user = current_user
-    # authorize @company
+    @company = Company.new(company_params)
+    @company.user = current_user
+    authorize @company
+    @company.save
+    if @company.save
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
+    authorize @company
   end
 
   def edit
@@ -30,5 +35,11 @@ class CompaniesController < ApplicationController
 
   def destroy
     authorize @company
+  end
+
+  private
+
+  def company_params
+    params.require(:company).permit( :title, :category, :phone, :description, :address, :user_id )
   end
 end

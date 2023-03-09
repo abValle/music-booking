@@ -6,7 +6,6 @@ class CompanyPolicy < ApplicationPolicy
     end
   end
 
-  # ----------------------coloco dentro ou fora do scope???´=-----------------------
   def new?
     true
   end
@@ -15,15 +14,11 @@ class CompanyPolicy < ApplicationPolicy
     true
   end
 
-  def update?
-    # record.user == user
+  # def update?
+  #   record.user == user
+  # end
 
-    # record: the restaurant passed to the `authorize` method in controller
-    # user: the `current_user` signed in with Devise
-  end
-
-  def destroy?
-    # record.user == user
-  end
-  # -------------------------------------------------------------------------------
+  # def destroy?
+  #   # record.user == user
+  # end
 end
