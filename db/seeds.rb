@@ -29,7 +29,7 @@ puts 'Creating 10 fake users and companies...'
 
 
 
-# CRIANDO EVENTS
+# CRIANDO EVENTS-------------------------
 
  10.times do
     User.create!(
@@ -60,17 +60,22 @@ puts 'Creating 10 fake users and companies...'
   )
 
     Event.create!(
-    start_date: Date.new(1990, 2, 3),
-    end_date: Date.new(1990, 2, 3),
-    start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
-    end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
-    price: 300,
-    title_event: Faker::FunnyName.name,
-    description_event: Faker::Lorem.sentence(word_count: 20),
-    company: Company.last
+      start_date: Date.new(1990, 2, 3),
+      end_date: Date.new(1990, 2, 3),
+      start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+      end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+      price: 300,
+      title_event: Faker::FunnyName.name,
+      description_event: Faker::Lorem.sentence(word_count: 20),
+      company: Company.last
   )
-
+    Proposal.create!(
+      musician_id: Musician.last.id,
+      event_id: Event.last.id,
+      winner: nil
+    )
 end
+# --------------------------------------------------------------
 
 10.times do
   User.create!(
