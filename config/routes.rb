@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :events, only: %i[create new show edit update destroy]
   end
   resources :events, only: %i[index show]
-  resources :proposals
+  resources :proposals, except: %i[ show edit ]
 
 
   # , only: %i[show index new]
