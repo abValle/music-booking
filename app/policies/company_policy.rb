@@ -7,7 +7,7 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def create?
-    user.boolean_company
+    user.boolean_company && user.company.nil?
   end
 
   # def update?
