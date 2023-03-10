@@ -8,7 +8,12 @@
 require 'faker'
 
 puts 'cleaning db...'
+  Proposal.destroy_all
+  Event.destroy_all
+  Musician.destroy_all
+  Company.destroy_all
   User.destroy_all
+
   puts "cleaned..."
 
 puts 'Creating 10 fake users and companies...'
