@@ -1,6 +1,9 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<%= link_to "Cadastre-se", new_user_session_path,  class: "btn btn-primary" if current_user.blank? %>
-<%= link_to "Eventos", events_path,  class: "btn btn-primary" if current_user.musician %>
-<%= link_to "Crie seu evento", events_path,  class: "btn btn-primary" if current_user.company %>
+<% if user_signed_in? %>
+  <%= link_to "Eventos", events_path,  class: "btn btn-primary" if current_user.musician %>
+  <%= link_to "Crie seu evento", events_path,  class: "btn btn-primary" if current_user.company %>
+<% else %>
+  <%= link_to "Cadastre-se", new_user_session_path,  class: "btn btn-primary" %>
+<% end %>
