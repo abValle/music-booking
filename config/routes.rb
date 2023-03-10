@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   resources :companies, except: :destroy
   resources :musicians, except: :destroy
   resources :companies do
-    # resources :events, only: %i[edit update destroy]
+    resources :events, only: %i[create new show edit update destroy]
   end
+  resources :events, only: %i[index show]
   resources :proposals
-  resources :events
+
+
   # , only: %i[show index new]
 
     # ---- pseudocode----
