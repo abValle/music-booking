@@ -12,20 +12,20 @@ class EventsController < ApplicationController
   end
 
   def new
-      @event = Event.new
-      authorize @event
+    @company = current_user.company
+    @event = Event.new
+    authorize @event
   end
 
   def create
-    raise
     @event = Event.new(event_params)
-    @event.user = current_user
+    # @event.user = current_user
     authorize @event
-    @event.save!
+    @event.save
     if @event.save
       redirect_to root_path
     else
-      render :new, status: :unprocessable_entity
+    render :new, status: :unprocessable_entity
     end
   end
 
