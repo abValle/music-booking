@@ -3,6 +3,7 @@ class Musician < ApplicationRecord
   validates :first_name, :last_name, :nickname, :birth_date, :description, :phone, presence: true
   validate :permited_age, if: -> { birth_date.present? }
   validate :permited_phone, if: -> { phone.present? }
+  validates :user_id, uniqueness: true
 
   private
 
