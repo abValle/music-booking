@@ -1,6 +1,15 @@
 <h1>Events index</h1>
-<ol>
+<%= form_with url: events_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a job"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
   <% @events.each do |event| %>
-    <li><%= link_to "#{event.title_event}", event_path(event) %></li>
-  <% end %>
-</ol>
+          <h4><%= link_to "#{event.title_event}", event_path(event) %></h4>
+          <p><%= event.start_date %></p>
+          <p><%= event.end_date %></p>
+        <% end %>

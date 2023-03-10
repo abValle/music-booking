@@ -3,6 +3,12 @@ class EventsController < ApplicationController
   def index
    @events = Event.all
    @events = policy_scope(Event)
+
+    if params[:query].present?
+      @events = Event.where("title_event ILIKE ?", "%#{params[:query]}%")
+    else
+      @events = Event.all
+    end
   end
 
   def new
