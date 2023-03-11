@@ -10,6 +10,10 @@ class CompanyPolicy < ApplicationPolicy
     user.boolean_company && user.company.nil?
   end
 
+  def new?
+    true
+  end
+
   # def update?
   #   record.user == user
   # end

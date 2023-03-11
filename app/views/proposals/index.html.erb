@@ -1,0 +1,12 @@
+
+
+<h1>My proposals</h1>
+<% if @proposals.blank? %>
+  <%= "YOU HAVE NO PROPOSALS" %>
+<% end %>
+
+<% @proposals.each do |proposal| %>
+ <p>musician:</p> <%= proposal.musician.first_name %>
+  <p>event:</p><%= proposal.event.title_event %>
+  <p>winner_:</p><%= proposal.winner %>
+<% end %>

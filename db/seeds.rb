@@ -15,7 +15,12 @@ address_sp = ["Praça Antônio Prado 33, SP", "R. do Comércio, 34, SP",
               "Rua Adolfo Bergamini 173, SP"]
 
 puts 'cleaning db...'
+  Proposal.destroy_all
+  Event.destroy_all
+  Musician.destroy_all
+  Company.destroy_all
   User.destroy_all
+
   puts "cleaned..."
 
 puts 'Creating 10 fake users and companies...'
@@ -55,7 +60,7 @@ events = 0
   )
 
 
-    Event.create!(
+  2.times do Event.create!(
     start_date: Date.new(1990, 2, 3),
     end_date: Date.new(1990, 2, 3),
     start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
@@ -68,24 +73,35 @@ events = 0
   events += 1
 end
 
-10.times do
-  User.create!(
-    email: Faker::Internet.email,
-    password: "123123",
-    boolean_company: false
-  )
-  Musician.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    nickname: Faker::Books::TheKingkillerChronicle.character,
-    address: Faker::Address.street_address,
-    category: Faker::Music.genre,
-    birth_date: Date.new(1990,2,3),
-    description: Faker::Quotes::Shakespeare.hamlet_quote,
-    phone: Faker::Number.number(digits: 11),
-    user: User.last,
-    rating: Faker::Number.within(range: 1..5)
-  )
-end
+  10.times do
+    User.create!(
+      email: Faker::Internet.email,
+      password: "123123",
+      boolean_company: false
+    )
+    Musician.create!(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      nickname: Faker::Books::TheKingkillerChronicle.character,
+      address: Faker::Address.street_address,
+      category: Faker::Music.genre,
+      birth_date: Date.new(1990,2,3),
+      description: Faker::Quotes::Shakespeare.hamlet_quote,
+      phone: Faker::Number.number(digits: 11),
+      user: User.last,
+      rating: Faker::Number.within(range: 1..5)
+    )
+  end
 
+  Proposal.create!(
+    musician_id: Musician.last.id,
+    event_id: Event.last.id,
+    winner: nil
+  )
+
+  Proposal.create!(
+    musician_id: Musician.first.id,
+    event_id: Event.first.id,
+    winner: nil
+  )
 puts 'Finished!'
