@@ -7,6 +7,13 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
+Faker::Config.locale = 'pt-BR'
+
+address_sp = ["Praça Antônio Prado 33, SP", "R. do Comércio, 34, SP",
+              "R. João Brícola, 24, SP", "R. Álvares Penteado, 221, SP", "Av. São João, 128, SP",
+              "Av. Prestes Maia, 78 SP", "Av. São João, 677, SP", "Av. Cásper Líbero, 173, SP", "Rua Jericó, 193, SP",
+              "Rua Adolfo Bergamini 173, SP"]
+
 puts 'cleaning db...'
   User.destroy_all
   puts "cleaned..."
@@ -30,7 +37,7 @@ puts 'Creating 10 fake users and companies...'
 
 
 # CRIANDO EVENTS
-
+events = 0
  10.times do
     User.create!(
     email: Faker::Internet.email,
@@ -40,24 +47,13 @@ puts 'Creating 10 fake users and companies...'
 
   Company.create!(
     title: Faker::Company.name,
-    address: Faker::Address.street_address,
+    address: address_sp[events],
     phone:Faker::Number.number(digits: 11),
     category: Faker::Music.genre,
     description: Faker::Lorem.sentence(word_count: 20),
     user: User.last
   )
-  Musician.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    nickname: Faker::Books::TheKingkillerChronicle.character,
-    address: Faker::Address.street_address,
-    category: Faker::Music.genre,
-    birth_date: Date.new(1990,2,3),
-    description: Faker::Quotes::Shakespeare.hamlet_quote,
-    phone: Faker::Number.number(digits: 11),
-    user: User.last,
-    rating: Faker::Number.within(range: 1..5)
-  )
+
 
     Event.create!(
     start_date: Date.new(1990, 2, 3),
@@ -69,24 +65,7 @@ puts 'Creating 10 fake users and companies...'
     description_event: Faker::Lorem.sentence(word_count: 20),
     company: Company.last
   )
-
-end
-
-10.times do
-  User.create!(
-    email: Faker::Internet.email,
-    password: "123123",
-    boolean_company: true
-  )
-
-  Company.create!(
-    title: Faker::Company.name,
-    address: Faker::Address.street_address,
-    phone:Faker::Number.number(digits: 11),
-    category: Faker::Music.genre,
-    description: Faker::Lorem.sentence(word_count: 20),
-    user: User.last
-  )
+  events += 1
 end
 
 10.times do

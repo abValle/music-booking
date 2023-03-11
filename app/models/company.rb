@@ -1,5 +1,7 @@
 class Company < ApplicationRecord
   belongs_to :user
+  geocoded_by :address # usar o address para a geolocalizacao
+  after_validation :geocode, if: :will_save_change_to_address?
   has_many :events, dependent: :destroy
   validates :title, :phone, presence: true, uniqueness: true
   validates :address, :category, presence: true
