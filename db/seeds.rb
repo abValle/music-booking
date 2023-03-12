@@ -39,7 +39,7 @@ puts 'Creating 10 fake users and companies...'
     password: "123123",
     boolean_company: true
   )
-
+  
   Company.create!(
     title: Faker::Company.name,
     address: Faker::Address.street_address,

@@ -12,14 +12,14 @@ class EventsController < ApplicationController
   end
 
   def new
-      @event = Event.new
-      authorize @event
+    @event = Event.new
+    @company = current_user.company
+    authorize @event
   end
 
   def create
-    raise
     @event = Event.new(event_params)
-    @event.user = current_user
+    @event.company = current_user.company
     authorize @event
     @event.save!
     if @event.save
