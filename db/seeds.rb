@@ -7,6 +7,13 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
+Faker::Config.locale = 'pt-BR'
+
+address_sp = ["Praça Antônio Prado 33, SP", "R. do Comércio, 34, SP",
+              "R. João Brícola, 24, SP", "R. Álvares Penteado, 221, SP", "Av. São João, 128, SP",
+              "Av. Prestes Maia, 78 SP", "Av. São João, 677, SP", "Av. Cásper Líbero, 173, SP", "Rua Jericó, 193, SP",
+              "Rua Adolfo Bergamini 173, SP"]
+
 puts 'cleaning db...'
   Proposal.destroy_all
   Event.destroy_all
@@ -31,7 +38,28 @@ puts 'Creating 10 fake users and companies...'
     description: Faker::Lorem.sentence(word_count: 20),
     user: User.last
   )
-# ---------------------------------------
+
+
+
+
+# CRIANDO EVENTS
+events = 0
+ 10.times do
+      User.create!(
+      email: Faker::Internet.email,
+      password: "123123",
+      boolean_company: true
+    )
+
+    Company.create!(
+      title: Faker::Company.name,
+      address: address_sp[events],
+      phone:Faker::Number.number(digits: 11),
+      category: Faker::Music.genre,
+      description: Faker::Lorem.sentence(word_count: 20),
+      user: User.last
+    ) 
+  end
 
 10.times do
   User.create!(
@@ -49,6 +77,7 @@ puts 'Creating 10 fake users and companies...'
     user: User.last
   )
 
+
   2.times do Event.create!(
     start_date: Date.new(1990, 2, 3),
     end_date: Date.new(1990, 2, 3),
@@ -59,7 +88,7 @@ puts 'Creating 10 fake users and companies...'
     description_event: Faker::Lorem.sentence(word_count: 20),
     company: Company.last
   )
-  end
+  events += 1
 end
 
   10.times do
