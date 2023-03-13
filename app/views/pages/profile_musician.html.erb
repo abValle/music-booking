@@ -1,8 +1,18 @@
+<h1>Musician Info</h1>
 <h1><%= @musician.nickname%></h1>
 <p>Gêneros musicias: <%=@musician.category%></p>
 <p>Descrição: <%= @musician.description%></p>
 <p>Contato: <%= @musician.phone%></p>
 <p>Endereço: <%= @musician.address%></p>
+
+<h1>Proposals</h1>
+<% @proposals.each do |proposal| %>
+ <p>musician: <%= proposal.musician.first_name %></p>
+  <p>event:<%= proposal.event.title_event %></p>
+  <p>winner_:<%= proposal.winner %></p>
+  <p>company: <%= proposal.event.company.title %></p>
+<% end %>
+
 
 <%= link_to 'Inicio', root_path, class:'btn btn-primary'%>
 <%= link_to 'edit', "#", class:'btn btn-primary'%>
