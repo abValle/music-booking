@@ -7,6 +7,8 @@ class PagesController < ApplicationController
 
   def profile_musician
     @musician = current_user.musician
+    @proposals = Proposal.where(musician: current_user.musician).and(Proposal.where(winner: true)).includes(:event)
+
   end
 
   def profile_company
