@@ -26,20 +26,27 @@ class CompaniesController < ApplicationController
   end
 
   def edit
+    @company = current_user.company
     authorize @company
   end
 
   def update
+    @company = current_user.company
     authorize @company
+    @company.update(company_params)
+    if @company.save
+      redirect_to profile_company_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    authorize @company
   end
 
   private
 
   def company_params
-    params.require(:company).permit( :title, :category, :phone, :description, :address, :user_id )
+    params.require(:company).permit(:title, :category, :phone, :description, :address, :user_id, :photo)
   end
 end

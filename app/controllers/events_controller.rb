@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @events = policy_scope(Event)
+    @proposal = Proposal.new
 
     if params[:query].present?
       @events = @events.global_search(params[:query]).order(price: :desc)
@@ -43,6 +44,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     authorize @event
+    @proposal = Proposal.new
   end
 
   def destroy

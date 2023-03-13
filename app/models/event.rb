@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
+
   belongs_to :company
-  has_many :musicians
+  has_many :proposals, dependent: :destroy
+  has_many :musicians, through: :proposals
 
   validates :title_event, :start_date, :end_date, :start_time, :end_time, presence: true
   validates :price, presence: true, numericality: { greater_than: 0, message: "O valor deve ser maior que cero" }

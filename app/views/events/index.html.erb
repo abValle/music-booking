@@ -22,6 +22,7 @@
               <p>Evento: <%= event.title_event %></p>
               <p>Address: <%= event.company.address %></p>
               <p>Price: <%= event.price %></p>
+              <%= render 'proposals/form', event: event %>
       <% end %>
     </div>
 
