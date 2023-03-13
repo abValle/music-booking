@@ -1,23 +1,32 @@
-<h1>Musician Info</h1>
-<h1><%= @musician.nickname%></h1>
-<p>Gêneros musicias: <%=@musician.category%></p>
-<p>Descrição: <%= @musician.description%></p>
-<p>Contato: <%= @musician.phone%></p>
-<p>Endereço: <%= @musician.address%></p>
-<% if current_user.musician.photo.attached? %>
+   <h2>Musician Profile</h2>
+<div class="card-product">
+  <div class="card-product-infos">
+    <p><%= @musician.nickname%></p>
+    <p>Gêneros musicias: <%=@musician.category%></p>
+    <p>Descrição: <%= @musician.description%></p>
+    <p>Contato: <%= @musician.phone%></p>
+    <p>Endereço: <%= @musician.address%></p>
+    <% if current_user.musician.photo.attached? %>
   <%= cl_image_tag current_user.musician.photo.key, height: 300, width: 400, crop: :fill %>
   <% else %>
   <%= image_tag("musician.jpg", height: 200) %>
 <% end %>
+  </div>
+</div>
 
-<h1>Proposals</h1>
-<% @proposals.each do |proposal| %>
- <p>musician: <%= proposal.musician.first_name %></p>
-  <p>event:<%= proposal.event.title_event %></p>
-  <p>winner_:<%= proposal.winner %></p>
-  <p>company: <%= proposal.event.company.title %></p>
-<% end %>
+    <h2>Proposals</h2>
+    <% @musician_proposals.each do |proposal| %>
+<div class="card-product">
+  <div class="card-product-infos">
+      <p>musician: <%= proposal.musician.first_name %></p>
+      <p>event:<%= proposal.event.title_event %></p>
+      <p>winner_:<%= proposal.winner %></p>
+      <p>company: <%= proposal.event.company.title %></p>
+      </div>
+</div>
+    <% end %>
+
 
 
 <%= link_to 'Inicio', root_path, class:'btn btn-primary'%>
-<%= link_to 'edit', "#", class:'btn btn-primary'%>
+<%= link_to 'edit', edit_musician_path(@musician), class:'btn btn-primary'%>
