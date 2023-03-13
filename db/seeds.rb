@@ -94,7 +94,6 @@ events = 0
     )
   end
 
-
 # 10.times do
 #   User.create!(
 #     email: Faker::Internet.email,
