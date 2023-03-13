@@ -22,11 +22,11 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.company = current_user.company
     authorize @event
-    @event.save!
+    @event.save
     if @event.save
       redirect_to root_path
     else
-      render :new, status: :unprocessable_entity
+    render :new, status: :unprocessable_entity
     end
   end
 
