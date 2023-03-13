@@ -1,7 +1,7 @@
 <h1>Event show VIEW</h1>
 Titulo do evento: <%= @event.title_event %><br>
-Nome do organizador: <%= current_user.company.title %><br>
-Latitude: <%= current_user.company.latitude %><br>
-Longitude: <%= current_user.company.longitude %>
+Nome do organizador: <%= @event.company.title %><br>
+Latitude: <%= @event.company.latitude %><br>
+Longitude: <%= @event.company.longitude %>
 
 <%# oculta o link edit se o usuario nao for o user da company %>
