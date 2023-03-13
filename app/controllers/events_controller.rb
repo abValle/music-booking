@@ -4,12 +4,22 @@ class EventsController < ApplicationController
     @events = policy_scope(Event)
 
     if params[:query].present?
-      @events = Event.global_search(params[:query])
-      map()
-    else
-      @events = Event.all
+      @events = @events.global_search(params[:query]).order(price: :desc)
       map()
     end
+
+    if params[:price].present?
+      @events = @events.where("price <= ?", params[:price]).order(price: :desc)
+      map()
+    end
+
+    if params[:address].present?
+      companies = Company.near(params[:address], 4).includes(:events)
+      @events = companies.map(&:events)
+      raise
+    end
+
+    map()
   end
 
   def new
