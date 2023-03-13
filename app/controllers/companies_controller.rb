@@ -26,15 +26,14 @@ class CompaniesController < ApplicationController
   end
 
   def edit
+    @company = current_user.company
     authorize @company
   end
 
   def update
-    authorize @company
   end
 
   def destroy
-    authorize @company
   end
 
   private

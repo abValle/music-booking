@@ -11,5 +11,6 @@ class PagesController < ApplicationController
 
   def profile_company
     @company = current_user.company
+    @resource = current_user
   end
 end
