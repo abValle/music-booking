@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   resources :companies do
     resources :events, only: %i[create new show edit update destroy]
   end
-  resources :events, only: %i[index show]
-  resources :proposals, except: %i[ show edit ]
+  resources :events, only: %i[index show] do
+    resources :proposals, only: %i[new create]
+  end
+  resources :proposals, only: %i[index destroy]
 
+  # post 'proposals', to: 'proposals#create', as: 'create_proposal'
 
   get "profile_musician", to: "pages#profile_musician"
   get "profile_company", to: "pages#profile_company"

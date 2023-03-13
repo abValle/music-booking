@@ -11,15 +11,19 @@ class ProposalsController < ApplicationController
     end
   end
 
-  def create
-    @proposal = Proposal.new(proposal_params)
+  def new
+    @proposal = Proposal.new
     authorize @proposal
-    @proposal.user = current_user
+  end
+
+  def create
+    @proposal = Proposal.new(musician_id: current_user.musician.id, event_id: params[:event_id], winner: nil)
+    authorize @proposal
     @proposal.save
     if @proposal.save
       redirect_to proposals_path
     else
-      render :new, status: :unprocessable_entity
+      redirect_to events_path, status: :unprocessable_entity, notice: "Você já fez uma proposta para este evento"
     end
   end
 
