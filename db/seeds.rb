@@ -45,7 +45,7 @@ puts 'Creating permanent fake users for companies and musicians...'
     password: "123123",
     boolean_company: true
   )
-  
+
   Company.create!(
     title: Faker::Company.name,
     address: Faker::Address.street_address,
@@ -92,6 +92,19 @@ events = 0
       description: Faker::Lorem.sentence(word_count: 20),
       user: User.last
     )
+    puts "creating 2 events"
+    2.times do Event.create!(
+      start_date: Date.new(1990, 2, 3),
+      end_date: Date.new(1990, 2, 3),
+      start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+      end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+      price: 300,
+      title_event: Faker::FunnyName.name,
+      description_event: Faker::Lorem.sentence(word_count: 20),
+      company: Company.last
+    )
+    end
+    events += 1
   end
 
 # 10.times do
@@ -111,19 +124,6 @@ events = 0
 #   )
 
 # end
-puts "creating 2 events"
-  2.times do Event.create!(
-    start_date: Date.new(1990, 2, 3),
-    end_date: Date.new(1990, 2, 3),
-    start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
-    end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
-    price: 300,
-    title_event: Faker::FunnyName.name,
-    description_event: Faker::Lorem.sentence(word_count: 20),
-    company: Company.last
-  )
-  events += 1
-end
 puts "creating 10 musicians"
   10.times do
     User.create!(
