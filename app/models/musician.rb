@@ -4,6 +4,8 @@ class Musician < ApplicationRecord
   validate :permited_age, if: -> { birth_date.present? }
   validate :permited_phone, if: -> { phone.present? }
   validates :user_id, uniqueness: true
+  has_one_attached :photo
+
 
   private
 
