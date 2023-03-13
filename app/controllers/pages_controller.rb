@@ -8,4 +8,8 @@ class PagesController < ApplicationController
   def profile_musician
     @musician = current_user.musician
   end
+
+  def profile_company
+    @company = current_user.company
+  end
 end

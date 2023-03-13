@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
 
   get "profile_musician", to: "pages#profile_musician"
+  get "profile_company", to: "pages#profile_company"
 
 
   resources :chatrooms, only: :show
