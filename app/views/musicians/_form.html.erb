@@ -7,5 +7,7 @@
   <%= f.input :birth_date, as: :date, label: 'Data de nascimento', required: true, html5: true %>
   <%= f.input :description, label: 'Breve descrição', required: true %>
   <%= f.input :phone, label: 'Celular', required: true %>
+  <%= f.input :photo, as: :file %>
+
   <%= f.submit value: 'Enviar' %>
 <% end %>

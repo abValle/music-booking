@@ -8,6 +8,8 @@ class Company < ApplicationRecord
   validates :description, presence: true, length: { minimum: 5 }
   validate :permited_phone, if: -> { phone.present? }
   validates :user_id, uniqueness: true
+  has_one_attached :photo
+
 
   private
 
