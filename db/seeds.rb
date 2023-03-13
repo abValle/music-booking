@@ -58,7 +58,7 @@ events = 0
       category: Faker::Music.genre,
       description: Faker::Lorem.sentence(word_count: 20),
       user: User.last
-    ) 
+    )
   end
 
 10.times do
@@ -67,7 +67,7 @@ events = 0
     password: "123123",
     boolean_company: true
   )
-  
+
   Company.create!(
     title: Faker::Company.name,
     address: Faker::Address.street_address,
@@ -77,7 +77,7 @@ events = 0
     user: User.last
   )
 
-
+end
   2.times do Event.create!(
     start_date: Date.new(1990, 2, 3),
     end_date: Date.new(1990, 2, 3),

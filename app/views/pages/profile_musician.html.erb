@@ -1,0 +1,8 @@
+<h1><%= @musician.nickname%></h1>
+<p>Gêneros musicias: <%=@musician.category%></p>
+<p>Descrição: <%= @musician.description%></p>
+<p>Contato: <%= @musician.phone%></p>
+<p>Endereço: <%= @musician.address%></p>
+
+<%= link_to 'Inicio', root_path, class:'btn btn-primary'%>
+<%= link_to 'edit', "#", class:'btn btn-primary'%>
