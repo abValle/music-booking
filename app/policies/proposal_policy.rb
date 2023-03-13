@@ -3,6 +3,7 @@ class ProposalPolicy < ApplicationPolicy
     # NOTE: Be explicit about which records you allow access to!
     def resolve
       scope.all
+      # user.boolean_company? && current_user == user
     end
   end
 
@@ -13,4 +14,13 @@ class ProposalPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def refuse_proposal?
+    true
+  end
+
+  def accept_proposal?
+    true
+  end
+
 end
