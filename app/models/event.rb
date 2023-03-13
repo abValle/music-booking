@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+
   belongs_to :company
   has_many :proposals, dependent: :destroy
   has_many :musicians, through: :proposals
