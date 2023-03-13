@@ -15,9 +15,9 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new
     authorize @proposal
   end
-
+  
   def create
-    @proposal = Proposal.new(musician_id: current_user.musician.id, event_id: params[:event_id], winner: nil)
+    @proposal = Proposal.new(musician: current_user.musician, event_id: params[:event_id], winner: nil)
     authorize @proposal
     @proposal.save
     if @proposal.save
