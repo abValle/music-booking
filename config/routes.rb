@@ -10,7 +10,14 @@ Rails.application.routes.draw do
   resources :events, only: %i[index show]
   resources :proposals, except: %i[ show edit ]
 
+
   get "profile_musician", to: "pages#profile_musician"
+
+
+  resources :chatrooms, only: :show
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 
 
   # , only: %i[show index new]
