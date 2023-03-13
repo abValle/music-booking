@@ -1,15 +1,28 @@
 <h1>Events index</h1>
-<%= form_with url: events_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a job"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+<div class="main-container">
+      <%= form_with url: events_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Digite o nome do estabelecimento"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
 
-  <% @events.each do |event| %>
-          <h4><%= link_to "#{event.title_event}", event_path(event) %></h4>
-          <p><%= event.start_date %></p>
-          <p><%= event.end_date %></p>
-        <% end %>
+  <div class="row">
+    <div class='col-sm-6'>
+      <% @events.each do |event| %>
+              <h4><%= link_to "#{event.company.title}", event_path(event) %></h4>
+              <p>Data: <%= event.start_date.strftime("%d/%m/%y") %></p>
+              <p>Evento: <%= event.title_event %></p>
+              <p>Address: <%= event.company.address %></p>
+      <% end %>
+    </div>
+
+    <div id='map'
+        data-controller='map'
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>"
+        data-map-markers-value="<%= @markers.to_json %>" class='col-sm-6'>
+    </div>
+  </div>
+</div>
