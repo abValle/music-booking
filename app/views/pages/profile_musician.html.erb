@@ -4,6 +4,11 @@
 <p>Descrição: <%= @musician.description%></p>
 <p>Contato: <%= @musician.phone%></p>
 <p>Endereço: <%= @musician.address%></p>
+<% if current_user.musician.photo.attached? %>
+  <%= cl_image_tag current_user.musician.photo.key, height: 300, width: 400, crop: :fill %>
+  <% else %>
+  <%= image_tag("musician.jpg", height: 200) %>
+<% end %>
 
 <h1>Proposals</h1>
 <% @proposals.each do |proposal| %>
