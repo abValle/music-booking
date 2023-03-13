@@ -1,8 +1,18 @@
-<h1><%= @company.title%></h1>
+<h1>Profile</h1>
+<h3>Nome da empresa: <%=@company.title%></h3>
 <p>Gêneros musicias: <%=@company.category%></p>
 <p>Descrição: <%= @company.description%></p>
 <p>Endereço: <%= @company.address%></p>
 
+<h3>Seus eventos</h3>
+<% @company.events.each do |event| %>
+        <h4><%= link_to "#{event.title_event}", event_path(event) %></h4>
+        <p>Data: <%= event.start_date.strftime("%d/%m/%y") %></p>
+        <p>Dono do evento: <%= event.company.title %></p>
+        <p>Address: <%= event.company.address %></p>
+<% end %>
+
 
 <%= link_to 'Inicio', root_path, class:'btn btn-primary'%>
-<%= link_to 'edit', "#", class:'btn btn-primary'%>
+<%= link_to 'Editar usuário', edit_company_path(@company), class:'btn btn-primary'%>
+<%= button_to 'Deletar conta', registration_path(@resource), class:'btn btn-primary',  data: { confirm: "Tem certeza que deseja excluir sua conta?" }, method: :delete %>
