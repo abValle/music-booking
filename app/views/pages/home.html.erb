@@ -1,11 +1,10 @@
+<%= render 'banner'%>
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn.wallpapersafari.com/90/81/ecdX25.jpg);">
-  <div class="container">
-    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
-    <a class="btn btn-flat" href="#">Apply now</a>
+<div class="container">
+  <div >
   </div>
 </div>
+
 
 
 <% if user_signed_in? %>
@@ -14,6 +13,4 @@
   <%= link_to "Crie seu evento", new_company_event_path(@company),  class: "btn btn-primary" if current_user.company %>
 
   <%= link_to "Minhas Propostas Pendentes", proposals_path,  class: "btn btn-primary" %>
-<% else %>
-  <%= link_to "Cadastre-se", new_user_session_path,  class: "btn btn-primary" %>
 <% end %>
