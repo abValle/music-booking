@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to profile_company_path, notice: "Event was successfully created."
     else
-    render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -29,6 +29,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     authorize @event
     @proposal = Proposal.new
+    map()
   end
 
   def destroy
@@ -41,9 +42,14 @@ class EventsController < ApplicationController
   private
 
   def map
-    @markers = @events.map do |event|
-      { lat: event.company.latitude, lng: event.company.longitude,
-        info_window_html: render_to_string(partial: 'info_window', locals: { event: event }) }
+    if @events
+      @markers = @events.map do |event|
+        { lat: event.company.latitude, lng: event.company.longitude,
+          info_window_html: render_to_string(partial: 'info_window', locals: { event: event }) }
+      end
+    else
+      @markers = [{ lat: @event.company.latitude, lng: @event.company.longitude,
+                    info_window_html: render_to_string(partial: 'info_window', locals: { event: @event }) }]
     end
   end
 
