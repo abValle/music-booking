@@ -21,6 +21,7 @@ class MusiciansController < ApplicationController
     @musician = Musician.new(musician_params)
     authorize(@musician)
     @musician.user = current_user
+    @musician.save
     if @musician.save
       redirect_to root_path
     else
