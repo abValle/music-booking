@@ -1,13 +1,18 @@
 <h1>Events index</h1>
 <div class="main-container">
-      <%= form_with url: events_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Digite o nome do estabelecimento"
-        %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
-      <% end %>
+  <%= form_with url: events_path, method: :get, class: "d-flex",
+    html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} do |f| %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= f.text_field :query,
+      class: "form-control",
+      placeholder: "Digite o nome do estabelecimento"
+    %>
+    <%= f.select :price, options_for_select(
+      (200..1100).step(100).map { |p| p <= 1000 ? ["Até $#{p}", p] : ["$#{p} Mais", p]  }), prompt: 'Valor' %>
+
+    <%= f.text_field :address, data: {address_autocomplete_target: "address"}, class: 'd-none' %>
+  <% end %>
+
 
   <div class="row">
     <div class='col-sm-6'>
@@ -16,6 +21,7 @@
               <p>Data: <%= event.start_date.strftime("%d/%m/%y") %></p>
               <p>Evento: <%= event.title_event %></p>
               <p>Address: <%= event.company.address %></p>
+              <p>Price: <%= event.price %></p>
               <%= render 'proposals/form', event: event %>
       <% end %>
     </div>

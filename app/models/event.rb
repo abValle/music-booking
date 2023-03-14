@@ -7,13 +7,13 @@ class Event < ApplicationRecord
   validates :title_event, :start_date, :end_date, :start_time, :end_time, presence: true
   validates :price, presence: true, numericality: { greater_than: 0, message: "O valor deve ser maior que cero" }
   validates :description_event, presence: true, length: { minimum: 5 }
-  validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date
 
   include PgSearch::Model
   pg_search_scope :global_search,
                   against: [:title_event], associated_against: { company: [:title] },
                   using: { tsearch: { prefix: true } }
+  # pg_search_scope :price_search, against: [:price], using: { tsearch: { prefix: true } }
 
   private
 
