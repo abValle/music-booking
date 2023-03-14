@@ -27,15 +27,16 @@
   <div class="row">
     <div class='col-sm-8'>
       <% @events.each do |event| %>
-      <div class="card-product">
-        <div class="card-product-infos">
-              <h4 ><%= link_to "#{event.company.title}", event_path(event),  class: " border-radius:10px;"%></h4>
-              <p>Data: <%= event.start_date.strftime("%d/%m/%y") %></p>
-              <p>Evento: <%= event.title_event %></p>
-              <p>Address: <%= event.company.address %></p>
-              <p>Price: <%= event.price %></p>
-         </div>
-              <%= render 'proposals/form', event: event %>
+        <div class="card-product">
+          <div class="card-product-infos">
+            <h4 ><%= link_to "#{event.company.title}", event_path(event),  class: " border-radius:10px;"%></h4>
+            <p>Data: <%= event.start_date.strftime("%d/%m/%y") %></p>
+            <p>Evento: <%= event.title_event %></p>
+            <p>Address: <%= event.company.address %></p>
+            <p>Price: <%= event.price %></p>
+          </div>
+          <%= render 'proposals/form', event: event %>
+        </div>
       <% end %>
     </div>
 
