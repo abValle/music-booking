@@ -1,4 +1,6 @@
-<h1>Events index</h1>
+<div id="event-index">
+  <h2 style = "color:#89D2DC" >Eventos com vagas para músicos!</h2>
+</div>
 <div class="main-container">
   <%= form_with url: events_path, method: :get,
     html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} do |f| %>
@@ -23,21 +25,26 @@
 
 
   <div class="row">
-    <div class='col-sm-6'>
+    <div class='col-sm-8'>
       <% @events.each do |event| %>
-              <h4><%= link_to "#{event.company.title}", event_path(event) %></h4>
+      <div class="card-product">
+        <div class="card-product-infos">
+              <h4 ><%= link_to "#{event.company.title}", event_path(event),  class: " border-radius:10px;"%></h4>
               <p>Data: <%= event.start_date.strftime("%d/%m/%y") %></p>
               <p>Evento: <%= event.title_event %></p>
               <p>Address: <%= event.company.address %></p>
               <p>Price: <%= event.price %></p>
               <%= render 'proposals/form', event: event %>
+        </div>
+      </div>
+
       <% end %>
     </div>
 
-    <div id='map'
-        data-controller='map'
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>"
-        data-map-markers-value="<%= @markers.to_json %>" class='col-sm-6'>
-    </div>
+      <div id='map'
+          data-controller='map'
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>"
+          data-map-markers-value="<%= @markers.to_json %>" class='col-sm-3 h-200'>
+      </div>
   </div>
 </div>
