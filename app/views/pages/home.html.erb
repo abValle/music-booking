@@ -5,6 +5,8 @@
   <%= link_to "Eventos", events_path,  class: "btn btn-primary" if current_user.musician %>
 
   <%= link_to "Crie seu evento", new_company_event_path(@company),  class: "btn btn-primary" if current_user.company %>
+
+  <%= link_to "Minhas Propostas Pendentes", proposals_path,  class: "btn btn-primary" %>
 <% else %>
   <%= link_to "Cadastre-se", new_user_session_path,  class: "btn btn-primary" %>
 <% end %>

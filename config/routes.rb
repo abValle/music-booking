@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get "profile_musician", to: "pages#profile_musician"
   get "profile_company", to: "pages#profile_company"
+  get "refuse_proposal", to: "proposals#refuse_proposal"
+  get "accept_proposal", to: "proposals#accept_proposal"
 
 
   resources :chatrooms, only: :show
