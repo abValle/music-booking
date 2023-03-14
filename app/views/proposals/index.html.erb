@@ -1,15 +1,19 @@
 <% if @proposals.blank? %>
-  <%= "YOU HAVE NO PROPOSALS" %>
+  <%= "Você ainda não tem propostas" %>
 <% end %>
     <h2>Proposals</h2>
     <% @proposals.each do |proposal| %>
-      <p>musician: <%= proposal.musician.first_name %></p>
-      <p>event:<%= proposal.event.title_event %></p>
-      <p>winner_:<%= proposal.winner %></p>
-      <p>company: <%= proposal.event.company.title %></p>
-      <%= link_to "Recusar proposta", refuse_proposal_path(id: proposal), class: "btn btn-danger" if current_user.company %>
-      <%= link_to "Aceitar proposta", accept_proposal_path(id: proposal), class: "btn btn-success" if current_user.company%>
-      <%= link_to "Abrir ChatRoom" %>
+    <div class="card-product">
+      <div class="card-product-infos">
+        <p>musician: <%= proposal.musician.first_name %></p>
+        <p>event:<%= proposal.event.title_event %></p>
+        <p>winner_:<%= proposal.winner %></p>
+        <p>company: <%= proposal.event.company.title %></p>
+        <%= link_to "Recusar proposta", refuse_proposal_path(id: proposal), class: "btn btn-danger" if current_user.company %>
+        <%= link_to "Aceitar proposta", accept_proposal_path(id: proposal), class: "btn btn-success" if current_user.company%>
+        <%= link_to "Abrir ChatRoom", proposal_path(id: proposal) %>
+      </div>
+    </div>
     <% end %>
 
  <%= link_to "Crie seu evento", new_company_event_path(@company),  class: "btn btn-primary" if current_user.company %>
