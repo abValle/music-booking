@@ -12,6 +12,13 @@ class ProposalsController < ApplicationController
     end
   end
 
+  def show
+    @proposal = Proposal.find(params[:id])
+    @message = Message.new
+    authorize @proposal
+  end
+
+
   def new
     @proposal = Proposal.new
     authorize @proposal

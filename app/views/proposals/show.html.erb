@@ -1,0 +1,24 @@
+<div class="container chatroom" data-controller="proposal-subscription" data-proposal-subscription-proposal-id-value="<%= @proposal.id %>">
+
+
+  <h1>#<%= "#{@proposal.event.company.title} #{@proposal.musician.first_name}"%></h1>
+
+  <div class="messages" data-proposal-subscription-target="messages">
+    <% @proposal.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
+
+
+
+  <%= simple_form_for [@proposal, @message],
+    html: { data: { action: "turbo:submit-end->proposal-subscription#resetForm" }, class: "d-flex" } do |f|
+  %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "Message ##{@proposal.event.title_event}",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <% end %>
+</div>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :proposals, only: %i[new create]
   end
   resources :proposals, only: %i[index destroy]
-
+  # show do proposal é igual ao chatroom!!
   # post 'proposals', to: 'proposals#create', as: 'create_proposal'
 
   get "profile_musician", to: "pages#profile_musician"
@@ -20,8 +20,7 @@ Rails.application.routes.draw do
   get "accept_proposal", to: "proposals#accept_proposal"
 
 
-  resources :chatrooms, only: :show
-  resources :chatrooms, only: :show do
+  resources :proposals, only: :show do
     resources :messages, only: :create
   end
 
