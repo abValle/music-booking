@@ -35,7 +35,7 @@ class EventsController < ApplicationController
     authorize @event
     @event.save
     if @event.save
-      redirect_to root_path
+      redirect_to profile_company_path, notice: "Event was successfully created."
     else
     render :new, status: :unprocessable_entity
     end
