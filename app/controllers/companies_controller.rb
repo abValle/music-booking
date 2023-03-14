@@ -13,6 +13,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     authorize @company
     @company.user = current_user
+    @company.save
     if @company.save
       redirect_to root_path
     else
