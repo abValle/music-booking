@@ -1,22 +1,20 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-novo">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center gap-5 text-black">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <i class="fa-solid fa-music" ></i>
+        <strong>Music</strong>Booking
+        <%= link_to "Sobre nos", root_path, class: "nav-link", id:"change-color-rover" %>
+        <%= link_to "Eventos", events_path, class: "nav-link", id:"change-color-rover" %>
+
+      <% end %>
+
+      </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? && (current_user.company || current_user.musician) %>
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Outra opção", "#", class: "nav-link" %>
-          </li>
           <li class="nav-item dropdown">
           <% if current_user.musician && current_user.musician.photo.attached? %>
             <%= cl_image_tag(current_user.musician.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false )%>
