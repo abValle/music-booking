@@ -1,8 +1,9 @@
 .card-product {
   overflow: hidden;
-  height: 120px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: fit-content;
+  background: #89D2DC;
+  box-shadow: 0 0 15px rgba(99, 15, 243, 0.2);
+  border-radius: 10px;
   display: flex;
   align-items: center;
   margin:30px;
@@ -16,18 +17,28 @@
 
 .card-product h2 {
   font-size: 16px;
-  font-weight: bold;
+  font-weight:bolder;
   margin: 0;
+  color:#1a17df;
+  ;
 }
 
 .card-product p {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+  color:#1a17df;
 }
 
 .card-product .card-product-infos {
-  padding: 30px;
+  height: 90%;
+  padding: 16px;
+}
+
+.card-product .card-product-infos #link-to{
+  text-decoration: none;
 }
