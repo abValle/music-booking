@@ -4,8 +4,8 @@
 <p>Descrição: <%= @company.description%></p>
 <p>Endereço: <%= @company.address%></p>
 <% if current_user.company.photo.attached? %>
-  <%= cl_image_tag current_user.company.photo.key, height: 300, width: 400, crop: :fill %>
-  <% else %>
+  <%= cl_image_tag(current_user.company.photo.key, height: 200, crop: :fill)%>
+<% else %>
   <%= image_tag("company.jpg", height: 200) %>
 <% end %>
 
