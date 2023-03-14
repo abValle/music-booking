@@ -9,11 +9,12 @@
     <%= f.select :price, options_for_select(
       (200..1100).step(100).map { |p| p <= 1000 ? ["Até $#{p}", p] : ["$#{p} Mais", p]  }), prompt: 'Valor' %>
 
+    <!-- TODO - Filtro por datas
     <%= f.text_field :start_time, class: 'flatpickr',
             data: { controller: "flatpickr" }, placeholder: 'Inicio' %>
 
     <%= f.text_field :end_time, class: 'flatpickr',
-            data: { controller: "flatpickr" }, placeholder: 'Fim' %>
+            data: { controller: "flatpickr" }, placeholder: 'Fim' %> -->
 
     <%= f.text_field :address, data: {address_autocomplete_target: "address"}, class: 'd-none' %>
 
