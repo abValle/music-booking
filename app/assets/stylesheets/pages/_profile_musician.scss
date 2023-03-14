@@ -1,19 +1,35 @@
 .fa-brands{
-  color: #000000;
+  color: #ffffff;
   font-size: 40px;
   margin-right: 40px;
 }
 
-.teste{
-  margin-top: 50px;
-}
 
-#redes-sociais{
-  text-align: center;
+
+#profile-img{
+  align-items: center;
+  padding-bottom: 40px;
 }
 
 #redes-sociais-links{
   margin-top: 30px;
-  padding: 30px;
   text-align: center;
+}
+
+.card{
+  background-color: #101D42;
+  border-radius: 10px;
+  color: #ffffff;
+  height: 600px;
+  width: 600px;
+}
+
+.card-product{
+  background-color: #101D42;
+  border-radius: 10px;
+  color: #ffffff;
+}
+
+.title-color{
+  color: #ffffff;
 }

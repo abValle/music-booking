@@ -63,6 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_144549) do
   end
 
   create_table "events", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
     t.time "start_time"
     t.time "end_time"
     t.bigint "company_id", null: false
@@ -71,8 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_144549) do
     t.float "price"
     t.string "title_event"
     t.text "description_event"
-    t.date "end_date"
-    t.date "start_date"
     t.index ["company_id"], name: "index_events_on_company_id"
   end
 
