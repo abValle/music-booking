@@ -10,17 +10,20 @@ class EventsController < ApplicationController
     end
 
     if params[:price].present?
-      @events = @events.where("price <= ?", params[:price]).order(price: :desc)
-      map()
+      if params[:price] == 1100
+        @events = @events.where("price >= ?", params[:price]).order(price: :desc)
+      else
+        @events = @events.where("price <= ?", params[:price]).order(price: :desc)
+      end
     end
 
     if params[:address].present?
-      companies = Company.near(params[:address], 4).includes(:events)
-      @events = companies.map(&:events)
-      raise
+      companies_ids = Company.near(params[:address], 4).map(&:id)
+      @events = @events.where(company_id: companies_ids)
     end
 
     map()
+
   end
 
   def new
