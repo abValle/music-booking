@@ -8,5 +8,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :boolean_company, inclusion: [true, false]
-  validates :nickname, presence: true, uniqueness: true
+  validates :nickname, presence: true
 end

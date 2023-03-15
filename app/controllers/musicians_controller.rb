@@ -42,7 +42,7 @@ class MusiciansController < ApplicationController
   end
 
   def musician_params
-    musician_params = %i[first_name last_name phone nickname address category birth_date description phone rating photo]
+    musician_params = %i[first_name last_name phone address category birth_date description phone rating photo]
     params.require(:musician).permit(musician_params)
   end
 end
