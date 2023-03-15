@@ -53,7 +53,7 @@
                   <div class="card-product">
                     <div class="card-product-infos">
                       <h5><%= link_to "#{event.title_event}", event_path(event) %></h5>
-                      <p><strong>Data: </strong><%= event.start_date.strftime("%d/%m/%y") %></p>
+                      <p><strong>Data: </strong><%= event.start_time.strftime("%d/%m/%y") %></p>
                       <p><strong>Dono do evento:</strong><%= event.company.title %></p>
                       <p><strong>Endereço:</strong><%= event.company.address %></p>
                     </div>

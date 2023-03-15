@@ -80,4 +80,6 @@ class EventsController < ApplicationController
     end
     map()
   end
+
+  
 end
