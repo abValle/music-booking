@@ -5,7 +5,7 @@
 
 <div row>
   <div class="container text-center">
-    <div class="row align-items-center mt-4" id="profile-container">
+    <div class="row align-items-center mt-4" id="profile-container" id="banner3">
     <%= image_tag 'img-fundo-home-4.png' %>
     </div>
   </div>
@@ -13,9 +13,9 @@
 
 
 <% if user_signed_in? %>
-  <%= link_to "Eventos", events_path,  class: "btn btn-primary" if current_user.musician %>
+  <%= link_to "Eventos", events_path,  class: "btn btn-light" if current_user.musician %>
 
-  <%= link_to "Crie seu evento", new_company_event_path(@company),  class: "btn btn-primary" if current_user.company %>
+  <%= link_to "Crie seu evento", new_company_event_path(@company),  class: "btn btn-light" if current_user.company %>
 
-  <%= link_to "Minhas Propostas Pendentes", proposals_path,  class: "btn btn-primary" if current_user.company %>
+  <%= link_to "Minhas Propostas Pendentes", proposals_path,  class: "btn btn-light" if current_user.company %>
 <% end %>
