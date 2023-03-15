@@ -59,8 +59,10 @@
                     </div>
 
                     <div class="col">
-                      <p><strong>Data:</strong> <%= proposal.event.start_date.strftime("%d/%m/%y") %></p>
-                      <p><strong>Horário do evento:</strong> <%= proposal.event.start_time.strftime("%H:%M") %> às <%= proposal.event.end_time.strftime("%H:%M") %></p>
+                      <p><strong>Data Inicio:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
+                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
+                      <p><strong>Data Fim:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
+                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
                     </div>
                     <div class="col">
                       <%= link_to 'Editar proposta', edit_musician_path(@musician), class:'btn btn-light'%>
@@ -92,8 +94,10 @@
                     </div>
 
                     <div class="col">
-                      <p><strong>Data:</strong> <%= proposal.event.start_date.strftime("%d/%m/%y") %></p>
-                      <p><strong>Horário do evento:</strong> <%= proposal.event.start_time.strftime("%H:%M") %> às <%= proposal.event.end_time.strftime("%H:%M") %></p>
+                      <p><strong>Data Inicio:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
+                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
+                      <p><strong>Data Fim:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
+                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
                     </div>
                     <div class="col">
                       <%= link_to 'Editar proposta', edit_musician_path(@musician), class:'btn btn-light'%>

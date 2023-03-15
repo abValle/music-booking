@@ -6,7 +6,6 @@ export default class extends Controller {
   static targets = ["messages"]
 
   connect() {
-    console.log(`Subscribe to the chatroom with the id ${this.proposalIdValue}.`)
 
     this.channel = createConsumer().subscriptions.create(
       { channel: "ProposalChannel", id: this.proposalIdValue },
@@ -15,7 +14,6 @@ export default class extends Controller {
   }
 
   resetForm(event) {
-    console.log("estou aqui")
     event.target.reset()
   }
 
@@ -25,7 +23,6 @@ export default class extends Controller {
   }
 
   disconnect() {
-    console.log("Unsubscribed from the chatroom")
     this.channel.unsubscribe()
   }
 
