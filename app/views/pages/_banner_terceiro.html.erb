@@ -1,9 +1,9 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path "fundo_banner_3.jpg" %>);">
+<div class="banner" id="banner3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path "fundo_banner_3.jpg" %>);">
   <div class="container">
     <div>
       <h2>Encontre músicos para o seu evento</h2>
-      <p>Escolha entre os melhores, separe por estilo músical</p>      <%= link_to "Cadastre-se", new_user_registration_path,  class: "btn btn-primary" unless user_signed_in? %>
-      <%= link_to "Crie seu evento", new_user_registration_path,  class: "btn btn-primary" if user_signed_in? %>
+      <p>Escolha entre os melhores, separe por estilo músical</p>      <%= link_to "Cadastre-se", new_user_registration_path,  class: "btn btn-light" unless user_signed_in? %>
+      <%= link_to "Crie seu evento", new_user_registration_path,  class: "btn btn-light" if user_signed_in? %>
     </div>
   </div>
 </div>
