@@ -1,7 +1,7 @@
 <%= turbo_stream_from current_user %>
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-novo">
   <div class="container-fluid">
-    <div class="d-flex align-items-center gap-5 text-white">
+    <div class="d-flex align-items-center gap-5 text-white px-3">
       <%= link_to root_path, class: "navbar-brand text-white" do %>
         <i class="fa-solid fa-music" ></i>
         <strong>Music</strong>Booking
@@ -11,11 +11,11 @@
     </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto gap-3">
         <% if user_signed_in? && (current_user.company || current_user.musician) %>
-          <div id="pushes" >
+          <div id="pushes">
             <%= link_to proposals_path, style: "text-decoration: none;"  do %>
-              <i class="fa-regular fa-bell"></i>
+              <i class="fa-regular fa-bell text-white"></i>
               <%= current_user.pushes.count %>
             <% end %>
           </div>
