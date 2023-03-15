@@ -1,4 +1,3 @@
-
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-novo">
   <div class="container-fluid">
     <div class="d-flex align-items-center gap-5 text-white">
@@ -7,10 +6,8 @@
         <strong>Music</strong>Booking
         <%= link_to "Sobre nos", root_path, class: "nav-link", id:"change-color-rover" %>
         <%= link_to "Eventos", events_path, class: "nav-link", id:"change-color-rover" %>
-
       <% end %>
-
-      </div>
+    </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
@@ -23,7 +20,6 @@
           <% else %>
             <%= icon('fa-solid', 'user-secret', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
           <% end %>
-            <%#= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Perfil", current_user.company ? profile_company_path : profile_musician_path, class: "dropdown-item" %>
               <%= link_to "Another action", "#", class: "dropdown-item" %>
