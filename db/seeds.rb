@@ -67,7 +67,6 @@ puts 'Creating permanent fake users for companies and musicians...'
   Musician.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    nickname: Faker::Books::TheKingkillerChronicle.character,
     address: Faker::Address.street_address,
     category: Faker::Music.genre,
     birth_date: Date.new(1990,2,3),
@@ -137,7 +136,6 @@ puts "creating 10 musicians"
     Musician.create!(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
-      nickname: Faker::Books::TheKingkillerChronicle.character,
       address: Faker::Address.street_address,
       category: Faker::Music.genre,
       birth_date: Date.new(1990,2,3),
