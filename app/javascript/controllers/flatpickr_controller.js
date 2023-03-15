@@ -2,9 +2,10 @@ import { Controller } from "@hotwired/stimulus";
 import flatpickr from "flatpickr";
 
 export default class extends Controller {
+  static values = {time: Boolean}
   connect() {
+    console.log(this.timeValue)
     new flatpickr(this.element, {
-      enableTime: true,
       minDate: "today",
       allowInput: false,
       disable: [
@@ -12,10 +13,8 @@ export default class extends Controller {
           from: new Date(0),
           to: new Date(new Date().setDate(new Date().getDate() - 1))
         }
-      ]
-      // more options available on the documentation!
+      ],
+      enableTime: this.timeValue
     });
   }
-
-
 }
