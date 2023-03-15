@@ -27,7 +27,8 @@ puts 'Creating permanent fake users for companies and musicians...'
   User.create!(
     email:    "a@a.com",
     password: "123123",
-    boolean_company: true
+    boolean_company: true,
+    nickname: Faker::DcComics.hero
   )
 
   Company.create!(
@@ -43,7 +44,8 @@ puts 'Creating permanent fake users for companies and musicians...'
   User.create!(
     email:    "company@company.com",
     password: "123123",
-    boolean_company: true
+    boolean_company: true,
+    nickname: Faker::DcComics.hero
   )
 
   Company.create!(
@@ -58,7 +60,8 @@ puts 'Creating permanent fake users for companies and musicians...'
   User.create!(
     email:    "musician@musician.com",
     password: "123123",
-    boolean_company: false
+    boolean_company: false,
+    nickname: Faker::DcComics.hero
   )
 
   Musician.create!(
@@ -81,7 +84,8 @@ events = 0
       User.create!(
       email: Faker::Internet.email,
       password: "123123",
-      boolean_company: true
+      boolean_company: true,
+      nickname: Faker::DcComics.hero
     )
 
     Company.create!(
@@ -129,7 +133,8 @@ puts "creating 10 musicians"
     User.create!(
       email: Faker::Internet.email,
       password: "123123",
-      boolean_company: false
+      boolean_company: false,
+      nickname: Faker::DcComics.hero
     )
     Musician.create!(
       first_name: Faker::Name.first_name,
