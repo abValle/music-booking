@@ -54,7 +54,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title_event, :description_event, :price, :start_time, :end_time)
+    params.require(:event).permit(:title_event, :description_event, :price, :start_time, :end_time, :category_event)
   end
 
   def search_filter
@@ -75,10 +75,9 @@ class EventsController < ApplicationController
       @events = @events.where(company_id: companies_ids)
     end
 
-    # if params[:start_time].present? || params[:end_time].present?
-    #   raise
-    # end
-
+    if params[:start_time].present?
+      @events = @events.where('DATE(start_time) = ?', params[:start_time])
+    end
     map()
   end
 end

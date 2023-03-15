@@ -4,7 +4,7 @@ class Event < ApplicationRecord
   has_many :proposals, dependent: :destroy
   has_many :musicians, through: :proposals
 
-  validates :title_event, :start_time, :end_time, presence: true
+  validates :title_event, :start_time, :end_time, :category_event, presence: true
   validates :price, presence: true, numericality: { greater_than: 0, message: "O valor deve ser maior que cero" }
   validates :description_event, presence: true, length: { minimum: 5 }
   validate :end_time_after_start_time
@@ -13,6 +13,9 @@ class Event < ApplicationRecord
   pg_search_scope :global_search,
                   against: [:title_event], associated_against: { company: [:title] },
                   using: { tsearch: { prefix: true } }
+  # pg_search_scope :price_search, against: [:price], using: { tsearch: { prefix: true } }
+
+  CATEGORIES = ['Axé', 'Blues', 'Country', 'Eletrônica', 'Forró', 'Funk', 'Gospel', 'Hip Hop', 'Jazz', 'MPB','Música clássica','Pagode', 'Pop', 'Rap', 'Reggae', 'Rock', 'Samba', 'Sertanejo']
                   
   private
 

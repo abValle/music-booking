@@ -65,6 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_190152) do
     t.float "price"
     t.string "title_event"
     t.text "description_event"
+    t.text "category_event"
     t.index ["company_id"], name: "index_events_on_company_id"
   end
 

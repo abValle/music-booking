@@ -3,8 +3,9 @@
   <%= simple_form_for [company, event] do |f|%>
   <%= f.input :title_event %>
   <%= f.input :description_event %>
-  <%= f.input :start_time, as: :string, placeholder: 'Inicio', input_html: {data: { controller: "flatpickr", readonly: true }} %>
-  <%= f.input :end_time, as: :string, placeholder: 'Fim', input_html: {data: { controller: "flatpickr", readonly: true}} %>
+  <%= f.input :category_event, collection: Event::CATEGORIES %>
+  <%= f.input :start_time, as: :string, placeholder: 'Inicio', input_html: {data: { controller: "flatpickr", flatpickr_time_value: true, readonly: true }} %>
+  <%= f.input :end_time, as: :string, placeholder: 'Fim', input_html: {data: { controller: "flatpickr", flatpickr_time_value: true, readonly: true}} %>
   <%= f.input :price %>
   <%= f.submit %>
   <% end %>
