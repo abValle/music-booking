@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
-    user_keys = %i[boolean_company]
+    user_keys = %i[boolean_company nickname]
     devise_parameter_sanitizer.permit(:sign_up, keys: user_keys)
 
     # For additional in app/views/devise/registrations/edit.html.erb
