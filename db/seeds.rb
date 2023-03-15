@@ -27,7 +27,8 @@ puts 'Creating permanent fake users for companies and musicians...'
   User.create!(
     email:    "a@a.com",
     password: "123123",
-    boolean_company: true
+    boolean_company: true,
+    nickname: Faker::DcComics.hero
   )
 
   Company.create!(
@@ -43,12 +44,13 @@ puts 'Creating permanent fake users for companies and musicians...'
   User.create!(
     email:    "company@company.com",
     password: "123123",
-    boolean_company: true
+    boolean_company: true,
+    nickname: Faker::DcComics.hero
   )
 
   Company.create!(
     title: Faker::Company.name,
-    address: Faker::Address.street_address,
+    address: 'Avenida Paulista São Paulo - São Paulo, 01311-100, Brazil',
     phone:Faker::Number.number(digits: 11) ,
     category: Faker::Music.genre,
     description: Faker::Lorem.sentence(word_count: 20),
@@ -58,13 +60,13 @@ puts 'Creating permanent fake users for companies and musicians...'
   User.create!(
     email:    "musician@musician.com",
     password: "123123",
-    boolean_company: false
+    boolean_company: false,
+    nickname: Faker::DcComics.hero
   )
 
   Musician.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    nickname: Faker::Books::TheKingkillerChronicle.character,
     address: Faker::Address.street_address,
     category: Faker::Music.genre,
     birth_date: Date.new(1990,2,3),
@@ -81,7 +83,8 @@ events = 0
       User.create!(
       email: Faker::Internet.email,
       password: "123123",
-      boolean_company: true
+      boolean_company: true,
+      nickname: Faker::DcComics.hero
     )
 
     Company.create!(
@@ -94,10 +97,8 @@ events = 0
     )
     puts "creating 2 events"
     2.times do Event.create!(
-      start_date: Date.new(1990, 2, 3),
-      end_date: Date.new(1990, 2, 3),
-      start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
-      end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+      start_time: DateTime.now + rand(2..5),
+      end_time: DateTime.now + rand(6..8),
       price: 300,
       title_event: Faker::FunnyName.name,
       description_event: Faker::Lorem.sentence(word_count: 20),
@@ -130,12 +131,12 @@ puts "creating 10 musicians"
     User.create!(
       email: Faker::Internet.email,
       password: "123123",
-      boolean_company: false
+      boolean_company: false,
+      nickname: Faker::DcComics.hero
     )
     Musician.create!(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
-      nickname: Faker::Books::TheKingkillerChronicle.character,
       address: Faker::Address.street_address,
       category: Faker::Music.genre,
       birth_date: Date.new(1990,2,3),

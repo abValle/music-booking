@@ -1,7 +1,7 @@
 class Musician < ApplicationRecord
   belongs_to :user
   has_many :proposals
-  validates :first_name, :last_name, :nickname, :birth_date, :description, :phone, presence: true
+  validates :first_name, :last_name, :birth_date, :description, :phone, presence: true
   validate :permited_age, if: -> { birth_date.present? }
   validate :permited_phone, if: -> { phone.present? }
   validates :user_id, uniqueness: true
