@@ -94,8 +94,6 @@ events = 0
     )
     puts "creating 2 events"
     2.times do Event.create!(
-      start_date: Date.new(1990, 2, 3),
-      end_date: Date.new(1990, 2, 3),
       start_time: DateTime.now + rand(2..5),
       end_time: DateTime.now + rand(6..8),
       price: 300,
