@@ -5,10 +5,10 @@
   border-radius: 10px;
   margin: 5vh;
   top: 60px;
-    /* altura da navbar */
-    height: calc(100vh - 110px);
-    /* altura total da janela menos altura da navbar */
-    z-index: 50;
+  /* altura da navbar */
+  height: calc(100vh - 110px);
+  /* altura total da janela menos altura da navbar */
+  z-index: 50;
 }
 
 .mapboxgl-popup {
