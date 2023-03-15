@@ -45,8 +45,9 @@
   <div class="container text-center mt-5 p-5">
     <div class="row align-items-center">
       <div class="col">
-        <h2 class="title-color">Proposals</h2>
-        <% @musician_proposals.each do |proposal| %>
+        <h2 class="title-color">Accepted Proposals</h2>
+        <%= "No accepted proposals :(" if @accepted_proposals.blank?  %>
+        <% @accepted_proposals.each do |proposal| %>
           <div class="container text-center">
             <div class="row align-items-center">
                 <div class="col">
@@ -56,9 +57,47 @@
                       <p><strong>Endereço: </strong><%= proposal.event.company.address %></p>
                       <p><strong>Empresa:</strong> <%= proposal.event.company.title %></p>
                     </div>
+
                     <div class="col">
-                      <p><strong>Data:</strong> <%= proposal.event.start_date.strftime("%d/%m/%y") %></p>
-                      <p><strong>Horário do evento:</strong> <%= proposal.event.start_time.strftime("%H:%M") %> às <%= proposal.event.end_time.strftime("%H:%M") %></p>
+                      <p><strong>Data Inicio:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
+                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
+                      <p><strong>Data Fim:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
+                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
+                    </div>
+                    <div class="col">
+                      <%= link_to 'Editar proposta', edit_musician_path(@musician), class:'btn btn-light'%>
+                      <%= link_to 'Proposta em Andamento', "#", class:'btn btn-dark'%>
+                    </div>
+                  <div>
+                </div>
+              </div>
+          </div>
+        <% end %>
+      <div>
+    </div>
+  </div>
+
+  <div class="container text-center mt-5 p-5">
+    <div class="row align-items-center">
+      <div class="col">
+        <h2 class="title-color">Refused Proposals</h2>
+        <%= "No refused proposals :)" if @refused_proposals.blank?  %>
+        <% @refused_proposals.each do |proposal| %>
+          <div class="container text-center">
+            <div class="row align-items-center">
+                <div class="col">
+                  <div class="card-product">
+                    <div class="card-product-infos">
+                      <h5><%= link_to "#{proposal.event.title_event}", event_path(proposal.event) %></h5>
+                      <p><strong>Endereço: </strong><%= proposal.event.company.address %></p>
+                      <p><strong>Empresa:</strong> <%= proposal.event.company.title %></p>
+                    </div>
+
+                    <div class="col">
+                      <p><strong>Data Inicio:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
+                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
+                      <p><strong>Data Fim:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
+                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
                     </div>
                     <div class="col">
                       <%= link_to 'Editar proposta', edit_musician_path(@musician), class:'btn btn-light'%>

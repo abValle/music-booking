@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus"
-// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 
 // Connects to data-controller="map"
@@ -13,18 +12,10 @@ export default class extends Controller {
     });
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-
-    // this.map.addControl(new MapboxGeocoder({
-    //   accessToken: mapboxgl.accessToken,
-    //   types: "country,region,place,postcode,locality,neighborhood,address",
-    //   mapboxgl: mapboxgl,
-    //   trackProximity: false
-    // }))
   }
 
   #addMarkersToMap(){
     this.markersValue.forEach((marker) => {
-      console.log(this.markersValue)
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
       new mapboxgl.Marker()
         .setLngLat([marker.lng, marker.lat])

@@ -7,7 +7,8 @@ class PagesController < ApplicationController
 
   def profile_musician
     @musician = current_user.musician
-    @proposals = Proposal.where(musician: current_user.musician).and(Proposal.where(winner: true)).includes(:event)
+    @accepted_proposals = Proposal.where(musician: current_user.musician).and(Proposal.where(winner: true)).includes(:event)
+    @refused_proposals = Proposal.where(musician: current_user.musician).and(Proposal.where(winner: false)).includes(:event)
     @musician_proposals = policy_scope(Proposal)
     @musician_proposals = Proposal.all
 

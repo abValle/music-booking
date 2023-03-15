@@ -6,6 +6,7 @@ export default class extends Controller {
     new flatpickr(this.element, {
       enableTime: true,
       minDate: "today",
+      allowInput: false,
       disable: [
         {
           from: new Date(0),
