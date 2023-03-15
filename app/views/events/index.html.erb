@@ -11,12 +11,11 @@
     <%= f.select :price, options_for_select(
       (200..1100).step(100).map { |p| p <= 1000 ? ["Até $#{p}", p] : ["$#{p} Mais", p]  }), prompt: 'Valor' %>
 
-    <!-- TODO - Filtro por datas
     <%= f.text_field :start_time, class: 'flatpickr',
             data: { controller: "flatpickr" }, placeholder: 'Inicio' %>
 
     <%= f.text_field :end_time, class: 'flatpickr',
-            data: { controller: "flatpickr" }, placeholder: 'Fim' %> -->
+            data: { controller: "flatpickr" }, placeholder: 'Fim' %>
 
     <%= f.text_field :address, data: {address_autocomplete_target: "address"}, class: 'd-none' %>
 
@@ -30,7 +29,7 @@
         <div class="card-product">
           <div class="card-product-infos">
             <h4 ><%= link_to "#{event.company.title}", event_path(event),  class: " border-radius:10px;"%></h4>
-            <p>Data: <%= event.start_date.strftime("%d/%m/%y") %></p>
+            <p>Data: <%= event.start_time.strftime("%d/%m/%y") %></p>
             <p>Evento: <%= event.title_event %></p>
             <p>Address: <%= event.company.address %></p>
             <p>Price: <%= event.price %></p>

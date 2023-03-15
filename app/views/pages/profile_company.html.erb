@@ -12,7 +12,7 @@
 <h3>Seus eventos</h3>
 <% @company.events.each do |event| %>
         <h4><%= link_to "#{event.title_event}", event_path(event) %></h4>
-        <p>Data: <%= event.start_date.strftime("%d/%m/%y") %></p>
+        <p>Data: <%= event.start_time.strftime("%d/%m/%y") %></p>
         <p>Dono do evento: <%= event.company.title %></p>
         <p>Address: <%= event.company.address %></p>
 <% end %>
