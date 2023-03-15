@@ -65,8 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_142657) do
   create_table "events", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
-    t.time "start_time"
-    t.time "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

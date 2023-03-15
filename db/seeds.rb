@@ -48,7 +48,7 @@ puts 'Creating permanent fake users for companies and musicians...'
 
   Company.create!(
     title: Faker::Company.name,
-    address: Faker::Address.street_address,
+    address: 'Avenida Paulista São Paulo - São Paulo, 01311-100, Brazil',
     phone:Faker::Number.number(digits: 11) ,
     category: Faker::Music.genre,
     description: Faker::Lorem.sentence(word_count: 20),
@@ -96,8 +96,8 @@ events = 0
     2.times do Event.create!(
       start_date: Date.new(1990, 2, 3),
       end_date: Date.new(1990, 2, 3),
-      start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
-      end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+      start_time: DateTime.now + rand(2..5),
+      end_time: DateTime.now + rand(6..8),
       price: 300,
       title_event: Faker::FunnyName.name,
       description_event: Faker::Lorem.sentence(word_count: 20),
