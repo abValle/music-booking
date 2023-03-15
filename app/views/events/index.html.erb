@@ -12,10 +12,7 @@
       (200..1100).step(100).map { |p| p <= 1000 ? ["Até $#{p}", p] : ["$#{p} Mais", p]  }), prompt: 'Valor' %>
 
     <%= f.text_field :start_time, class: 'flatpickr',
-            data: { controller: "flatpickr" }, placeholder: 'Inicio' %>
-
-    <%= f.text_field :end_time, class: 'flatpickr',
-            data: { controller: "flatpickr" }, placeholder: 'Fim' %>
+            data: { controller: "flatpickr", flatpickr_time_value: false  }, placeholder: 'Dia' %>
 
     <%= f.text_field :address, data: {address_autocomplete_target: "address"}, class: 'd-none' %>
 
@@ -37,12 +34,13 @@
           <%= render 'proposals/form', event: event %>
         </div>
       <% end %>
+      <p class=<%='d-none' if @events.any?%>>Nenhum resultado encontrado</p>
     </div>
 
       <div id='map'
           data-controller='map'
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>"
-          data-map-markers-value="<%= @markers.to_json %>" class='col-sm-3 h-200'>
+          data-map-markers-value="<%= @markers.to_json %>" class='col-sm-3'>
       </div>
   </div>
 </div>
