@@ -3,8 +3,16 @@
     <div>
       <h2>Busque locais para tocar</h2>
       <p>Seja contratado hoje mesmo para tocar nos melhores pubs, bares e restaurantes com música ao vivo de Sâo Paulo</p>
+      <% if user_signed_in? %>
+        <%= link_to "Buscar Eventos", events_path,  class: "btn btn-light" if current_user.musician %>
+
+        <%= link_to "Crie seu evento", new_company_event_path(@company),  class: "btn btn-light" if current_user.company %>
+
+        <%= link_to "Propostas para Revisão", proposals_path,  class: "btn btn-light" if current_user.company %>
+      <% end %>
+
+
       <%= link_to "Cadastre-se", new_user_registration_path,  class: "btn btn-light" unless user_signed_in? %>
-      <%= link_to "Oportunidades de Trabalho", new_user_registration_path,  class: "btn btn-light" if user_signed_in? %>
     </div>
   </div>
 </div>
