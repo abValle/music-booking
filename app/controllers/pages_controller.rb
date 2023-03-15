@@ -9,6 +9,7 @@ class PagesController < ApplicationController
     @musician = current_user.musician
     @accepted_proposals = Proposal.where(musician: current_user.musician).and(Proposal.where(winner: true)).includes(:event)
     @refused_proposals = Proposal.where(musician: current_user.musician).and(Proposal.where(winner: false)).includes(:event)
+    @pending_proposals = Proposal.where(musician: current_user.musician).and(Proposal.where(winner: nil)).includes(:event)
     @musician_proposals = policy_scope(Proposal)
     @musician_proposals = Proposal.all
 
