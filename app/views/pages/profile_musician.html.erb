@@ -3,7 +3,7 @@
     <div class="row align-items-center mt-4" id="profile-container">
       <div class="col-6">
         <div class="card" >
-          <h1><strong><%= @musician.nickname%></h1></strong>
+          <h1><strong><%= @musician.user.nickname%></h1></strong>
           <p><strong>Gêneros musicias:</strong> <%=@musician.category%></p>
           <p><strong>Descrição:</strong> <%= @musician.description%></p>
           <p><strong>Contato:</strong> <%= @musician.phone%></p>
