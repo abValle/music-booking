@@ -1,21 +1,11 @@
 <%= render 'banner'%>
 
-<% if user_signed_in? %>
-  <%= link_to "Eventos", events_path,  class: "btn btn-light" if current_user.musician %>
+<%= render 'home-carosel' unless user_signed_in? %>
 
-  <%= link_to "Crie seu evento", new_company_event_path(@company),  class: "btn btn-light" if current_user.company %>
+<%= render 'banner_segundo' if !user_signed_in? || current_user.company %>
 
-  <%= link_to "Minhas Propostas Pendentes", proposals_path,  class: "btn btn-light" if current_user.company %>
-<% end %>
+<%= render 'banner_terceiro' if !user_signed_in? || user_signed_in? ||current_user.company %>
 
-<%= render 'home-carosel' %>
+<%= render 'banner_quarto' if !user_signed_in? || current_user.musician %>
 
-<%= render 'banner_segundo' %>
-
-<%= render 'banner_terceiro' %>
-
-<%= render 'banner_quarto' %>
-
-<%= render 'banner_quinto' %>
-
-<%= render 'footer' %>
+<%= render 'banner_quinto' if !user_signed_in? || current_user.musician %>
