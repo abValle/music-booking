@@ -7,6 +7,7 @@ class Event < ApplicationRecord
   validates :title_event, :start_date, :end_date, :start_time, :end_time, presence: true
   validates :price, presence: true, numericality: { greater_than: 0, message: "O valor deve ser maior que cero" }
   validates :description_event, presence: true, length: { minimum: 5 }
+  validate :category_event
   validate :end_date_after_start_date
 
   include PgSearch::Model
@@ -15,6 +16,7 @@ class Event < ApplicationRecord
                   using: { tsearch: { prefix: true } }
   # pg_search_scope :price_search, against: [:price], using: { tsearch: { prefix: true } }
 
+  CATEGORIES = ['Axé', 'Blues', 'Country', 'Eletrônica', 'Forró', 'Funk', 'Gospel', 'Hip Hop', 'Jazz', 'MPB','Música clássica','Pagode', 'Pop', 'Rap', 'Reggae', 'Rock', 'Samba', 'Sertanejo']
   private
 
   def end_date_after_start_date

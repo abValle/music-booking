@@ -3,6 +3,7 @@
   <%= simple_form_for [company, event] do |f|%>
   <%= f.input :title_event %>
   <%= f.input :description_event %>
+  <%= f.input :category_event, collection: Event::CATEGORIES %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
   <%= f.input :start_time %>

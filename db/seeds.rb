@@ -101,7 +101,8 @@ events = 0
       price: 300,
       title_event: Faker::FunnyName.name,
       description_event: Faker::Lorem.sentence(word_count: 20),
-      company: Company.last
+      category_event: Event::CATEGORIES.sample,
+      company: Company.last,
     )
     end
     events += 1

@@ -54,7 +54,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title_event, :description_event, :price, :start_date, :end_date, :start_time, :end_time, :company_id)
+    params.require(:event).permit(:title_event, :description_event, :category_event, :price, :start_date, :end_date, :start_time, :end_time, :company_id)
   end
 
   def search_filter
