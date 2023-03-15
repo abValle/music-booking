@@ -84,7 +84,7 @@ events = 0
       email: Faker::Internet.email,
       password: "123123",
       boolean_company: true,
-      nickname: Faker::DcComics.hero
+      nickname: "#{Faker::DcComics.hero}#{('a'..'z').to_a.sample}"
     )
 
     Company.create!(
@@ -132,7 +132,7 @@ puts "creating 10 musicians"
       email: Faker::Internet.email,
       password: "123123",
       boolean_company: false,
-      nickname: Faker::DcComics.hero
+      nickname: "#{Faker::DcComics.hero}#{('a'..'z').to_a.sample}"
     )
     Musician.create!(
       first_name: Faker::Name.first_name,

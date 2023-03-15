@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_one :musician, dependent: :destroy
   has_one :company, dependent: :destroy
   has_many :messages
+  has_many :pushes
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
