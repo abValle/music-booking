@@ -1,4 +1,17 @@
-<%= render 'banner'%>
+
+<div class="container text-center">
+  <div class="row align-items-center mt-5" id="profile-container">
+    <h2>Como funcionam nossos serviços</h2>
+  </div>
+
+<div row>
+  <div class="container text-center">
+    <div class="row align-items-center mt-4" id="profile-container">
+    <%= image_tag 'img_banner2.png' %>
+    </div>
+  </div>
+</div>
+
 
 <% if user_signed_in? %>
   <%= link_to "Eventos", events_path,  class: "btn btn-primary" if current_user.musician %>
@@ -7,7 +20,3 @@
 
   <%= link_to "Minhas Propostas Pendentes", proposals_path,  class: "btn btn-primary" if current_user.company %>
 <% end %>
-
-<%= render 'banner_segundo' %>
-
-<%= render 'banner_terceiro' %>
