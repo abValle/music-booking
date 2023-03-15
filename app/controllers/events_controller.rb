@@ -75,10 +75,9 @@ class EventsController < ApplicationController
       @events = @events.where(company_id: companies_ids)
     end
 
-    # if params[:start_time].present? || params[:end_time].present?
-    #   raise
-    # end
-
+    if params[:start_time].present?
+      @events = @events.where('DATE(start_time) = ?', params[:start_time])
+    end
     map()
   end
 end
