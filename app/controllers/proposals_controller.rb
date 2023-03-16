@@ -10,8 +10,6 @@ class ProposalsController < ApplicationController
       # @proposals = Proposal.where(event: current_user.company.events)
       @proposals = Proposal.where(event: current_user.company.events).and(Proposal.where(winner: nil)).includes(:event)
     end
-    # se os pushes daquela proposal especifica existirem.
-    #  display sino
   end
 
   def show
@@ -70,6 +68,10 @@ class ProposalsController < ApplicationController
     authorize @proposal
     @proposal.winner = true
     @proposal.save
+    @company_user = @proposal.event.company.user
+    @muscian_nickname = @proposal.musician.user.nickname
+    Message.create(proposal_id: @proposal.id, user_id: @company_user.id, content:
+      "OLÁ #{@musician_nickname} ESTAMOS FELIZES EM COMUNICAR QUE APROVAMOS A SUA CANDIDATURA PARA O NOSSO EVENTO! :)")
     redirect_to proposals_path
   end
 
