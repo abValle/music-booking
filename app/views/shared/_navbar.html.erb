@@ -28,7 +28,7 @@
           <% end %>
       </div>
           </div>
-          <li class="nav-item dropdown">
+
           <% if current_user.musician && current_user.musician.photo.attached? %>
             <%= cl_image_tag(current_user.musician.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false )%>
           <% elsif current_user.company && current_user.company.photo.attached?%>
