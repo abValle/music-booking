@@ -1,7 +1,7 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-  <%= f.error_notification %>
+<div class="bg-image p-5" style="background-image: url('https://images.unsplash.com/photo-1518251030019-42bb0ce5f409?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); height: 100vh; background-size: cover;">
+  <h1 class="d-flex justify-content-center">Registre-se</h1>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+    <%= f.error_notification %>
 
   <div class="form-inputs">
       <%= f.input :nickname,
@@ -29,3 +29,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>
