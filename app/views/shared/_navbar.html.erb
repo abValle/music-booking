@@ -13,27 +13,24 @@
       <% end %>
     </div>
 
-<%# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button> %>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto gap-3">
         <% if user_signed_in? && (current_user.company || current_user.musician) %>
-        <div id="pushes">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-regular fa-bell text-white"></i>
-                        <%= current_user.pushes.count if current_user.pushes.count != 0 %>
-          </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <% if current_user.pushes.count != 0  %>
-          <li><%= link_to "Novas Mensagens",proposals_path, style: "text-decoration: none;" %></li>
-          <% end %>
-  </ul>
-</div>
+          <div id="pushes">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-regular fa-bell text-white"></i>
+                <%= current_user.pushes.count if current_user.pushes.count != 0 %>
+              </button>
+              <% if current_user.pushes.count != 0  %>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><%= link_to "Novas Mensagens",proposals_path, style: "text-decoration: none;" %></li>
+                  <li class="nav-item dropdown">
+                </ul>
+              <% end %>
+            </div>
           </div>
-          <li class="nav-item dropdown">
+
           <% if current_user.musician && current_user.musician.photo.attached? %>
             <%= cl_image_tag(current_user.musician.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false )%>
           <% elsif current_user.company && current_user.company.photo.attached?%>
