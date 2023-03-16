@@ -10,12 +10,12 @@ class Message < ApplicationRecord
 
   def push_notification
     recipient = if self.user == self.proposal.musician.user
-      self.proposal.event.company.user
-    else
-      self.proposal.musician.user
-    end
+                  self.proposal.event.company.user
+                else
+                  self.proposal.musician.user
+                end
 
-    push = Push.new(user: recipient, subject: "You have message from #{self.user.nickname}")
+    push = Push.new(user: recipient, proposal_id: self.proposal_id,  subject: "You have message from #{self.user.nickname}")
     push.save
   end
 end

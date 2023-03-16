@@ -14,8 +14,21 @@ class ProposalsController < ApplicationController
 
   def show
     @proposal = Proposal.find(params[:id])
+    @push = Push.where(proposal_id: @proposal.id).and(Push.where(user_id: current_user.id))
     @message = Message.new
     authorize @proposal
+    # ==================================
+    # @proposal.message.user.pushes
+    # pegamos o usuário que queremos deletar as mensagens
+    # clearing_user = @proposal.pushes.last.user
+    # # deletar (destroy_all) os PUSHES desse usuário (clearing_user) QUE estão vinculados a essa proposal (@proposal)
+    # clearing_user.pushes.destroy_all
+    # # destroi ^^^^^^ mas destroi tudo
+    # pushes.destroy_all(WHERE proposal = @proposal)
+    # ^^^^^^^^^^^^ destroy_all, mas precisamos dar um join/filtro/find que selecione só os pushes desse porposal
+    # clearing_user && @push
+    # ==================================
+    @push.destroy_all
   end
 
 
