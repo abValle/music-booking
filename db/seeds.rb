@@ -96,7 +96,7 @@ events = 0
       user: User.last
     )
     puts "creating 2 events"
-    2.times do Event.create!(
+     Event.create!(
       start_time: DateTime.now + rand(2..5),
       end_time: DateTime.now + rand(6..8),
       price: 300,
@@ -105,7 +105,6 @@ events = 0
       category_event: Event::CATEGORIES.sample,
       company: Company.last,
     )
-    end
     events += 1
   end
 
