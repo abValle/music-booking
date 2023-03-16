@@ -1,11 +1,18 @@
-<%= simple_form_for(company) do |f|%>
-<%= f.input :title %>
-<%= f.input :address, input_html: {data: {address_autocomplete_target: "address"}, class: 'd-none'},
-             wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
-<%= f.input :phone %>
-<%= f.input :category %>
-<%= f.input :description %>
-<%= f.input :photo, as: :file %>
+<div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1518251030019-42bb0ce5f409?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); background-size: cover;">
 
-<%= f.submit %>
-<% end %>
+  <h1 class="d-flex justify-content-center pt-5">Cadastre sua empresa</h1>
+
+  <div class="container">
+    <%= simple_form_for(company) do |f|%>
+    <%= f.input :title, label: 'Nome da empresa', required: true %>
+    <%= f.input :address, label: 'Endereço', input_html: {data: {address_autocomplete_target: "address"}, class: 'd-none'},
+                wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
+    <%= f.input :phone, label: 'Nº Celular', required: true %>
+    <%= f.input :category, label: 'Genêro' %>
+    <%= f.input :description, label: 'Breve descrição', required: true %>
+    <%= f.input :photo, label: 'Faça upload da sua foto', as: :file %>
+
+      <%= f.submit class: "btn my-4" %>
+      <% end %>
+  </div>
+</div>
