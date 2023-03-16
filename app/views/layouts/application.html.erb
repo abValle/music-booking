@@ -10,12 +10,15 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <%= javascript_include_tag 'scroll' %>
   </head>
 
   <body id='background'>
       <%= render "shared/navbar" %>
       <%= render "shared/flashes" %>
-      <div class="margin-navbar"><%= yield %></div>
+      <div id="min-alt" class="margin-navbar">
+        <%= yield %>
+      </div>
       <%= render 'shared/footer'%>
   </body>
 </html>
