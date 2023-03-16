@@ -1,18 +1,18 @@
-<div class="banner" id="banner5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path "fundo_banner_5.jpg" %>);">
+<div  id="secao1" class="banner" id="banner5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path "fundo_banner_5.jpg" %>);">
   <div class="container">
     <div>
       <h2>Busque locais para tocar</h2>
       <p>Seja contratado hoje mesmo para tocar nos melhores pubs, bares e restaurantes com música ao vivo de Sâo Paulo</p>
       <% if user_signed_in? %>
-        <%= link_to "Buscar Eventos", events_path,  class: "btn btn-light" if current_user.musician %>
+        <%= link_to "Buscar Eventos", events_path,  class: "btn" if current_user.musician %>
 
-        <%= link_to "Crie seu evento", new_company_event_path(@company),  class: "btn btn-light" if current_user.company %>
+        <%= link_to "Crie seu evento", new_company_event_path(@company),  class: "btn" if current_user.company %>
 
-        <%= link_to "Propostas para Revisão", proposals_path,  class: "btn btn-light" if current_user.company %>
+        <%= link_to "Propostas para Revisão", proposals_path,  class: "btn" if current_user.company %>
       <% end %>
 
 
-      <%= link_to "Cadastre-se", new_user_registration_path,  class: "btn btn-light" unless user_signed_in? %>
+      <%= link_to "Cadastre-se", new_user_registration_path,  class: "btn" unless user_signed_in? %>
     </div>
   </div>
 </div>

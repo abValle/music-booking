@@ -4,7 +4,7 @@
 
 <%= render 'banner_segundo' if !user_signed_in? || current_user.company %>
 
-<%= render 'banner_terceiro' if !user_signed_in? || user_signed_in? ||current_user.company %>
+<%= render 'banner_terceiro' if !user_signed_in? || current_user.company %>
 
 <%= render 'banner_quarto' if !user_signed_in? || current_user.musician %>
 
