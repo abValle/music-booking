@@ -5,21 +5,30 @@
       <%= link_to root_path, class: "navbar-brand text-white" do %>
         <i class="fa-solid fa-music" ></i>
         <strong>Music</strong>Booking
-        <%= link_to "Sobre nós", root_path, class: "nav-link", id:"change-color-rover" %>
-        <%= link_to "Sou músico", root_path(anchor: "secao1"), class: "nav-link", id: "change-color-rover" %>
-        <%= link_to "Sou Empresa", root_path(anchor: "secao2"), class: "nav-link", id: "change-color-rover" %>
-        <%= link_to "Eventos", events_path, class: "nav-link", id:"change-color-rover" if user_signed_in? %>
+        <%= link_to "Sobre nos", root_path, class: "nav-link", id:"change-color-rover" %>
+        <%= link_to "Eventos", events_path, class: "nav-link", id:"change-color-rover" %>
       <% end %>
     </div>
+
+<%# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto gap-3">
         <% if user_signed_in? && (current_user.company || current_user.musician) %>
-          <div id="pushes">
-            <%= link_to proposals_path, style: "text-decoration: none;"  do %>
-              <i class="fa-regular fa-bell text-white"></i>
-              <%= current_user.pushes.count %>
-            <% end %>
+        <div id="pushes">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-regular fa-bell text-white"></i>
+                        <%= current_user.pushes.count if current_user.pushes.count != 0 %>
+          </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <% if current_user.pushes.count != 0  %>
+          <li><%= link_to "Novas Mensagens",proposals_path, style: "text-decoration: none;" %></li>
+          <% end %>
+  </ul>
+</div>
           </div>
           <li class="nav-item dropdown">
           <% if current_user.musician && current_user.musician.photo.attached? %>
