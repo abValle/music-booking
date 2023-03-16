@@ -17,7 +17,6 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.company = current_user.company
     authorize @event
-    @event.save
     if @event.save
       redirect_to profile_company_path, notice: "Event was successfully created."
     else
@@ -80,6 +79,4 @@ class EventsController < ApplicationController
     end
     map()
   end
-
-  
 end
