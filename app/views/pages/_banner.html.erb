@@ -4,15 +4,15 @@
     <p>Olá! Você é proprietário de um estabelecimento e está procurando maneiras de atrair mais clientes e criar uma atmosfera animada em seu local?
        Temos a solução perfeita para você!</p>
     <% if user_signed_in? %>
-      <%= link_to "Buscar Eventos", events_path,  class: "btn btn-light" if current_user.musician %>
+      <%= link_to "Buscar Eventos", events_path,  class: "btn" if current_user.musician %>
 
-      <%= link_to "Crie seu evento", new_company_event_path(@company),  class: "btn btn-light" if current_user.company %>
+      <%= link_to "Crie seu evento", new_company_event_path(@company),  class: "btn" if current_user.company %>
 
-      <%= link_to "Propostas para Revisão", proposals_path,  class: "btn btn-light" if current_user.company %>
+      <%= link_to "Propostas para Revisão", proposals_path,  class: "btn" if current_user.company %>
     <% end %>
 
 
-    <%= link_to "Cadastre-se", new_user_registration_path,  class: "btn btn-light" unless user_signed_in? %>
+    <%= link_to "Cadastre-se", new_user_registration_path,  class: "btn" unless user_signed_in? %>
 
   </div>
 </div>

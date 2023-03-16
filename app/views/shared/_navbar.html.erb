@@ -5,10 +5,11 @@
       <%= link_to root_path, class: "navbar-brand text-white" do %>
         <i class="fa-solid fa-music" ></i>
         <strong>Music</strong>Booking
-        <%= link_to "Sobre nós", root_path, class: "nav-link", id:"change-color-rover" %>
-        <%= link_to "Sou músico", root_path(anchor: "secao1"), class: "nav-link", id: "change-color-rover" %>
-        <%= link_to "Sou Empresa", root_path(anchor: "secao2"), class: "nav-link", id: "change-color-rover" %>
-        <%= link_to "Eventos", events_path, class: "nav-link", id:"change-color-rover" if user_signed_in? %>
+        <%= link_to "Ínicio", root_path, class: "nav-link", id:"change-color-rover" %>
+        <%= link_to "Sou Empresa", root_path(anchor: "secao2"), class: "nav-link", id: "change-color-rover" unless user_signed_in? %>
+        <%= link_to "Sou músico", root_path(anchor: "secao1"), class: "nav-link", id: "change-color-rover" unless user_signed_in? %>
+        <%= link_to "Sobre nós", root_path(anchor: "secao3"), class: "nav-link", id: "change-color-rover"  %>
+        <%= link_to "Eventos", events_path, class: "nav-link", id:"change-color-rover" if user_signed_in? && current_user.musician %>
       <% end %>
     </div>
 
@@ -16,7 +17,7 @@
       <ul class="navbar-nav me-auto gap-3">
         <% if user_signed_in? && (current_user.company || current_user.musician) %>
           <div id="pushes">
-            <%= link_to proposals_path, style: "text-decoration: none;"  do %>
+            <%= link_to proposals_path, style: "text-decoration: none; color:white;"  do %>
               <i class="fa-regular fa-bell text-white"></i>
               <%= current_user.pushes.count %>
             <% end %>
