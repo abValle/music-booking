@@ -66,8 +66,8 @@
                       <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
                     </div>
                     <div class="col">
-                      <%= link_to 'Editar proposta', edit_musician_path(@musician), class:'btn btn-light'%>
-                      <%= link_to 'Proposta em Andamento', "#", class:'btn btn-dark'%>
+                      <%= link_to 'Editar proposta', edit_musician_path(@musician), class:'btn'%>
+                      <%= link_to 'Proposta em Andamento', "#", class:'btn'%>
                        <%= link_to "Abrir ChatRoom", proposal_path(id: proposal) %>
                     </div>
                   <div>
@@ -102,8 +102,8 @@
                       <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
                     </div>
                     <div class="col">
-                      <%= link_to 'Editar proposta', edit_musician_path(@musician), class:'btn btn-light'%>
-                      <%= link_to 'Proposta em Andamento', "#", class:'btn btn-dark'%>
+                      <%= link_to 'Editar proposta', edit_musician_path(@musician), class:'btn'%>
+                      <%= link_to 'Proposta em Andamento', "#", class:'btn'%>
                     </div>
                   <div>
                 </div>
@@ -137,8 +137,8 @@
                       <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
                     </div>
                     <div class="col">
-                      <%= link_to 'Editar proposta', edit_musician_path(@musician), class:'btn btn-light'%>
-                      <%= link_to 'Proposta em Andamento', "#", class:'btn btn-dark'%>
+                      <%= link_to 'Editar proposta', edit_musician_path(@musician), class:'btn'%>
+                      <%= link_to 'Proposta em Andamento', "#", class:'btn'%>
                     </div>
                   <div>
                 </div>
@@ -148,7 +148,7 @@
       <div>
     </div>
   </div>
-<%= link_to 'Editar usuário', edit_musician_path(@musician), class:'btn btn-secondary'%>
+<%= link_to 'Editar usuário', edit_musician_path(@musician), class:'btn'%>
 
-<%= link_to 'Inicio', root_path, class:'btn btn-light'%>
+<%= link_to 'Inicio', root_path, class:'btn'%>
 </div>

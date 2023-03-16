@@ -1,22 +1,23 @@
 <div class="bg-image p-5" style="background-image: url('https://images.unsplash.com/photo-1518251030019-42bb0ce5f409?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); height: 100vh; background-size: cover;">
+  <div class="container">
+    <h1 class="d-flex justify-content-center p-5">Log in</h1>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" } %>
+        <%= f.input :password,
+                    required: false,
+                    input_html: { autocomplete: "current-password" } %>
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      </div>
 
-  <h1 class="d-flex justify-content-center p-5">Log in</h1>
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: false,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" } %>
-      <%= f.input :password,
-                  required: false,
-                  input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-    </div>
+      <div class="form-actions py-4">
+        <%= f.button :submit, "Log in", class: "btn" %>
+      </div>
+    <% end %>
 
-    <div class="form-actions pb-4">
-      <%= f.button :submit, "Log in", class: "btn" %>
-    </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
+    <%= render "devise/shared/links" %>
+  </div>
 </div>
