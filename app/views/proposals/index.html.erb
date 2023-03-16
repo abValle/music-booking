@@ -5,6 +5,10 @@
     <% @proposals.each do |proposal| %>
     <div class="card-product">
       <div class="card-product-infos">
+        <% @push = Push.where(proposal_id: proposal.id) %>
+        <% if @push.any? %>
+          <i class="fa-solid fa-envelope"></i>
+        <% end %>
         <p>musician: <%= proposal.musician.first_name %></p>
         <p>event:<%= proposal.event.title_event %></p>
         <p>winner_:<%= proposal.winner %></p>

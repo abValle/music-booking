@@ -10,6 +10,8 @@ class ProposalsController < ApplicationController
       # @proposals = Proposal.where(event: current_user.company.events)
       @proposals = Proposal.where(event: current_user.company.events).and(Proposal.where(winner: nil)).includes(:event)
     end
+    # se os pushes daquela proposal especifica existirem.
+    #  display sino
   end
 
   def show
