@@ -18,3 +18,6 @@ application.register("map", MapController)
 
 import ProposalSubscriptionController from "./proposal_subscription_controller"
 application.register("proposal-subscription", ProposalSubscriptionController)
+
+import SlimSelectController from "./slim_select_controller"
+application.register("slim-select", SlimSelectController)

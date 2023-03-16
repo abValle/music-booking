@@ -2,9 +2,9 @@
   <%= simple_form_for musician do |f| %>
     <%= f.input :first_name, label: 'Nome', required: true %>
     <%= f.input :last_name, label: 'Sobrenome', required: true %>
-    <%= f.input :nickname, label: 'Nome artístico', required: true %>
     <%= f.input :address, label: 'Endereço' %>
-    <%= f.input :category, label: 'Gêneros musicais' %>
+    <%= f.label :category, 'Gêneros Musiciais: ' %>
+    <%= f.select :category,  Event::CATEGORIES, {include_blank: false}, { multiple: true, data: {controller: "slim-select"}}%>
     <%= f.input :birth_date, as: :date, label: 'Data de nascimento', required: true, html5: true %>
     <%= f.input :description, label: 'Breve descrição', required: true %>
     <%= f.input :phone, label: 'Celular', required: true %>

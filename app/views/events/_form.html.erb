@@ -1,12 +1,15 @@
 <div class="container">
 <h1>Novo Evento</h1>
   <%= simple_form_for [company, event] do |f|%>
-  <%= f.input :title_event %>
-  <%= f.input :description_event %>
-  <%= f.input :category_event, collection: Event::CATEGORIES %>
-  <%= f.input :start_time, as: :string, placeholder: 'Inicio', input_html: {data: { controller: "flatpickr", flatpickr_time_value: true, readonly: true }} %>
-  <%= f.input :end_time, as: :string, placeholder: 'Fim', input_html: {data: { controller: "flatpickr", flatpickr_time_value: true, readonly: true}} %>
-  <%= f.input :price %>
+  <%= f.input :title_event, label: 'Titulo do Evento: ' %>
+  <%= f.input :description_event, label: 'Descrição' %>
+  <%= f.label :category_event, 'Gêneros Musiciais: ' %>
+  <%= f.select :category_event,  Event::CATEGORIES, {include_blank: false}, { multiple: true, data: {controller: "slim-select"}}%>
+  <%= f.input :start_time, as: :string, label: 'Inicio: ', placeholder: 'Data/Hora', input_html: {data: { controller: "flatpickr", flatpickr_time_value: true, readonly: true }} %>
+  <%= f.input :end_time, as: :string, label: 'Fim: ', placeholder: 'Data/Hora', input_html: {data: { controller: "flatpickr", flatpickr_time_value: true, readonly: true}} %>
+  <%= f.input :price, label: 'Valor pago: ' %>
   <%= f.submit %>
   <% end %>
+
+
 </div>
