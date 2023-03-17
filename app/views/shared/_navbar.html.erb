@@ -12,23 +12,21 @@
         <%= link_to "Eventos", events_path, class: "nav-link", id:"change-color-rover" if user_signed_in? && current_user.musician %>
       <% end %>
     </div>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto gap-3">
         <% if user_signed_in? && (current_user.company || current_user.musician) %>
-          <div id="pushes">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-regular fa-bell text-white"></i>
-                <%= current_user.pushes.count if current_user.pushes.count != 0 %>
-              </button>
-              <% if current_user.pushes.count != 0  %>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><%= link_to "Novas Mensagens",proposals_path, style: "text-decoration: none;" %></li>
-                  <li class="nav-item dropdown">
-                </ul>
-              <% end %>
-            </div>
+        <div id="pushes">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-regular fa-bell text-white"></i>
+                        <%= current_user.pushes.count if current_user.pushes.count != 0 %>
+          </button>
+          <% if current_user.pushes.count != 0  %>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><%= link_to "Novas Mensagens",proposals_path, style: "text-decoration: none;" %></li>
+            </ul>
+          <% end %>
+      </div>
           </div>
 
           <% if current_user.musician && current_user.musician.photo.attached? %>
