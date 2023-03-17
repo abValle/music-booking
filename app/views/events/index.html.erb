@@ -27,6 +27,7 @@
           <div class="row">
               <div class="card-product-infos ml-2">
                 <h4 ><%= link_to "#{event.company.title}", event_path(event),  class: "border-radius:10px;"%></h4>
+                <h4><%= link_to "LOGO COMPANY",company_path(event.company) %> </h4>
                 <p>Data: <%= event.start_time.strftime("%d/%m/%y") %></p>
                 <p>Evento: <%= event.title_event %></p>
                 <p>Address: <%= event.company.address %></p>

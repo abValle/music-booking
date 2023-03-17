@@ -4,6 +4,7 @@ Nome do organizador: <%= @event.company.title %><br>
 Latitude: <%= @event.company.latitude %><br>
 Longitude: <%= @event.company.longitude %>
 
+
 <%# oculta o link edit se o usuario nao for o user da company %>
 
 <div id='map' class="<%= 'd-none' if current_user.boolean_company? %>"

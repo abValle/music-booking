@@ -10,7 +10,7 @@ class ProposalPolicy < ApplicationPolicy
   def show?
     true
   end
-  
+
   def new?
     true
   end
@@ -26,5 +26,9 @@ class ProposalPolicy < ApplicationPolicy
   def accept_proposal?
     true
   end
+
+  def cancel_proposal?
+    true
+  end 
 
 end

@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+
   def index
     @company = Company.all
     @company = policy_scope(Company)
@@ -22,6 +23,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @company = Company.find(params[:id])
     authorize @company
   end
 
@@ -45,6 +47,10 @@ class CompaniesController < ApplicationController
   end
 
   private
+
+  def set_company
+    @company = Company.find(params[:id])
+  end
 
   def company_params
     params.require(:company).permit(:title, :phone, :description, :address, :user_id, :photo, category: []).tap do |whitelisted|
