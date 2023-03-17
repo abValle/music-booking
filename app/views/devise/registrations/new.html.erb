@@ -14,10 +14,12 @@
                 input_html: { autocomplete: "email" }%>
     <%= f.input :password,
                 required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                placeholder: "Mínimo 6 digitos",
+                input_html: { autocomplete: "new-password" }%>
+
     <%= f.input :password_confirmation,
                 required: true,
+                placeholder: "Mínimo 6 digitos",
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :boolean_company, label: 'Estabelecimento?',
                 required: true, collection: [["Sim", true], ["Não", false]], prompt: 'Selecione uma opção' %>
