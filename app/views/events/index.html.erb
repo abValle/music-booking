@@ -6,7 +6,7 @@
     html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} do |f| %>
     <%= f.text_field :query,
       class: "form-control",
-      placeholder: "Digite o nome do estabelecimento"
+      placeholder: "Estabelecimento/evento/gênero musical"
     %>
     <%= f.select :price, options_for_select(
       (200..1100).step(100).map { |p| p <= 1000 ? ["Até $#{p}", p] : ["$#{p} Mais", p]  }), prompt: 'Valor' %>

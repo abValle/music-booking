@@ -8,7 +8,8 @@
     <%= f.input :address, label: 'Endereço', input_html: {data: {address_autocomplete_target: "address"}, class: 'd-none'},
                 wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
     <%= f.input :phone, label: 'Nº Celular', required: true %>
-    <%= f.input :category, label: 'Genêro' %>
+    <%= f.label :category, 'Gêneros Musiciais: ' %>
+    <%= f.select :category,  Event::CATEGORIES, {include_blank: false}, { multiple: true, data: {controller: "slim-select"}}%>
     <%= f.input :description, label: 'Breve descrição', required: true %>
     <%= f.input :photo, label: 'Faça upload da sua foto', as: :file %>
 

@@ -35,7 +35,7 @@ puts 'Creating permanent fake users for companies and musicians...'
     title: Faker::Company.name,
     address: Faker::Address.street_address,
     phone:Faker::Number.number(digits: 11) ,
-    category: Faker::Music.genre,
+    category: Event::CATEGORIES.sample(4).join(', '),
     description: Faker::Lorem.sentence(word_count: 20),
     user: User.last
   )
@@ -52,7 +52,7 @@ puts 'Creating permanent fake users for companies and musicians...'
     title: Faker::Company.name,
     address: 'Avenida Paulista São Paulo - São Paulo, 01311-100, Brazil',
     phone:Faker::Number.number(digits: 11) ,
-    category: Faker::Music.genre,
+    category: Event::CATEGORIES.sample(4).join(', '),
     description: Faker::Lorem.sentence(word_count: 20),
     user: User.last
   )
@@ -68,7 +68,7 @@ puts 'Creating permanent fake users for companies and musicians...'
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     address: Faker::Address.street_address,
-    category: Faker::Music.genre,
+    category: Event::CATEGORIES.sample(4).join(', '),
     birth_date: Date.new(1990,2,3),
     description: Faker::Quotes::Shakespeare.hamlet_quote,
     phone: Faker::Number.number(digits: 11),
@@ -91,7 +91,7 @@ events = 0
       title: Faker::Company.name,
       address: address_sp[events],
       phone:Faker::Number.number(digits: 11),
-      category: Faker::Music.genre,
+      category: Event::CATEGORIES.sample(4).join(', '),
       description: Faker::Lorem.sentence(word_count: 20),
       user: User.last
     )
@@ -102,7 +102,7 @@ events = 0
       price: 300,
       title_event: Faker::FunnyName.name,
       description_event: Faker::Lorem.sentence(word_count: 20),
-      category_event: Event::CATEGORIES.sample,
+      category_event: Event::CATEGORIES.sample(4).join(', '),
       company: Company.last,
     )
     events += 1
@@ -137,7 +137,7 @@ puts "creating 10 musicians"
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
       address: Faker::Address.street_address,
-      category: Faker::Music.genre,
+      category: Event::CATEGORIES.sample(4).join(', '),
       birth_date: Date.new(1990,2,3),
       description: Faker::Quotes::Shakespeare.hamlet_quote,
       phone: Faker::Number.number(digits: 11),

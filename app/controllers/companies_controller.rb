@@ -47,6 +47,8 @@ class CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:title, :category, :phone, :description, :address, :user_id, :photo)
+    params.require(:company).permit(:title, :phone, :description, :address, :user_id, :photo, category: []).tap do |whitelisted|
+      whitelisted[:category] = params[:company][:category].compact_blank!.join(", ")
+    end
   end
 end

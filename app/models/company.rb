@@ -4,7 +4,7 @@ class Company < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
   has_many :events, dependent: :destroy
   validates :title, :phone, presence: true, uniqueness: true
-  validates :address, :category, presence: true
+  validates :address, presence: true
   validates :description, presence: true, length: { minimum: 5 }
   validate :permited_phone, if: -> { phone.present? }
   validates :user_id, uniqueness: true

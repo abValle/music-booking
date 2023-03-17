@@ -53,7 +53,9 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title_event, :description_event, :price, :start_time, :end_time, :category_event)
+    params.require(:event).permit(:title_event, :description_event, :price, :start_time, :end_time, category_event: []).tap do |whitelisted|
+      whitelisted[:category_event] = params[:event][:category_event].compact_blank!.join(", ")
+    end
   end
 
   def search_filter
