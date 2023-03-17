@@ -21,9 +21,13 @@
                 <i class="fa-regular fa-bell" ></i>
                 <%= current_user.pushes.count if current_user.pushes.count != 0 %>
               </button>
-              <% if current_user.pushes.count != 0  %>
+              <% if current_user.pushes.count != 0 && current_user.boolean_company %>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li class="nav-item dropdown"> </li>
+                  <li class="nav-item dropdown"><a><%= link_to "Novas Notificações",profile_company_path,  style:"text-decoration:none;" %></a></li>
+                </ul>
+              <% elsif current_user.pushes.count != 0 && !current_user.boolean_company %>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li class="nav-item dropdown"><a><%= link_to "Novas Notificações",profile_musician_path, style:"text-decoration:none;"%></a></li>
                 </ul>
               <% end %>
             </div>
