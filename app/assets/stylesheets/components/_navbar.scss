@@ -22,6 +22,7 @@
 
 .navbar-nav {
   border-radius: 30%;
+  align-items: center;
 }
 
 #change-color-rover{
@@ -40,4 +41,24 @@
 
 #change-color-rover:hover{
   color: #b467d8;
+}
+
+#change-color:hover{
+  color: #b467d8;
+}
+
+.notification-icon{
+  border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+
+    background: transparent;
+
+    color: inherit;
+    font: inherit;
+
+    line-height: normal;
+
 }

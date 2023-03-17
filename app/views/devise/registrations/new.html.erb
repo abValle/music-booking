@@ -12,11 +12,11 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
+    <%= f.input :password, label: 'Senha',
                 required: true,
                 placeholder: "Mínimo 6 digitos",
-                input_html: { autocomplete: "new-password" }%>
-    <%= f.input :password_confirmation,
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation, label: 'Confirmar senha',
                 required: true,
                 placeholder: "Mínimo 6 digitos",
                 input_html: { autocomplete: "new-password" } %>
@@ -25,7 +25,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Confirmar" %>
   </div>
 <% end %>
 
