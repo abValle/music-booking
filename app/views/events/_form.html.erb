@@ -1,6 +1,6 @@
 <div class="bg-image pt-3" style="background-image: url('https://images.unsplash.com/photo-1518251030019-42bb0ce5f409?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); height: 100vh; background-size: cover;">
 
-  <h1 class="d-flex justify-content-center p-3">Log in</h1>
+  <h1 class="d-flex justify-content-center p-3"> <strong>Evento Novo</strong></h1>
 
   <div class="container">
       <%= simple_form_for [company, event] do |f|%>
@@ -11,7 +11,7 @@
       <%= f.input :start_time, as: :string, label: 'Inicio: ', placeholder: 'Data/Hora', input_html: {data: { controller: "flatpickr", flatpickr_time_value: true, readonly: true }} %>
       <%= f.input :end_time, as: :string, label: 'Fim: ', placeholder: 'Data/Hora', input_html: {data: { controller: "flatpickr", flatpickr_time_value: true, readonly: true}} %>
       <%= f.input :price, label: 'Valor pago: ' %>
-      <%= f.submit class: "btn" %>
+      <%= f.submit "Criar Evento", class: "btn" %>
       <% end %>
 
 
