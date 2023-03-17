@@ -11,6 +11,14 @@ class EventPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.company.user == user || user.boolean_company? == false
+  end
+
+  def update?
+    record.company.user == user
+  end
+
+  def destroy?
+    record.company.user == user
   end
 end
