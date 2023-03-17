@@ -56,15 +56,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_213912) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
-  create_table "confirmations", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "proposal_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["proposal_id"], name: "index_confirmations_on_proposal_id"
-    t.index ["user_id"], name: "index_confirmations_on_user_id"
-  end
-
   create_table "events", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "end_time"
