@@ -33,4 +33,10 @@ class PagesController < ApplicationController
 
     @my_proposals = Proposal.where(event: current_user.company.events).and(Proposal.where(winner: nil)).includes(:event)
   end
+
+  private
+
+  def proposal_params
+    params.require(:proposal).permit(:proposal_id, :event_id, :musician_id, :user_id, :winner )
+  end
 end
