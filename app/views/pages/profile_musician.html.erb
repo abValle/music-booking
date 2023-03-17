@@ -42,7 +42,6 @@
 </div>
 
 <div row>
-
   <div class="container text-center mt-5 p-5">
     <div class="row align-items-center">
       <div class="col">
@@ -54,6 +53,10 @@
                 <div class="col">
                   <div class="card-product">
                     <div class="card-product-infos">
+                      <% @push = Push.where(proposal_id: proposal.id) %>
+                      <% if @push.any? %>
+                      <i class="fa-solid fa-envelope"></i>
+                      <% end %>
                       <h5><%= link_to "#{proposal.event.title_event}", event_path(proposal.event) %></h5>
                       <p><strong>Endereço: </strong><%= proposal.event.company.address %></p>
                       <p><strong>Empresa:</strong> <%= proposal.event.company.title %></p>
@@ -92,6 +95,10 @@
                 <div class="col">
                   <div class="card-product">
                     <div class="card-product-infos">
+                      <% @push = Push.where(proposal_id: proposal.id) %>
+                      <% if @push.any? %>
+                      <i class="fa-solid fa-envelope"></i>
+                      <% end %>
                       <h5><%= link_to "#{proposal.event.title_event}", event_path(proposal.event) %></h5>
                       <p><strong>Endereço: </strong><%= proposal.event.company.address %></p>
                       <p><strong>Empresa:</strong> <%= proposal.event.company.title %></p>
@@ -127,6 +134,10 @@
                 <div class="col">
                   <div class="card-product">
                     <div class="card-product-infos">
+                      <% @push = Push.where(proposal_id: proposal.id) %>
+                      <% if @push.any? %>
+                      <i class="fa-solid fa-envelope"></i>
+                      <% end %>
                       <h5><%= link_to "#{proposal.event.title_event}", event_path(proposal.event) %></h5>
                       <p><strong>Endereço: </strong><%= proposal.event.company.address %></p>
                       <p><strong>Empresa:</strong> <%= proposal.event.company.title %></p>
@@ -150,7 +161,6 @@
       <div>
     </div>
   </div>
-<%= link_to 'Editar usuário', edit_musician_path(@musician), class:'btn'%>
-
-<%= link_to 'Inicio', root_path, class:'btn'%>
+  <%= link_to 'Editar usuário', edit_musician_path(@musician), class:'btn'%>
+  <%= link_to 'Inicio', root_path, class:'btn'%>
 </div>
