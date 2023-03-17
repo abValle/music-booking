@@ -1,51 +1,58 @@
-<div id="event-index">
-  <h2 style = "color:#89D2DC" >Eventos com vagas para músicos!</h2>
-</div>
-<div class="main-container">
-  <%= form_with url: events_path, method: :get,
-    html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} do |f| %>
-    <%= f.text_field :query,
-      class: "form-control",
-      placeholder: "Estabelecimento/evento/gênero musical"
-    %>
-    <%= f.select :price, options_for_select(
-      (200..1100).step(100).map { |p| p <= 1000 ? ["Até $#{p}", p] : ["$#{p} Mais", p]  }), prompt: 'Valor' %>
+<div class="bg-image pt-3" style="background-image: url('https://images.unsplash.com/photo-1518251030019-42bb0ce5f409?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); background-size: cover;">
 
-    <%= f.text_field :start_time, class: 'flatpickr',
-            data: { controller: "flatpickr", flatpickr_time_value: false  }, placeholder: 'Dia' %>
+  <div id="event-index">
+    <h2 style = "color:#89D2DC" >Eventos com vagas para músicos</h2>
 
-    <%= f.text_field :address, data: {address_autocomplete_target: "address"}, class: 'd-none' %>
+  <div class="main-container">
+      <%= form_with url: events_path, method: :get,
+        html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} do |f| %>
+        <%= f.text_field :query,
+          class: "form-control",
+          placeholder: "Estabelecimento/evento/gênero musical"
+        %>
+        <%= f.select :price, options_for_select(
+          (200..1100).step(100).map { |p| p <= 1000 ? ["Até $#{p}", p] : ["$#{p} Mais", p]  }), prompt: 'Valor' %>
 
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
+        <%= f.text_field :start_time, class: 'flatpickr',
+                data: { controller: "flatpickr", flatpickr_time_value: false  }, placeholder: 'Dia' %>
+
+        <%= f.text_field :address, data: {address_autocomplete_target: "address"}, class: 'd-none' %>
 
 
-  <div class="row">
-    <div class='col-sm-8'>
-      <% @events.each do |event| %>
-        <div class="card-product">
-          <div class="row">
-              <div class="card-product-infos ml-2">
-                <h4 ><%= link_to "#{event.company.title}", event_path(event),  class: "border-radius:10px;"%></h4>
-                <p>Data: <%= event.start_time.strftime("%d/%m/%y") %></p>
+        <%= submit_tag "Search", class: "btn" %>
+      <% end %>
+
+    <div class="d-flex p-4">
+      <div class='col-md-8 d-flex flex-wrap'>
+        <% @events.each do |event| %>
+          <div class='col-md-4'>
+            <div class="card" style="width: 300px; height: 450px; margin: 15px;">
+              <div class="card-body mt-2" style="text-align: center;">
+                <h4><%= link_to "#{event.company.title}", event_path(event), style: "color: white;" %></h4>
+                <p style="margin-top: 20px;">Data: <%= event.start_time.strftime("%d/%m/%y") %></p>
+                <% if event.category_event.present? %>
+                  <p>Gênero: <%= event.category_event %></p>
+                <% else %>
+                  <p>Gênero: Não informado</p>
+                <% end %>
                 <p>Evento: <%= event.title_event %></p>
                 <p>Address: <%= event.company.address %></p>
-                <p>Price: <%= event.price %></p>
-              </div>
-
-              <div>
-                <%= render 'proposals/form', event: event %>
+                <p>Cachê: <%= event.price %></p>
+                <div class="submit-proposal">
+                  <%= render 'proposals/form', event: event %>
+                </div>
               </div>
             </div>
-        </div>
-      <% end %>
-      <p class=<%='d-none' if @events.any?%>>Nenhum resultado encontrado</p>
-    </div>
-
-      <div id='map'
-          data-controller='map'
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>"
-          data-map-markers-value="<%= @markers.to_json %>" class='col-sm-3'>
+          </div>
+        <% end %>
+        <p class=<%='d-none' if @events.any?%>>Nenhum resultado encontrado</p>
       </div>
+
+      <div id='map' data-controller='map' data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>" data-map-markers-value="<%= @markers.to_json %>" class='col-md-3'></div>
+    </div>
   </div>
 </div>
+
+
+
+    <%= link_to "Cadastre-se", new_user_registration_path,  class: "btn" unless user_signed_in? %>
