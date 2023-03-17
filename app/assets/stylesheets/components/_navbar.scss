@@ -62,3 +62,7 @@
     line-height: normal;
 
 }
+
+.dropdown-menu {
+  z-index: 1000; /* or any value higher than the banner's z-index */
+}
