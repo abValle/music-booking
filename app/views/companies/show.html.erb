@@ -1,7 +1,73 @@
-<h1>Company show</h1>
+<div row>
+  <div class="container text-center">
+    <div class="row align-items-center mt-4" id="profile-container">
+      <div class="col-6">
+        <div class="card" >
+          <h1><strong><%= @company.title%></h1></strong>
+          <p><strong>Endereço:</strong> <%=@company.address%></p>
+          <p><strong>Contato:</strong> <%= @company.phone%></p>
+          <p><strong>Gêneros musicias:</strong> <%= @company.category%></p>
+          <p><strong>Category:</strong> <%= @company.category%></p>
 
-<%# oculta o link edit se o usuario nao for o user da company %>
-<% if policy(@company).edit? %>
-  <%= link_to "Edit this company", edit_company_path(@company) %> |
-<% end %>
-<%= button_to "Destroy this company", @company, method: :delete if policy(@company).destroy? %>
+          <% if current_user.company.photo.attached? %>
+          <div id="profile-img">
+            <%= cl_image_tag current_user.company.photo.key, height: 300, width: 400, crop: :fill, style:"border-radius: 20px" %>
+            </div>
+          <% else %>
+            <div id="profile-img">
+              <%= image_tag("company.jpg", height: 300, style:"border-radius: 20px") %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card" >
+          <div style="border-radius: 10px; overflow: hidden;">
+            <iframe width="600" height="360"
+            src="https://www.youtube.com/embed/tgbNymZ7vqY">
+            </iframe>
+          </div>
+        <div id="redes-sociais-links">
+          <h4><strong>Redes Sociais</strong></h4>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-spotify"></i>
+          <i class="fa-brands fa-youtube"></i>
+          <i class="fa-brands fa-soundcloud"></i>
+        <div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div row>
+  <div class="container text-center mt-5 p-5">
+    <div class="row align-items-center">
+      <div class="col">
+        <h2 class="title-color">Seus Eventos</h2>
+        <% @company.events.each do |event| %>
+          <div class="container text-center">
+            <div class="row align-items-center">
+                <div class="col">
+                  <div class="card-product">
+                    <div class="card-product-infos">
+                      <h5><%= link_to "#{event.title_event}", event_path(event) %></h5>
+                      <p><strong>Data: </strong><%= event.start_time.strftime("%d/%m/%y") %></p>
+                      <p><strong>Dono do evento:</strong><%= event.company.title %></p>
+                      <p><strong>Endereço:</strong><%= event.company.address %></p>
+                    </div>
+                  <div>
+                </div>
+              </div>
+          </div>
+        <% end %>
+      <div>
+    </div>
+  </div>
+</div>
+
+
+<%= link_to 'Inicio', root_path, class:'btn'%>
+<%= link_to 'Editar usuário', edit_company_path(@company), class:'btn'%>
+<%= link_to 'Deletar conta', user_registration_path, class:'btn',  data: { turbo_confirm: "Tem certeza que deseja excluir sua conta?", turbo_method: :delete }  %>
