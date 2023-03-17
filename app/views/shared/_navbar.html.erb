@@ -23,7 +23,7 @@
           </button>
           <% if current_user.pushes.count != 0  %>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><%= link_to "Novas Mensagens",proposals_path, style: "text-decoration: none;" %></li>
+              <li><%= link_to "Perfil", current_user.company ? profile_company_path : profile_musician_path, class: "dropdown-item" %></li>
             </ul>
           <% end %>
       </div>

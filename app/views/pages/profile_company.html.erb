@@ -101,6 +101,8 @@
                     <div class="col">
                       <%= link_to 'Editar proposta', edit_musician_path(@company), class:'btn'%>
                       <%= link_to "Abrir ChatRoom", proposal_path(id: proposal) %>
+                      <%= link_to "Recusar proposta", refuse_proposal_path(id: proposal), class: "btn btn-danger" if current_user.company %>
+                      <%= link_to "Aceitar proposta", accept_proposal_path(id: proposal), class: "btn btn-success" if current_user.company%>
                     </div>
                   <div>
                 </div>
