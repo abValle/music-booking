@@ -1,5 +1,5 @@
 <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1518251030019-42bb0ce5f409?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); background-size: cover;">
-  <h1 class="d-flex justify-content-center p-3">Cadastre-se</h1>
+  <h1 class="d-flex justify-content-center p-3"><strong>Cadastre-se</strong></h1>
   <div class="container">
     <%= simple_form_for musician do |f| %>
       <%= f.input :first_name, label: 'Nome', required: true %>
@@ -11,9 +11,7 @@
       <%= f.input :description, label: 'Breve descrição', required: true %>
       <%= f.input :phone, label: 'Nº Celular', required: true %>
       <%= f.input :photo, as: :file %>
-      <%= f.submit class: "btn my-4" %>
+      <%= f.submit "Criar Músico", class: "btn my-4" %>
     <% end %>
   </div>
 </div>
-
-
