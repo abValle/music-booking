@@ -11,11 +11,12 @@
                 label: "New password",
                 required: true,
                 autofocus: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                placeholder: "Mínimo 6 digitos",
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 label: "Confirm your new password",
                 required: true,
+                placeholder: "Mínimo 6 digitos",
                 input_html: { autocomplete: "new-password" } %>
   </div>
 

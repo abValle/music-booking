@@ -1,13 +1,28 @@
-<h1>Event show VIEW</h1>
-Titulo do evento: <%= @event.title_event %><br>
-Nome do organizador: <%= @event.company.title %><br>
-Latitude: <%= @event.company.latitude %><br>
-Longitude: <%= @event.company.longitude %>
 
-<%# oculta o link edit se o usuario nao for o user da company %>
+<%= render 'banner_event' %>
 
-<div id='map' class="<%= 'd-none' if current_user.boolean_company? %>"
-    data-controller='map'
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>"
-    data-map-markers-value="<%= @markers.to_json %>" class='col-sm-6'>
-</div>
+  <div class="row">
+        <div class="col-sm-8">
+          <div class="card m-5">
+            <h1>Detalhes do Evento</h1>
+            Titulo: <%= @event.title_event %><br>
+            Nome do organizador: <%= @event.company.title %><br>
+          </div>
+        </div>
+
+        <div class='col-sm-4'>
+          <div class = "m-5 p-1">
+            <div id='map' class="<%= 'd-none' if current_user.boolean_company? %>"
+                data-controller='map'
+                data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>"
+                data-map-markers-value="<%= @markers.to_json %>">
+            </div>
+          </div>
+        </div>
+  </div>
+
+      <%# Latitude: <%= @event.company.latitude %>
+      <%# Longitude: <%= @event.company.longitude %>
+
+
+      <%# oculta o link edit se o usuario nao for o user da company %>

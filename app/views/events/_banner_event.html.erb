@@ -1,0 +1,10 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path "krys-amon-ttv1pX6tk7o-unsplash.jpg" %>);">
+  <div class="container">
+    <h1><%="Nós somos a #{@event.company.title}"  %> </h1>
+    <p><%= "Estamos buscando um músico qualificado para o nosso evento! É você?" %></p>
+
+    <% if !user_signed_in? %>
+      <%= link_to "Cadastre-se", new_user_registration_path,  class: "btn" unless user_signed_in? %>
+    <% end %>
+  </div>
+</div>
