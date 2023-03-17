@@ -4,7 +4,6 @@ import flatpickr from "flatpickr";
 export default class extends Controller {
   static values = {time: Boolean}
   connect() {
-    console.log(this.timeValue)
     new flatpickr(this.element, {
       minDate: "today",
       allowInput: false,
