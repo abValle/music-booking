@@ -63,7 +63,10 @@ class ProposalsController < ApplicationController
     @company_user = @proposal.event.company.user
     @musician_nickname = @proposal.musician.user.nickname
     Message.create(proposal_id: @proposal.id, user_id: @company_user.id, content:
-      "::MENSAGEM PADRONIZADA DA MUSIC BOOKING::  OLÁ '#{@musician_nickname}' Infelizmente A CIA:' #{@proposal.event.company.title}' recusou a sua proposta para o evento:'#{@proposal.event.title_event}'. Mas fique tranquilo que ainda tem muitas oportunidades por aí! ;]")
+      "===================================::MENSAGEM PADRONIZADA DA MUSIC BOOKING::=========================================
+      OLÁ '#{@musician_nickname}' Infelizmente A CIA:' #{@proposal.event.company.title}' recusou a sua proposta para o evento:'#{@proposal.event.title_event}'.
+      Mas fique tranquilo que ainda tem muitas oportunidades por aí! ;]")
+
 
     redirect_to profile_company_path
   end
@@ -76,7 +79,9 @@ class ProposalsController < ApplicationController
     @company_user = @proposal.event.company.user
     @musician_nickname = @proposal.musician.user.nickname
     Message.create(proposal_id: @proposal.id, user_id: @company_user.id, content:
-      "::MENSAGEM PADRONIZADA DA MUSIC BOOKING::OLÁ '#{@musician_nickname}' ESTAMOS FELIZES EM COMUNICAR QUE A CIA:' #{@proposal.event.company.title}'APROVOU A SUA PROPOSTA PARA O EVENTO #{@proposal.event.title_event}! *confira mais detalhes no seu perfil em 'Propostas Aceitas' :)")
+      "===================================::MENSAGEM PADRONIZADA DA MUSIC BOOKING::===================================
+      OLÁ '#{@musician_nickname}' ESTAMOS FELIZES EM COMUNICAR QUE A CIA:' #{@proposal.event.company.title}'APROVOU A SUA PROPOSTA PARA O EVENTO #{@proposal.event.title_event}!
+       *confira mais detalhes no seu perfil em 'Propostas Aceitas' :)")
 
     redirect_to profile_company_path
   end
@@ -96,7 +101,9 @@ class ProposalsController < ApplicationController
     @musician_nickname = @proposal.musician.user.nickname
 
     Message.create(proposal_id: @proposal.id, user_id: @musician_user.id, content:
-      "::MENSAGEM PADRONIZADA DA MUSIC BOOKING::  OLÁ '#{@company_nickname}' Infelizmente o musico:' #{@musician_nickname}' recusou a sua proposta para o evento:'#{@proposal.event.title_event}'. Mas fique tranquilo que ainda tem muitos musicos por aí! ;]")
+      "===================================::MENSAGEM PADRONIZADA DA MUSIC BOOKING::===================================
+      OLÁ '#{@company_nickname}' Infelizmente o musico:' #{@musician_nickname}' recusou a sua proposta para o evento:'#{@proposal.event.title_event}'.
+       Mas fique tranquilo que ainda tem muitos musicos por aí! ;]")
 
     redirect_to profile_musician_path
   end

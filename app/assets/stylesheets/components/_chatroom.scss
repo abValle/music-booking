@@ -1,5 +1,5 @@
 .chatroom {
-  background: black;
+  background-color: black;
   margin-top: 9px;
   height: calc(100vh - 75px);
   display: flex;
@@ -8,12 +8,17 @@
   flex-grow: 1;
 
   h1 {
+    font-family:Verdana;
     border-bottom: 1px solid $gray-200;
     margin-bottom: 0;
     padding: 1rem;
+    color:white;
   }
 
   .messages {
+    font-family:Verdana;
+    font-size:large;
+    font-weight: lighter;
     height: 100%;
     overflow: scroll;
     padding: 1rem;
@@ -26,5 +31,20 @@
     .form-group {
       margin-bottom: 0;
     }
+  }
+  #submit{
+    border-radius: 10px;
+    margin-left: 10px;
+    height:10px;
+    width: fit-content;
+    text-align: center;
+  }
+  .true{
+    color:#6564DB;
+    text-align: left;
+  }
+  .false{
+    color:#89D2DC;
+    text-align: right;
   }
 }

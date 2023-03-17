@@ -12,7 +12,7 @@
           <% if current_user.musician.photo.attached? %>
           <div id="profile-img">
             <%= cl_image_tag current_user.musician.photo.key, height: 300, width: 400, crop: :fill, style:"border-radius: 20px" %>
-            </div>
+          </div>
           <% else %>
             <div id="profile-img">
               <%= image_tag("musician.jpg", height: 300) %>
@@ -150,8 +150,6 @@
                       <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
                     </div>
                     <div class="col">
-
-                      <%# se foi recusada, o musician não pode mais abrir o chat! %>
                     </div>
                   <div>
                 </div>
