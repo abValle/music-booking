@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="d-flex align-items-center gap-5 text-white px-3">
       <%= link_to root_path, class: "navbar-brand text-white" do %>
-        <i class="fa-solid fa-music" ></i>
+        <i class="fa-solid fa-music" id= "change-color-rover"></i>
         <strong>Music</strong>Booking
         <%= link_to "Ínicio", root_path, class: "nav-link", id:"change-color-rover" %>
         <%= link_to "Sou Empresa", root_path(anchor: "secao2"), class: "nav-link", id: "change-color-rover" unless user_signed_in? %>
@@ -15,18 +15,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto gap-3">
         <% if user_signed_in? && (current_user.company || current_user.musician) %>
-        <div id="pushes">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-regular fa-bell text-white"></i>
-                        <%= current_user.pushes.count if current_user.pushes.count != 0 %>
-          </button>
-          <% if current_user.pushes.count != 0  %>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><%= link_to "Novas Mensagens",proposals_path, style: "text-decoration: none;" %></li>
-            </ul>
-          <% end %>
-      </div>
+
+          <div id="pushes">
+            <div class="dropdown">
+              <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-regular fa-bell"></i>
+                <%= current_user.pushes.count if current_user.pushes.count != 0 %>
+              </button>
+              <% if current_user.pushes.count != 0  %>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+
+                  <li class="nav-item dropdown">
+                </ul>
+              <% end %>
+            </div>
+
           </div>
 
           <% if current_user.musician && current_user.musician.photo.attached? %>
@@ -38,13 +41,12 @@
           <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Perfil", current_user.company ? profile_company_path : profile_musician_path, class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link text-white" %>
+            <%= link_to "Login", new_user_session_path, id: "change-color-rover"%>
           </li>
         <% end %>
       </ul>
