@@ -99,7 +99,6 @@
                       <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
                     </div>
                     <div class="col">
-                      <%= link_to 'Editar proposta', edit_musician_path(@company), class:'btn'%>
                       <%= link_to "Abrir ChatRoom", proposal_path(id: proposal) %>
                       <%= link_to "Recusar proposta", refuse_proposal_path(id: proposal), class: "btn btn-danger" if current_user.company %>
                       <%= link_to "Aceitar proposta", accept_proposal_path(id: proposal), class: "btn btn-success" if current_user.company%>
@@ -143,7 +142,6 @@
                       <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
                     </div>
                     <div class="col">
-                      <%= link_to 'Editar proposta', edit_musician_path(@company), class:'btn'%>
                       <%= link_to "Abrir ChatRoom", proposal_path(id: proposal) %>
                     </div>
                   <div>
@@ -182,7 +180,6 @@
                       <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
                     </div>
                     <div class="col">
-                      <%= link_to 'Editar proposta', edit_musician_path(@musician), class:'btn'%>
                       <%# se foi recusada, o musician não pode mais abrir o chat! %>
                     </div>
                   <div>

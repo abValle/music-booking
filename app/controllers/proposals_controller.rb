@@ -81,6 +81,26 @@ class ProposalsController < ApplicationController
     redirect_to profile_company_path
   end
 
+  def cancel_proposal
+
+    @proposal = Proposal.find(params[:id])
+    authorize @proposal
+
+    @proposal.winner = false
+    @proposal.save
+
+    @company_user = @proposal.event.company.user
+    @company_nickname = @proposal.event.company.user.nickname
+
+    @musician_user = @proposal.musician.user
+    @musician_nickname = @proposal.musician.user.nickname
+
+    Message.create(proposal_id: @proposal.id, user_id: @musician_user.id, content:
+      "::MENSAGEM PADRONIZADA DA MUSIC BOOKING::  OLÁ '#{@company_nickname}' Infelizmente o musico:' #{@musician_nickname}' recusou a sua proposta para o evento:'#{@proposal.event.title_event}'. Mas fique tranquilo que ainda tem muitos musicos por aí! ;]")
+
+    redirect_to profile_musician_path
+  end
+
   private
 
   def proposal_params
