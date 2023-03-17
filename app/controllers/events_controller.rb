@@ -1,9 +1,7 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
     @events = policy_scope(Event)
     @proposal = Proposal.new
-
     search_filter
   end
 
