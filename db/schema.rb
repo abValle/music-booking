@@ -106,11 +106,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_213912) do
 
   create_table "pushes", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "proposal_id", null: false
     t.string "subject"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["proposal_id"], name: "index_pushes_on_proposal_id"
     t.index ["user_id"], name: "index_pushes_on_user_id"
   end
 
@@ -137,6 +135,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_213912) do
   add_foreign_key "musicians", "users"
   add_foreign_key "proposals", "events"
   add_foreign_key "proposals", "musicians"
-  add_foreign_key "pushes", "proposals"
   add_foreign_key "pushes", "users"
 end

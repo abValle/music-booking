@@ -1,51 +1,17 @@
-.card-product {
-  overflow: hidden;
-  height: fit-content;
-  background-color: #232ed1;
-  background-image: linear-gradient(43deg, #232ed1 0%, #232ed1 22%, #6564db 36%, #89d2dc 47%, #89d2dc 80%);
-
-
-  box-shadow: 0 0 15px rgba(99, 15, 243, 0.2);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  margin:30px;
+// botão de submit do formulário de submissão de propostas
+.submit-proposal {
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  padding: 10px;
 }
 
-.card-product img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
-
-.card-product h2 {
-  font-size: 16px;
-  font-weight:bolder;
-  margin: 0;
-  color:#232ED1;
-  ;
-}
-
-.card-product p {
-  font-family: 'Courier New', Courier, monospace;
-  font-weight:bolder;
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-  color:whitesmoke;
-}
-
-.card-product .card-product-infos {
-  height: 90%;
-  padding: 16px;
-}
-
-.card-product .card-product-infos #link-to{
-  text-decoration: none;
-}
-
-.card-product a{
-  color:whitesmoke
+.card {
+  width: 300px;
+  height: 400px;
+  margin: 15px;
+  background-image: url('https://images.unsplash.com/photo-1637946175559-22c4fe13fc54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.7);
 }
