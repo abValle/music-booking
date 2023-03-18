@@ -21,8 +21,8 @@
             <div>
               <%="Início: #{@event.start_time.day}/#{@event.start_time.month}/#{@event.start_time.year} às #{@event.start_time.hour}hr #{@event.start_time.min}min"%><br>
               <%="Fim: #{@event.end_time.day}/#{@event.end_time.month}/#{@event.end_time.year} às #{@event.end_time.hour}hr #{@event.end_time.min}min"%>
-              <p><%="Duração Aproximada: #{@event.end_time.day - @event.start_time.day} dias" if @event.end_time.day - @event.start_time.day > 0 %>
-                                  <%="#{@event.end_time.hour - @event.start_time.hour} horas" if @event.end_time.hour - @event.start_time.hour > 0 %></p>
+              <p><%="Duração - #{@event.end_time.day - @event.start_time.day} dias" if @event.end_time.day - @event.start_time.day > 0 %>
+                 <%="Duração - #{@event.end_time.hour - @event.start_time.hour} horas" if @event.end_time.hour - @event.start_time.hour > 0 %></p>
             </div>
             <p><i class="fa-regular fa-money-bill-1"></i><%=" R$ #{@event.price}" %>
             <div class="submit-proposal">
