@@ -3,10 +3,23 @@
 
   <div class="row">
         <div class="col-sm-8">
-          <div class="card m-5">
-            <h1>Detalhes do Evento</h1>
-            Titulo: <%= @event.title_event %><br>
-            Nome do organizador: <%= @event.company.title %><br>
+          <div class="card m-5 p-5">
+            <h1 class="text-align:center;">Detalhes do Evento</h1>
+            <p> Evento: <%= @event.title_event %></p>
+            <p><i class="fa-regular fa-comment"></i> <%= @event.description_event %></p>
+            <p><i class="fa-regular fa-building"></i> <%= @event.company.title %></p>
+            <p><i class="fa-regular fa-map"></i>  <%= @event.company.address %></p>
+            <i class="fa-regular fa-calendar"></i>
+            <div>
+              <%="Início: #{@event.start_time.day}/#{@event.start_time.month}/#{@event.start_time.year} às #{@event.start_time.hour}hr #{@event.start_time.min}min"%><br>
+              <%="Fim: #{@event.end_time.day}/#{@event.end_time.month}/#{@event.end_time.year} às #{@event.end_time.hour}hr #{@event.end_time.min}min"%>
+              <p><%="Duração Aproximada: #{@event.end_time.day - @event.start_time.day} dias" if @event.end_time.day - @event.start_time.day > 0 %>
+                                  <%="#{@event.end_time.hour - @event.start_time.hour} horas" if @event.end_time.hour - @event.start_time.hour > 0 %></p>
+            </div>
+            <p><i class="fa-regular fa-money-bill-1"></i><%=" R$ #{@event.price}" %>
+             <div class="submit-proposal">
+                  <%= render 'proposals/form', event: @event %>
+             </div>
           </div>
         </div>
 
