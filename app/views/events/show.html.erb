@@ -4,8 +4,16 @@
   <div class="row">
         <div class="col-sm-8">
           <div class="card m-5 p-5">
-            <h1 class="text-align:center;">Detalhes do Evento</h1>
-            <p> Evento: <%= @event.title_event %></p>
+            <div class= "d-flex justify-content-evenly">
+              <div>
+                <h1 class="text-align:center;"> <%= "#{@event.title_event}"%></h1>
+              </div>
+              <div>
+                <%= link_to(company_path(@event.company)) do %>
+                  <%= render 'photo_company' %>
+                <% end %>
+              </div>
+            </div>
             <p><i class="fa-regular fa-comment"></i> <%= @event.description_event %></p>
             <p><i class="fa-regular fa-building"></i> <%= @event.company.title %></p>
             <p><i class="fa-regular fa-map"></i>  <%= @event.company.address %></p>
@@ -17,9 +25,9 @@
                                   <%="#{@event.end_time.hour - @event.start_time.hour} horas" if @event.end_time.hour - @event.start_time.hour > 0 %></p>
             </div>
             <p><i class="fa-regular fa-money-bill-1"></i><%=" R$ #{@event.price}" %>
-             <div class="submit-proposal">
-                  <%= render 'proposals/form', event: @event %>
-             </div>
+            <div class="submit-proposal">
+                <%= render 'proposals/form', event: @event %>
+            </div>
           </div>
         </div>
 
@@ -32,6 +40,8 @@
             </div>
           </div>
         </div>
+
+
   </div>
 
       <%# Latitude: <%= @event.company.latitude %>
