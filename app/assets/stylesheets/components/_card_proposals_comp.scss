@@ -1,7 +1,6 @@
 .container-proposals {
   width: 900px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .card-proposals {
@@ -9,45 +8,13 @@
   height: 120px;
   background: #1616167f;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
   margin-bottom: 8px;
   border-radius: 20px;
 }
 
-.card-proposals h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-
-  a {
-    text-decoration: none;
-    color: #6564db;
-  }
-}
-
-.card-proposals p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin: 0;
-}
-.card-proposals-infos {
-  width: 20%;
-}
-
-.proposals-buttons-container {
-  width: 100%;
-}
-
-.proposals-buttons {
-  margin-right: 16px;
-}
-
-.proposals-buttons a {
-  margin-left: 8px;
-}
-
-.fa-envelope {
-  margin-right: 8px;
+.avatar-perfil {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid white;
 }
