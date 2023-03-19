@@ -22,10 +22,10 @@
         <%= f.text_field :address, data: {address_autocomplete_target: "address"}, class: 'd-none' %>
       <% end %>
 
-    <div class="d-flex pt-4 m-3">
-      <div class='col-md-8 d-flex flex-wrap'>
+    <div class="d-flex pt-4">
+      <div class='d-flex flex-wrap'>
         <% @events.each do |event| %>
-          <div class='col-md-4'>
+          <div class='col-sm-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4'>
             <div class="card" style="width: 300px; height: 450px">
               <div class="card-body mt-2" style="text-align: center;">
                 <h4><%= link_to "#{event.company.title}", event_path(event), style: "color: white;" %></h4>
@@ -47,7 +47,7 @@
         <% end %>
         <p class=<%='d-none' if @events.any?%>>Nenhum resultado encontrado</p>
       </div>
-      <div id='map' data-controller='map' data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>" data-map-markers-value="<%= @markers.to_json %>" class='col-md-4'></div>
+      <div id='map' data-controller='map' data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>" data-map-markers-value="<%= @markers.to_json %>" class='col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-3'></div>
 
     </div>
   </div>
