@@ -30,10 +30,26 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
     authorize @event
-    event = Event.find(params[:id])
-    event.destroy
-    redirect_to board_path(event), status: :see_other, notice: "Event was successfully deleted."
+    @event.destroy
+    redirect_to event_path(@event), status: :see_other, notice: "Event was successfully deleted."
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+    authorize @event
+    @company = @event.company
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    authorize(@event)
+    if @event.update(event_params)
+      redirect_to company_path(@event.company), notice: "Atualização efetuada!"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private

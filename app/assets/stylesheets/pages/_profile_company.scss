@@ -1,0 +1,67 @@
+.col-sm-8 {
+  text-align: center;
+}
+.card-company {
+  width: 100%;
+  margin: 15px;
+  border-radius: 20px;
+  background-color: rgba(0,0,0,0.5);
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+.redes-sociais-links {
+  display: flex;
+  justify-content: center;
+}
+
+.redes-sociais-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.redes-sociais-links ul li {
+  margin: 5px;
+}
+
+.redes-sociais-links ul li i {
+  font-size: 24px;
+  margin: 0;
+}
+
+#place-image {
+  height: 250px;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.buttons a {
+  width: 100%;
+  max-width: 90%;
+  /* ajuste o valor conforme necessário */
+  margin-bottom: 10px;
+}
+
+
+.events-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 5px;
+}
+
+.title {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
