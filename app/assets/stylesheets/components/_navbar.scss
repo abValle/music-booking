@@ -66,3 +66,10 @@
 .dropdown-menu {
   z-index: 1000; /* or any value higher than the banner's z-index */
 }
+
+.avatar-nav {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
