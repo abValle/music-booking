@@ -15,27 +15,27 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto gap-3 px-3">
         <% if user_signed_in? && (current_user.company || current_user.musician) %>
+        <%# Link no Sino -> perfil do usuario %>
           <div id="pushes">
-            <div class="dropdown">
-              <button class="dropdown-toggle notification-icon" type="button" id="change-color" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-regular fa-bell" ></i>
-                <%= current_user.pushes.count if current_user.pushes.count != 0 %>
-              </button>
               <% if current_user.pushes.count != 0 && current_user.boolean_company %>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li class="nav-item dropdown"><a><%= link_to "Novas Notificações",profile_company_path,  style:"text-decoration:none;" %></a></li>
-                </ul>
-              <% elsif current_user.pushes.count != 0 && !current_user.boolean_company %>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li class="nav-item dropdown"><a><%= link_to "Novas Notificações",profile_musician_path, style:"text-decoration:none;"%></a></li>
-                </ul>
+                <%= link_to profile_company_path, style:"text-decoration:none;" do %>
+                  <i class="fa-regular fa-bell" ></i>
+                  <%= current_user.pushes.count if current_user.pushes.count != 0 %>
+                <% end %>
               <% end %>
-            </div>
+
+              <% if current_user.pushes.count != 0 && !current_user.boolean_company %>
+                <%= link_to profile_musician_path, style:"text-decoration:none;" do %>
+                  <i class="fa-regular fa-bell" ></i>
+                  <%= current_user.pushes.count if current_user.pushes.count != 0 %>
+                <% end %>
+              <% end %>
           </div>
+        <%# -------- %>
         <div id="change-color">
-        <%= link_to current_user.nickname, current_user.company ? profile_company_path : profile_musician_path, class: "dropdown-item" %>
+          <%= link_to current_user.nickname, current_user.company ? profile_company_path : profile_musician_path, class: "dropdown-item" %>
         </div>
-        <div>
+        <div class>
           <% if current_user.musician && current_user.musician.photo.attached? %>
             <%= cl_image_tag(current_user.musician.photo.key, class: "avatar dropdown-toggle avatar-nav", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false )%>
           <% elsif current_user.company && current_user.company.photo.attached?%>
@@ -43,10 +43,12 @@
           <% else %>
             <%= image_tag("novo-avatar.jpg", class: "avatar dropdown-toggle avatar-nav", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
           <% end %>
+          <%# TODO: CONSERTAR ESTE DROPDOWN %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Perfil", current_user.company ? profile_company_path : profile_musician_path, class: "dropdown-item" %>
               <%= link_to "Sair", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
+          <%# ---------  %>
         </div>
         <% else %>
           <li class="nav-item">
