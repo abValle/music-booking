@@ -1,32 +1,32 @@
-<div class="bg-image pt-3" style="background-image: url('https://images.unsplash.com/photo-1518251030019-42bb0ce5f409?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); background-size: cover;">
+<div class="bg-image pt-3" style="background-image: url('https://images.unsplash.com/photo-1557682268-e3955ed5d83f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=282&q=80'); background-size: cover;">
 
-  <div id="event-index">
-    <h2 style = "color:#89D2DC" >Eventos com vagas para músicos</h2>
-
+  <div id="event-index" class="mx-4">
+    <div id="event-index" class="mx-4 d-flex justify-content-center align-items-center">
+      <h1 class="py-4" style = "color:#ffffff" >Eventos com vagas para músicos</h1>
+    </div>
+      <h5 class="pb-1" style = "color:#ffffff" >Encontre eventos para músicos e artistas de todo o Brasil</h5>
   <div class="main-container">
-      <%= form_with url: events_path, method: :get,
-        html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} do |f| %>
-        <%= f.text_field :query,
-          class: "form-control",
-          placeholder: "Estabelecimento/evento/gênero musical"
-        %>
-        <%= f.select :price, options_for_select(
-          (200..1100).step(100).map { |p| p <= 1000 ? ["Até $#{p}", p] : ["$#{p} Mais", p]  }), prompt: 'Valor' %>
+      <%= form_with url: events_path, method: :get, html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} do |f| %>
+        <%= f.text_field :query, class: "form-control mb-4", placeholder: "Busque por: Estabelecimento, evento ou gênero musical" %>
+        <div class="form-group mb-3">
+          <%= f.select :price, options_for_select( (200..1100).step(100).map { |p| p <= 1000 ? ["Até $#{p}", p] : ["$#{p} Mais", p]  }), prompt: 'Valor' %>
+        </div>
+        <div class="form-group mb-3">
+          <%= f.text_field :start_time, class: 'flatpickr',
+                        data: { controller: "flatpickr", flatpickr_time_value: false  }, placeholder: 'Selecione a data' %>
+        </div>
 
-        <%= f.text_field :start_time, class: 'flatpickr',
-                data: { controller: "flatpickr", flatpickr_time_value: false  }, placeholder: 'Dia' %>
-
+        <%= f.submit "Procurar", class: "btn p-2" %>
+        <%= link_to "Limpar", events_path,  class: "btn p-2" %>
+        <p class="pt-4" style = "color:#ffffff" >Ou busque por local</p>
         <%= f.text_field :address, data: {address_autocomplete_target: "address"}, class: 'd-none' %>
-
-
-        <%= submit_tag "Search", class: "btn" %>
       <% end %>
 
-    <div class="d-flex p-4">
+    <div class="d-flex pt-4 m-3">
       <div class='col-md-8 d-flex flex-wrap'>
         <% @events.each do |event| %>
           <div class='col-md-4'>
-            <div class="card" style="width: 300px; height: 450px; margin: 15px;">
+            <div class="card" style="width: 300px; height: 450px">
               <div class="card-body mt-2" style="text-align: center;">
                 <h4><%= link_to "#{event.company.title}", event_path(event), style: "color: white;" %></h4>
                 <p style="margin-top: 20px;">Data: <%= event.start_time.strftime("%d/%m/%y") %></p>
@@ -47,8 +47,8 @@
         <% end %>
         <p class=<%='d-none' if @events.any?%>>Nenhum resultado encontrado</p>
       </div>
+      <div id='map' data-controller='map' data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>" data-map-markers-value="<%= @markers.to_json %>" class='col-md-4'></div>
 
-      <div id='map' data-controller='map' data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>" data-map-markers-value="<%= @markers.to_json %>" class='col-md-3'></div>
     </div>
   </div>
 </div>
