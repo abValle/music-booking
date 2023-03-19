@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import { Popover } from "bootstrap/dist/js/bootstrap.bundle.js";
+import { Popover } from "bootstrap";
 
 export default class extends Controller {
   connect() {
