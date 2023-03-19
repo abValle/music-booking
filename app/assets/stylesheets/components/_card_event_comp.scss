@@ -1,0 +1,33 @@
+ .card-event-comp {
+    width: 350px;
+    background-image: url('https://images.unsplash.com/photo-1637946175559-22c4fe13fc54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    border-radius: 20px;
+    display: block;
+    padding: 8px;
+    margin: 15px;
+ }
+
+ .buttons a {
+   width: 100%;
+   max-width: 90%;
+   /* ajuste o valor conforme necessário */
+   margin-bottom: 10px;
+ }
+
+ h4 a {
+  text-decoration: none;
+  color: #6564db;
+ }
+
+ .popover {
+   background-color: #fff;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   box-shadow: 0 0 5px #ccc;
+   color: #333;
+   padding: 10px;
+ }

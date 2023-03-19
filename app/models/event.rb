@@ -3,10 +3,11 @@ class Event < ApplicationRecord
   has_many :proposals, dependent: :destroy
   has_many :musicians, through: :proposals
 
+  before_validation :verificar_request
+
   validates :title_event, :start_time, :end_time, presence: true
   validates :price, presence: true, numericality: { greater_than: 0, message: "O valor deve ser maior que cero" }
   validates :description_event, presence: true, length: { minimum: 5 }
-  validate :data_validates
 
   include PgSearch::Model
   pg_search_scope :global_search,
@@ -28,10 +29,18 @@ class Event < ApplicationRecord
     end
   end
 
+  def verificar_request
+    if id
+      @events = Event.where.not(id:).all
+    else
+      @events = Event.all
+    end
+    data_validates
+  end
+
   def overlaps_company_events
-    events = Event.all
     incoming_date = (start_time..end_time)
-    result = events.find { |event| incoming_date.overlaps?(event.start_time..event.end_time) && event.company == company }
+    result = @events.find { |event| incoming_date.overlaps?(event.start_time..event.end_time) && event.company == company }
     if result.nil?
       return
     else
