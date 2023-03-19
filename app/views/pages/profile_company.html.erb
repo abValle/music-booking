@@ -11,7 +11,7 @@
         <p><strong>Endereço:</strong> <%=@company.address%></p>
         <p><strong>Contato:</strong> <%= @company.phone%></p>
         <p><strong>Gêneros musicias:</strong> <%= @company.category%></p>
-        <p><strong>Descrição:</strong> <%= @company.description%></p>
+        <p><strong>Descrição:</strong> <span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Descrição" data-bs-content="<%= @company.description%>"><%= @company.description.truncate(200)%></span></p>
       </div>
       <div class="redes-sociais-links">
         <ul>
@@ -31,6 +31,12 @@
   </div>
   <div class='col-sm-8'>
     <div class='events-cards'>
+     <% if @company.events.blank? %>
+      <div class="title">
+        <h2 class="title-color">Seus Eventos</h2>
+        <%= "Você ainda não possui eventos, divulgue já!"%>
+      </div>
+    <% end %>
       <% @company.events.each do |event| %>
         <div class="card-event-comp">
           <h4><%= link_to "#{event.title_event}", event_path(event)%></h4>
