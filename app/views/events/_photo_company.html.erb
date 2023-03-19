@@ -1,0 +1,10 @@
+
+                <% if @event.company.photo.attached? %>
+                  <div id="profile-img">
+                    <%= cl_image_tag @event.company.photo.key, height: 50, width: 50, crop: :fill, alt:'',  style:"border-radius: 20px"%>
+                  </div>
+                <% else %>
+                  <div id="profile-img">
+                    <%= image_tag("company.jpg", height: 50, style:"border-radius: 20px", alt:"") %>
+                  </div>
+                <% end %>
