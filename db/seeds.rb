@@ -15,10 +15,12 @@ address_sp = ["Praça Antônio Prado 33, SP", "R. do Comércio, 34, SP",
               "Rua Adolfo Bergamini 173, SP"]
 
 puts 'cleaning db...'
-  Proposal.destroy_all
+  Push.destroy_all
+  Message.destroy_all
   Event.destroy_all
-  Musician.destroy_all
+  Proposal.destroy_all
   Company.destroy_all
+  Musician.destroy_all
   User.destroy_all
 
   puts "cleaned..."

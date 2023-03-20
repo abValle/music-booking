@@ -7,7 +7,6 @@ class Musician < ApplicationRecord
   validates :user_id, uniqueness: true
   has_one_attached :photo
 
-
   private
 
   def permited_age

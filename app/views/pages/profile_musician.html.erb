@@ -1,164 +1,171 @@
-<div row>
-  <div class="container text-center">
-    <div class="row align-items-center mt-4" id="profile-container">
-      <div class="col-6">
-        <div class="card" >
-          <h1><strong><%= @musician.user.nickname%></h1></strong>
-          <p><strong>Gêneros musicias:</strong> <%=@musician.category%></p>
-          <p><strong>Descrição:</strong> <%= @musician.description%></p>
-          <p><strong>Contato:</strong> <%= @musician.phone%></p>
-          <p><strong>Endereço:</strong> <%= @musician.address%></p>
-
-          <% if current_user.musician.photo.attached? %>
-          <div id="profile-img">
-            <%= cl_image_tag current_user.musician.photo.key, height: 300, width: 400, crop: :fill, style:"border-radius: 20px" %>
-          </div>
-          <% else %>
-            <div id="profile-img">
-              <%= image_tag("novo-avatar.jpg", height: 300) %>
-            </div>
-          <% end %>
-        </div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card-musician align-items-center" >
+      <% if current_user.musician.photo.attached? %>
+        <%= cl_image_tag current_user.musician.photo.key, id: 'place-image'%>
+      <% else %>
+          <%= image_tag("placeholder-image.jpg", id: 'place-image') %>
+      <% end %>
+      <div class="text-card">
+        <h1><strong><%= @musician.user.nickname%></h1></strong>
+        <p><strong>Endereço:</strong> <%=@musician.address%></p>
+        <p><strong>Contato:</strong> <%= @musician.phone%></p>
+        <p><strong>Gêneros musicias:</strong> <%= @musician.category%></p>
+        <p><strong>Descrição:</strong> <span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Descrição" data-bs-content="<%= @musician.description%>"><%= @musician.description.truncate(200)%></span></p>
       </div>
-      <div class="col-6">
-        <div class="card" >
-          <div style="border-radius: 10px; overflow: hidden;">
-            <iframe width="600" height="360"
-            src="https://www.youtube.com/embed/tgbNymZ7vqY">
-            </iframe>
-          </div>
-        <div id="redes-sociais-links">
-          <h4><strong>Redes Sociais</strong></h4>
-          <i class="fa-brands fa-facebook"></i>
-          <i class="fa-brands fa-instagram"></i>
-          <i class="fa-brands fa-spotify"></i>
-          <i class="fa-brands fa-youtube"></i>
-          <i class="fa-brands fa-soundcloud"></i>
-        <div>
-        </div>
+      <div class="redes-sociais-links">
+        <ul>
+          <li><i class="fa-brands fa-facebook"></i></li>
+          <li><%= link_to @musician.instagram_url do %>
+              <i class="fa-brands fa-instagram"></i>
+            <% end %>
+          </li>
+          <li><i class="fa-brands fa-spotify"></i></li>
+          <li><i class="fa-brands fa-youtube"></i></li>
+          <li><i class="fa-brands fa-soundcloud"></i></li>
+        </ul>
+      </div>
+      <div class='musician-video'>
+        <iframe id='video' src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+      </div>
+      <div class='buttons'>
+        <%= link_to 'Editar usuário', edit_musician_path(@musician), class:'btn'%>
+        <%= link_to 'Deletar conta', user_registration_path, class:'btn',  data: { turbo_confirm: "Tem certeza que deseja excluir sua conta?", turbo_method: :delete }  %>
       </div>
     </div>
   </div>
+  <div class='col-sm-8 col-md-6 col-lg-8 col-xl-8 col-xxl-6'>
+    <div class='events-cards'>
+      <% if @pending_proposals.blank? %>
+        <div class="title-events">
+          <h2 class="title-color">Propostas Pendentes</h2>
+          <%= "Você ainda não possui propostas, canditate-se já!"%>
+        </div>
+      <% end %>
+      <% @pending_proposals.each do |proposal| %>
+        <div class="card-musician-proposals">
+          <% @push = Push.where(proposal_id: proposal.id) %>
+          <div class='avatar-position'>
+         <% if proposal.event.company.photo.attached?  %>
+            <%= link_to company_path(proposal.event.company.id) do %>
+              <%= cl_image_tag(proposal.event.company.photo.key, class: "avatar-perfil")%>
+            <% end %>
+              <p><strong></strong><%= proposal.event.company.user.nickname%></strong></p>
+          <% else %>
+            <%= link_to company_path(proposal.event.company.id) do %>
+              <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
+            <% end %>
+              <p><strong><%= proposal.event.company.user.nickname%></strong></p>
+          <% end %>
+          <% if @push.any? %>
+            <i class="fa-solid fa-envelope"></i>
+          <% end %>
+          </div>
+          <div class="card-proposals-infos">
+            <h2><%= link_to "#{proposal.event.title_event}", event_path(proposal.event) %></h2>
+            <p><strong>Empresa: </strong> <%= proposal.event.company.title %></p>
+            <p><strong>Gêneros: </strong> <%= proposal.event.category_event %></p>
+            <p><strong>Endereço: </strong> <%= proposal.event.company.address %></p>
+            <p><strong>Data: </strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
+            <p><strong>Inicio: </strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
+            <p><strong>Fim: </strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
+            <p><strong>Cachê: </strong> <%= proposal.event.price %></p>
+          </div>
+          <div class="buttons">
+            <%= link_to "Abrir ChatRoom", proposal_path(id: proposal), class: "btn" %>
+            <%= link_to "Cancelar minha proposta", cancel_proposal_path(id: proposal), class: "btn" if current_user.musician %>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
 </div>
 
-<div row>
-  <div class="container text-center mt-5 p-5">
-    <div class="row align-items-center">
-      <div class="col">
-        <h2 class="title-color">Propostas Pendentes</h2>
-        <%= "No refused proposals :)" if @pending_proposals.blank?  %>
-        <% @pending_proposals.each do |proposal| %>
-          <div class="container text-center">
-            <div class="row align-items-center">
-                <div class="col">
-                  <div class="card-product">
-                    <div class="card-product-infos">
-                      <% @push = Push.where(proposal_id: proposal.id) %>
-                      <% if @push.any? %>
-                      <i class="fa-solid fa-envelope"></i>
-                      <% end %>
-                      <h5><%= link_to "#{proposal.event.title_event}", event_path(proposal.event) %></h5>
-                      <p><strong>Endereço: </strong><%= proposal.event.company.address %></p>
-                      <p><strong>Empresa:</strong> <%= proposal.event.company.title %></p>
-                    </div>
-
-                    <div class="col">
-                      <p><strong>Data Inicio:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
-                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
-                      <p><strong>Data Fim:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
-                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
-                    </div>
-                    <div class="col">
-                      <%= link_to "Cancelar minha proposta", cancel_proposal_path(id: proposal), class: "btn btn-danger" if current_user.musician %>
-                      <%= link_to "Abrir ChatRoom", proposal_path(id: proposal) %>
-                    </div>
-                  <div>
-                </div>
-              </div>
-          </div>
-        <% end %>
-      <div>
-    </div>
+<div class="container-proposals">
+  <div class='title'>
+    <h2 class="title-color">Propostas Aceitas</h2>
+    <%= "Sem propostas Aceitas :)" if @accepted_proposals.blank?  %>
   </div>
-
-  <div class="container text-center mt-5 p-5">
-    <div class="row align-items-center">
-      <div class="col">
-        <h2 class="title-color">Propostas Aceitas </h2>
-        <%= "Ainda não há propostas aceitas. Mas aguente firme que sua hora vai chegar!" if @accepted_proposals.blank?  %>
-        <% if @accepted_proposals.blank? %>
-          <i class="fa-thin fa-face-awesome"></i>
-        <% end %>
-        <% @accepted_proposals.each do |proposal| %>
-          <div class="container text-center">
-            <div class="row align-items-center">
-                <div class="col">
-                  <div class="card-product">
-                    <div class="card-product-infos">
-                      <% @push = Push.where(proposal_id: proposal.id) %>
-                      <% if @push.any? %>
-                      <i class="fa-solid fa-envelope"></i>
-                      <% end %>
-                      <h5><%= link_to "#{proposal.event.title_event}", event_path(proposal.event) %></h5>
-                      <p><strong>Endereço: </strong><%= proposal.event.company.address %></p>
-                      <p><strong>Empresa:</strong> <%= proposal.event.company.title %></p>
-                    </div>
-
-                    <div class="col">
-                      <p><strong>Data Inicio:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
-                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
-                      <p><strong>Data Fim:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
-                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
-                    </div>
-                    <div class="col">
-                      <%= link_to "Cancelar minha proposta", cancel_proposal_path(id: proposal), class: "btn btn-danger" if current_user.musician %>
-                      <%= link_to "Abrir ChatRoom", proposal_path(id: proposal) %>
-                    </div>
-                  <div>
-                </div>
-              </div>
+  <div class="container-aceitas">
+    <% @accepted_proposals.each do |proposal| %>
+      <div class="card-proposals">
+        <% @push = Push.where(proposal_id: proposal.id) %>
+        <div class='avatar-position'>
+        <% if proposal.event.company.photo.attached?  %>
+            <%= link_to company_path(proposal.event.company.id) do %>
+              <%= cl_image_tag(proposal.event.company.photo.key, class: "avatar-perfil")%>
+            <% end %>
+              <p><strong></strong><%= proposal.event.company.user.nickname%></strong></p>
+          <% else %>
+            <%= link_to company_path(proposal.event.company.id) do %>
+              <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
+            <% end %>
+              <p><strong><%= proposal.event.company.user.nickname%></strong></p>
+          <% end %>
+          <% if @push.any? %>
+            <i class="fa-solid fa-envelope"></i>
+          <% end %>
+        </div>
+        <div class="card-proposals-infos">
+          <h2><%= link_to "#{proposal.event.title_event}", event_path(proposal.event) %></h2>
+          <p><strong>Empresa: </strong> <%= proposal.event.company.title %></p>
+          <p><strong>Gêneros: </strong> <%= proposal.event.category_event %></p>
+          <p><strong>Endereço: </strong> <%= proposal.event.company.address %></p>
+          <p><strong>Data: </strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
+          <p><strong>Inicio: </strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
+          <p><strong>Fim: </strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
+          <p><strong>Cachê: </strong> <%= proposal.event.price %></p>
+        </div>
+        <div class="proposals-buttons-container">
+          <div class='proposals-buttons'>
+            <%= link_to "Abrir ChatRoom", proposal_path(id: proposal), class: "btn" %>
+            <%= link_to "Cancelar minha proposta", cancel_proposal_path(id: proposal), class: "btn" if current_user.musician %>
           </div>
-        <% end %>
-      <div>
-    </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-
-  <div class="container text-center mt-5 p-5">
-    <div class="row align-items-center">
-      <div class="col">
-        <h2 class="title-color">Propostas Recusadas</h2>
-        <%= "Não há propostas recusadas:" if @refused_proposals.blank?  %>
-        <% @refused_proposals.each do |proposal| %>
-          <div class="container text-center">
-            <div class="row align-items-center">
-                <div class="col">
-                  <div class="card-product">
-                    <div class="card-product-infos">
-                      <% @push = Push.where(proposal_id: proposal.id) %>
-                      <% if @push.any? %>
-                      <i class="fa-solid fa-envelope"></i>
-                      <% end %>
-                      <h5><%= link_to "#{proposal.event.title_event}", event_path(proposal.event) %></h5>
-                      <p><strong>Endereço: </strong><%= proposal.event.company.address %></p>
-                      <p><strong>Empresa:</strong> <%= proposal.event.company.title %></p>
-                    </div>
-
-                    <div class="col">
-                      <p><strong>Data Inicio:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
-                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
-                      <p><strong>Data Fim:</strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
-                      <p><strong>Horário:</strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
-                    </div>
-                    <div class="col">
-                    </div>
-                  <div>
-                </div>
-              </div>
+  <div class='title'>
+    <h2 class="title-color">Propostas Recusadas</h2>
+    <%= "Sem propostas recusadas :)" if @refused_proposals.blank?  %>
+  </div>
+  <div class="container-recusadas">
+    <% @refused_proposals.each do |proposal| %>
+      <div class="card-proposals">
+        <% @push = Push.where(proposal_id: proposal.id) %>
+        <div class='avatar-position'>
+        <% if proposal.event.company.photo.attached?  %>
+            <%= link_to company_path(proposal.event.company.id) do %>
+              <%= cl_image_tag(proposal.event.company.photo.key, class: "avatar-perfil")%>
+            <% end %>
+              <p><strong></strong><%= proposal.event.company.user.nickname%></strong></p>
+          <% else %>
+            <%= link_to company_path(proposal.event.company.id) do %>
+              <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
+            <% end %>
+              <p><strong><%= proposal.event.company.user.nickname%></strong></p>
+          <% end %>
+          <% if @push.any? %>
+            <i class="fa-solid fa-envelope"></i>
+          <% end %>
+        </div>
+        <div class="card-proposals-infos">
+          <h2><%= link_to "#{proposal.event.title_event}", event_path(proposal.event) %></h2>
+          <p><strong>Empresa: </strong> <%= proposal.event.company.title %></p>
+          <p><strong>Gêneros: </strong> <%= proposal.event.category_event %></p>
+          <p><strong>Endereço: </strong> <%= proposal.event.company.address %></p>
+          <p><strong>Data: </strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
+          <p><strong>Inicio: </strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
+          <p><strong>Fim: </strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
+          <p><strong>Cachê: </strong> <%= proposal.event.price %></p>
+        </div>
+        <div class="proposals-buttons-container">
+          <div class='proposals-buttons'>
+            <%= link_to "Abrir ChatRoom", proposal_path(id: proposal), class: "btn" %>
+            <%= link_to "Cancelar minha proposta", cancel_proposal_path(id: proposal), class: "btn button-disabled" if current_user.musician %>
           </div>
-        <% end %>
-      <div>
-    </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <%= link_to 'Editar usuário', edit_musician_path(@musician), class:'btn'%>
-  <%= link_to 'Inicio', root_path, class:'btn'%>
 </div>

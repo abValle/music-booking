@@ -1,0 +1,30 @@
+.card-musician-proposals {
+  overflow: hidden;
+  background-image: url('https://images.unsplash.com/photo-1637946175559-22c4fe13fc54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80');
+  background-size: cover;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  width: 350px;
+  margin: 15px;
+  display: block;
+  text-align: center;
+}
+
+.musician-video {
+  width: 100%;
+  height: 360px;
+}
+
+#video {
+  height: 100%;
+  width: 90%;
+}
+
+.card-musician {
+  width: 100%;
+  margin: 15px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
