@@ -1,2 +1,7 @@
-<h1><%= event.title_event %></h1>
-<%= event.company.address %>
+  <div class="mapboxgl-popup-content">
+    <h4> <i class="fa-solid fa-building"></i> <strong> <%= event.company.title %></strong> </h4>
+    <p><i class="fa-solid fa-map"></i><%= event.company.address %> </p>
+    <p> <i class="fa-solid fa-money-bill"></i> <%= event.price %> </p>
+    <p><%= link_to "mais detalhes >>", request.params.merge(anchor: event.id), class: "nav-link" %></p>
+  </div>
+</div>
