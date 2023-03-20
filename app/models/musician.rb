@@ -7,11 +7,10 @@ class Musician < ApplicationRecord
   validates :user_id, uniqueness: true
   has_one_attached :photo
 
-
   def youtube_id
     return unless youtube_url
 
-    youtube_url.gsub("https://www.youtube.com/watch?v=", "")
+    youtube_url.gsub("https://youtu.be/", "")
   end
 
   private
