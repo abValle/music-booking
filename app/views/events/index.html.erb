@@ -46,10 +46,16 @@ background: linear-gradient(93deg, rgba(75,85,141,0.6) 0%, rgba(65,17,89,1) 100%
             </div>
           </div>
         <% end %>
-        <p class=<%='d-none' if @events.any?%>>Nenhum resultado encontrado</p>
+        <div class="justify-content-center align-items-center">
+          <h3 class="p-5 text-align" class=<%='d-none' if @events.any?%>>Nenhum resultado encontrado</h3 class="p-5 ">
+        </div>
       </div>
-      <div id='map' data-controller='map' data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>" data-map-markers-value="<%= @markers.to_json %>" class='col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-3'></div>
 
+      <% if @events.any? %>
+        <div id='map' data-controller='map' data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>" data-map-markers-value="<%= @markers.to_json %>"   class='col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-3'></div>
+      <% else %>
+
+      <% end %>
     </div>
   </div>
 </div>
