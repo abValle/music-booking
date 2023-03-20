@@ -25,6 +25,7 @@
 .btn {
   position: relative;
   overflow: hidden;
+  border-radius: 5px;
   color: #18181a;
   display: inline-block;
   font-size: 15px;
@@ -40,5 +41,5 @@
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border-color: #ffffff;
-  border-radius: 15px;
+  border-radius: 5px;
 }
