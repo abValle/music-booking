@@ -32,8 +32,9 @@ class ProposalsController < ApplicationController
     @proposal.save
     @musician_user = @proposal.musician.user
     @company_nickname = @proposal.event.company.user.nickname
+    @musician_nickname = @proposal.musician.user.nickname
     Message.create(proposal_id: @proposal.id, user_id: @musician_user.id, content:
-      "::MENSAGEM PADRONIZADA DA MUSIC BOOKING:: OLÁ '#{@company_nickname}' o musico:' #{@musician_nickname}'enviou uma proposta, e tem interesse no evento:'#{@proposal.event.title_event}'.
+      "::MENSAGEM PADRONIZADA DA MUSIC BOOKING:: OLÁ '#{@company_nickname}' o musico:'#{@musician_nickname}' enviou uma proposta para o evento:'#{@proposal.event.title_event}'.
       Que tal se conhecerem melhor? E acertarem detalhes para fechar negócio?")
 
     if @proposal.save
