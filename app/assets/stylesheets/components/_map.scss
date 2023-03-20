@@ -13,15 +13,22 @@
 }
 
 .mapboxgl-popup {
-  max-width: 200px;
-  max-height:200px;
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  border-radius: 4px;
+  color: #5913dc;
+  background-color: #969292;
+  width: 200px;
+  // max-height:600px;
+}
+.mapboxgl-popup-tip {
+  display: none;
+  background-color: transparent;
 }
 
 .mapboxgl-popup-content {
-  text-align: center;
-  font-family: "Open Sans", sans-serif;
 
-  h1 {
-    color: rgb(82, 82, 214);
+  .mapboxgl-popup-close-button{
+    top: 300;
   }
 }

@@ -26,9 +26,9 @@ background: linear-gradient(93deg, rgba(75,85,141,0.6) 0%, rgba(65,17,89,1) 100%
     <div class="d-flex pt-4">
       <div class='d-flex flex-wrap'>
         <% @events.each do |event| %>
-          <div class='col-sm-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4'>
+          <div id="<%=event.id%>" class='col-sm-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4'>
             <div class="card" style="width: 300px; height: 450px">
-              <div class="card-body mt-2" style="text-align: center;">
+              <div class="card-body mt-2" style="text-align: center;" id="<%=event.id%>">
                 <h4><%= link_to "#{event.company.title}", event_path(event), style: "color: white;" %></h4>
                 <p style="margin-top: 20px;">Data: <%= event.start_time.strftime("%d/%m/%y") %></p>
                 <% if event.category_event.present? %>
