@@ -5,6 +5,14 @@
   backdrop-filter: blur(8px);
 }
 
+#logos-color{
+  color: #e3a8ff;
+}
+
+#logos{
+  font-size: 20px;
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
@@ -35,7 +43,7 @@
 #change-color-rover-logo{
   text-decoration: none;
   color: #ffffff;
-  font-weight: 800  ;
+  font-weight: 800 ;
   margin-right: 30px;
 }
 
@@ -132,4 +140,21 @@
   .profile-name{
     margin-right: 0;
   }
+}
+
+#entrar-color{
+  text-decoration: none;
+  color: #e3a8ff;
+  font-weight: 800;
+  font-size: 17px;
+  margin-right: 30px;
+  margin-left: 50px;
+}
+
+#entrar-color:hover{
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 17px;
+  margin-right: 30px;
+  margin-left: 50px;
 }

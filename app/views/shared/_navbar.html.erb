@@ -1,9 +1,9 @@
 <%= turbo_stream_from current_user %>
 <nav class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-novo">
   <div class="container-fluid">
-    <div>
+    <div id="logos">
       <i class="fa-solid fa-music"></i>
-      <strong>Music</strong>Booking
+      <strong id="logos-color">Music</strong>Booking
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -49,8 +49,9 @@
             </div>
           <li class="nav-item dropdown navbar-responsive">
 
+          <div   id="logos-color">
           <%= link_to current_user.nickname, current_user.company ? profile_company_path : profile_musician_path, class: "dropdown-item profile-name" %>
-
+          </div>
           <div class="d-flex">
             <% if current_user.musician && current_user.musician.photo.attached? %>
               <%= cl_image_tag(current_user.musician.photo.key, class: "avatar dropdown-toggle avatar-nav", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false )%>
@@ -66,7 +67,7 @@
           </div>
           <% else %>
             <li class="nav-item">
-              <%= link_to "Entrar", new_user_session_path, id: "change-color-rover"%>
+              <%= link_to "Entrar", new_user_session_path, id: "change-color-rover", id: "entrar-color"%>
             </li>
           </li>
           <% end %>
