@@ -53,7 +53,7 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:title, :phone, :description, :address, :user_id, :photo, category: []).tap do |whitelisted|
+    params.require(:company).permit(:instagram_url, :facebook_url, :soundcloud_url, :spotify_url, :youtube_url, :title, :phone, :description, :address, :user_id, :photo, category: []).tap do |whitelisted|
       whitelisted[:category] = params[:company][:category].compact_blank!.join(", ")
     end
   end
