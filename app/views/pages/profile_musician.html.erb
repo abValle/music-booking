@@ -37,16 +37,16 @@
           </li>
         </ul>
       </div>
-      <div class='musician-video'>
-        <iframe id='video' src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-      </div>
+      <div class='musician-video-show col-sm-8'>
+      <iframe id='video' src=<%= "http://www.youtube.com/embed/#{@musician.youtube_id}" %>></iframe>
+    </div>
       <div class='buttons'>
         <%= link_to 'Editar usuário', edit_musician_path(@musician), class:'btn'%>
         <%= link_to 'Deletar conta', user_registration_path, class:'btn',  data: { turbo_confirm: "Tem certeza que deseja excluir sua conta?", turbo_method: :delete }  %>
       </div>
     </div>
   </div>
-  <div class='col-sm-8 col-md-6 col-lg-8 col-xl-8 col-xxl-6'>
+  <div class='col-sm-8 col-md-6 col-lg-8 col-xl-7 col-xxl-4'>
     <div class='events-cards'>
       <% if @pending_proposals.blank? %>
         <div class="title-events">

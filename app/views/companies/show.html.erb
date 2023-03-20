@@ -1,81 +1,64 @@
-<div row>
-  <div class="container text-center">
-    <div class="row align-items-center mt-4" id="profile-container">
-      <div class="col-6">
-        <div class="card" >
-          <h1><strong><%= @company.title%></h1></strong>
-          <p><strong>Endereço:</strong> <%=@company.address%></p>
-          <p><strong>Contato:</strong> <%= @company.phone%></p>
-          <p><strong>Gêneros musicias:</strong> <%= @company.category%></p>
-          <p><strong>Category:</strong> <%= @company.category%></p>
-
-          <% if @company.photo.attached? %>
-          <div id="profile-img">
-            <%= cl_image_tag @company.photo.key, height: 300, width: 400, crop: :fill, style:"border-radius: 20px" %>
-            </div>
-          <% else %>
-            <div id="profile-img">
-              <%= image_tag("company.jpg", height: 300, style:"border-radius: 20px") %>
-            </div>
-          <% end %>
-        </div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card-company align-items-center" >
+      <% if @company.photo.attached? %>
+        <%= cl_image_tag @company.photo.key, id: 'place-image'%>
+      <% else %>
+          <%= image_tag("placeholder-image.jpg", id: 'place-image') %>
+      <% end %>
+      <div class="text-card">
+        <h1><strong><%= @company.title%></h1></strong>
+        <p><strong>Endereço:</strong> <%=@company.address%></p>
+        <p><strong>Contato:</strong> <%= @company.phone%></p>
+        <p><strong>Gêneros musicias:</strong> <%= @company.category%></p>
+        <p><strong>Descrição:</strong> <span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Descrição" data-bs-content="<%= @company.description%>"><%= @company.description.truncate(200)%></span></p>
       </div>
-      <div class="col-6">
-        <div class="card" >
-          <div style="border-radius: 10px; overflow: hidden;">
-            <iframe width="600" height="360"
-            src="https://www.youtube.com/embed/tgbNymZ7vqY">
-            </iframe>
-          </div>
-        <div id="redes-sociais-links">
-          <h4><strong>Redes Sociais</strong></h4>
+      <div class="redes-sociais-links">
+        <ul>
+
            <%= link_to @company.facebook_url do %>
-             <i class="fa-brands fa-facebook"></i>
+            <li> <i class="fa-brands fa-facebook"></i></li>
             <% end %>
            <%= link_to @company.instagram_url do %>
-              <i class="fa-brands fa-instagram"></i>
+               <li><i class="fa-brands fa-instagram"></i></li>
             <% end %>
              <%= link_to @company.spotify_url do %>
-            <i class="fa-brands fa-spotify"></i>
+             <li><i class="fa-brands fa-spotify"></i></li>
             <% end %>
             <%= link_to @company.youtube_url do %>
-             <i class="fa-brands fa-youtube"></i>
+              <li><i class="fa-brands fa-youtube"></i></li>
             <% end %>
              <%= link_to @company.soundcloud_url do %>
-             <i class="fa-brands fa-soundcloud"></i>
+              <li><i class="fa-brands fa-soundcloud"></i></li>
             <% end %>
-        <div>
-        </div>
+        </ul>
       </div>
     </div>
   </div>
-</div>
-
-<div row>
-  <div class="container text-center mt-5 p-5">
-    <div class="row align-items-center">
-      <div class="col">
-        <h2 class="title-color">Eventos do Produtor</h2>
-        <% @company.events.each do |event| %>
-          <div class="container text-center">
-            <div class="row align-items-center">
-                <div class="col">
-                  <div class="card-product">
-                    <div class="card-product-infos">
-                      <h5><%= link_to "#{event.title_event}", event_path(event) %></h5>
-                      <p><strong>Data: </strong><%= event.start_time.strftime("%d/%m/%y") %></p>
-                      <p><strong>Dono do evento:</strong><%= event.company.title %></p>
-                      <p><strong>Endereço:</strong><%= event.company.address %></p>
-                    </div>
-                  <div>
-                </div>
-              </div>
+  <div class='col-sm-8'>
+    <div class='events-cards'>
+     <% if @company.events.blank? %>
+      <div class="title-events">
+        <h2 class="title-color">Seus Eventos</h2>
+        <%= "Você ainda não possui eventos, divulgue já!"%>
+      </div>
+    <% end %>
+      <% @company.events.each do |event| %>
+        <div class="card-event-comp">
+          <div class="first-card-info">
+            <h4><%= link_to "#{event.title_event}", event_path(event)%></h4>
+            <p style="margin-top: 20px;">Data: <%= event.start_time.strftime("%d/%m/%y") %></p>
+            <p>Inicio: <%= event.start_time.strftime("%H:%M:%S") %> / Fim: <%= event.end_time.strftime("%H:%M:%S") %></p>
+            <% if event.category_event.present? %>
+              <p>Gênero: <span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Gêneros" data-bs-content="<%= event.category_event%>"><%= event.category_event.truncate(30)%></span></p>
+            <% else %>
+              <p>Gênero: Não informado</p>
+            <% end %>
+            <p>Cachê: <%= event.price %></p>
+            <p>Descrição: <span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Descrição" data-bs-content="<%= event.description_event%>"><%= event.description_event.truncate(100)%></span></p>
           </div>
-        <% end %>
-      <div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
-
-
-<%= link_to 'Inicio', root_path, class:'btn'%>
