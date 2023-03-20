@@ -15,12 +15,23 @@
       </div>
       <div class="redes-sociais-links">
         <ul>
-        <%# colocar links e tbm adicionar ao form da company %>
-          <li><i class="fa-brands fa-facebook"></i></li>
-          <li><i class="fa-brands fa-instagram"></i></li>
-          <li><i class="fa-brands fa-spotify"></i></li>
-          <li><i class="fa-brands fa-youtube"></i></li>
-          <li><i class="fa-brands fa-soundcloud"></i></li>
+
+           <%= link_to @company.facebook_url do %>
+            <li> <i class="fa-brands fa-facebook"></i></li>
+            <% end %>
+           <%= link_to @company.instagram_url do %>
+               <li><i class="fa-brands fa-instagram"></i></li>
+            <% end %>
+             <%= link_to @company.spotify_url do %>
+             <li><i class="fa-brands fa-spotify"></i></li>
+            <% end %>
+            <%= link_to @company.youtube_url do %>
+              <li><i class="fa-brands fa-youtube"></i></li>
+            <% end %>
+             <%= link_to @company.soundcloud_url do %>
+              <li><i class="fa-brands fa-soundcloud"></i></li>
+            <% end %>
+
         </ul>
       </div>
       <div class='buttons'>
