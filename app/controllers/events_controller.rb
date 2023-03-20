@@ -78,10 +78,10 @@ class EventsController < ApplicationController
     end
 
     if params[:price].present?
-      if params[:price] == 1100
-        @events = @events.where("price >= ?", params[:price]).order(price: :desc)
+      if params[:price] == "1100"
+        @events = @events.where("price > ?", 1000).order(price: :desc)
       else
-        @events = @events.where("price <= ?", params[:price]).order(price: :desc)
+        @events = @events.where("price <= ?", params[:price].to_i).order(price: :desc)
       end
     end
 
