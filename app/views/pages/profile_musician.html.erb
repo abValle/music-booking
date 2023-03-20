@@ -15,14 +15,26 @@
       </div>
       <div class="redes-sociais-links">
         <ul>
-          <li><i class="fa-brands fa-facebook"></i></li>
+          <li><%= link_to @musician.facebook_url do %>
+              <i class="fa-brands fa-facebook"></i>
+            <% end %>
+          </li>
           <li><%= link_to @musician.instagram_url do %>
               <i class="fa-brands fa-instagram"></i>
             <% end %>
           </li>
-          <li><i class="fa-brands fa-spotify"></i></li>
-          <li><i class="fa-brands fa-youtube"></i></li>
-          <li><i class="fa-brands fa-soundcloud"></i></li>
+          <li><%= link_to @musician.spotify_url do %>
+             <i class="fa-brands fa-spotify"></i>
+            <% end %>
+          </li>
+            <li><%= link_to @musician.youtube_url do %>
+             <i class="fa-brands fa-youtube"></i>
+            <% end %>
+          </li>
+          <li><%= link_to @musician.soundcloud_url do %>
+             <i class="fa-brands fa-soundcloud"></i>
+            <% end %>
+          </li>
         </ul>
       </div>
       <div class='musician-video'>

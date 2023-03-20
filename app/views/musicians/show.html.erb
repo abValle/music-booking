@@ -30,13 +30,21 @@
           </div>
         <div id="redes-sociais-links">
           <h4><strong>Redes Sociais</strong></h4>
-          <i class="fa-brands fa-facebook"></i>
+          <%= link_to @musician.facebook_url do %>
+              <i class="fa-brands fa-facebook"></i>
+            <% end %>
           <%= link_to @musician.instagram_url do %>
               <i class="fa-brands fa-instagram"></i>
             <% end %>
-          <i class="fa-brands fa-spotify"></i>
-          <i class="fa-brands fa-youtube"></i>
-          <i class="fa-brands fa-soundcloud"></i>
+          <%= link_to @musician.spotify_url do %>
+             <i class="fa-brands fa-spotify"></i>
+            <% end %>
+          <%= link_to @musician.youtube_url do %>
+             <i class="fa-brands fa-youtube"></i>
+            <% end %>
+          <%= link_to @musician.soundcloud_url do %>
+             <i class="fa-brands fa-soundcloud"></i>
+            <% end %>
         <div>
         </div>
       </div>
