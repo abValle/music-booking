@@ -16,7 +16,10 @@
       <div class="redes-sociais-links">
         <ul>
           <li><i class="fa-brands fa-facebook"></i></li>
-          <li><i class="fa-brands fa-instagram"></i></li>
+          <li><%= link_to @musician.instagram_url do %>
+              <i class="fa-brands fa-instagram"></i>
+            <% end %>
+          </li>
           <li><i class="fa-brands fa-spotify"></i></li>
           <li><i class="fa-brands fa-youtube"></i></li>
           <li><i class="fa-brands fa-soundcloud"></i></li>

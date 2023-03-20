@@ -31,7 +31,9 @@
         <div id="redes-sociais-links">
           <h4><strong>Redes Sociais</strong></h4>
           <i class="fa-brands fa-facebook"></i>
-          <i class="fa-brands fa-instagram"></i>
+          <%= link_to @musician.instagram_url do %>
+              <i class="fa-brands fa-instagram"></i>
+            <% end %>
           <i class="fa-brands fa-spotify"></i>
           <i class="fa-brands fa-youtube"></i>
           <i class="fa-brands fa-soundcloud"></i>
