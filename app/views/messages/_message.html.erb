@@ -1,7 +1,19 @@
 <div id="message-<%= message.id %>" class="<%= message.user.boolean_company %>">
   <small>
-    <strong><%= message.user.nickname %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  <%  case message.user.boolean_company%>
+    <% when true %>
+        <% if message.user.company.photo.attached? %>
+        <%= message.user.boolean_company ? cl_image_tag(message.user.company.photo.key, class: "avatar-perfil") : cl_image_tag(message.user.musician.photo.key, class: "avatar-perfil")  %>
+        <% end %>
+         <strong><%= message.user.nickname %></strong>
+        <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+    <% when false %>
+        <strong><%= message.user.nickname %></strong>
+        <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        <% if message.user.musician.photo.attached? %>
+        <%= message.user.boolean_company ? cl_image_tag(message.user.company.photo.key, class: "avatar-perfil") : cl_image_tag(message.user.musician.photo.key, class: "avatar-perfil")  %>
+        <% end %>
+  <% end %>
   </small>
   <p><%= message.content %></p>
 </div>
