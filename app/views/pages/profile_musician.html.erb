@@ -15,14 +15,26 @@
       </div>
       <div class="redes-sociais-links">
         <ul>
-          <li><i class="fa-brands fa-facebook"></i></li>
+          <li><%= link_to @musician.facebook_url do %>
+              <i class="fa-brands fa-facebook"></i>
+            <% end %>
+          </li>
           <li><%= link_to @musician.instagram_url do %>
               <i class="fa-brands fa-instagram"></i>
             <% end %>
           </li>
-          <li><i class="fa-brands fa-spotify"></i></li>
-          <li><i class="fa-brands fa-youtube"></i></li>
-          <li><i class="fa-brands fa-soundcloud"></i></li>
+          <li><%= link_to @musician.spotify_url do %>
+             <i class="fa-brands fa-spotify"></i>
+            <% end %>
+          </li>
+            <li><%= link_to @musician.youtube_url do %>
+             <i class="fa-brands fa-youtube"></i>
+            <% end %>
+          </li>
+          <li><%= link_to @musician.soundcloud_url do %>
+             <i class="fa-brands fa-soundcloud"></i>
+            <% end %>
+          </li>
         </ul>
       </div>
       <div class='musician-video'>
@@ -50,21 +62,20 @@
             <%= link_to company_path(proposal.event.company.id) do %>
               <%= cl_image_tag(proposal.event.company.photo.key, class: "avatar-perfil")%>
             <% end %>
-              <p><strong></strong><%= proposal.event.company.user.nickname%></strong></p>
+              <p><strong><span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Empresa" data-bs-content="<%= proposal.event.company.title%>"><%= proposal.event.company.title.truncate(30)%></span></strong></p>
           <% else %>
             <%= link_to company_path(proposal.event.company.id) do %>
               <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
             <% end %>
-              <p><strong><%= proposal.event.company.user.nickname%></strong></p>
+              <p><strong><span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Empresa" data-bs-content="<%= proposal.event.company.title%>"><%= proposal.event.company.title.truncate(30)%></span></strong></p>
           <% end %>
           <% if @push.any? %>
             <i class="fa-solid fa-envelope"></i>
           <% end %>
           </div>
-          <div class="card-proposals-infos">
-            <h2><%= link_to "#{proposal.event.title_event}", event_path(proposal.event) %></h2>
-            <p><strong>Empresa: </strong> <%= proposal.event.company.title %></p>
-            <p><strong>Gêneros: </strong> <%= proposal.event.category_event %></p>
+          <div class="card-proposals-infos-musician">
+            <h2 class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Evento" data-bs-content="<%= proposal.event.title_event%>"><%=link_to "#{proposal.event.title_event.truncate(15)}", event_path(proposal.event)%></h2>
+            <p><strong>Gênero: </strong><span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Gêneros" data-bs-content="<%=proposal.event.category_event%>"><%= proposal.event.category_event.truncate(50)%></span></p>
             <p><strong>Endereço: </strong> <%= proposal.event.company.address %></p>
             <p><strong>Data: </strong> <%= proposal.event.start_time.strftime("%d/%m/%y") %></p>
             <p><strong>Inicio: </strong> <%= proposal.event.start_time.strftime("%H:%M") %></p>
@@ -86,7 +97,7 @@
     <h2 class="title-color">Propostas Aceitas</h2>
     <%= "Sem propostas Aceitas :)" if @accepted_proposals.blank?  %>
   </div>
-  <div class="container-aceitas">
+  <div class="grid-propostas">
     <% @accepted_proposals.each do |proposal| %>
       <div class="card-proposals">
         <% @push = Push.where(proposal_id: proposal.id) %>
@@ -129,7 +140,7 @@
     <h2 class="title-color">Propostas Recusadas</h2>
     <%= "Sem propostas recusadas :)" if @refused_proposals.blank?  %>
   </div>
-  <div class="container-recusadas">
+  <div class="grid-propostas">
     <% @refused_proposals.each do |proposal| %>
       <div class="card-proposals">
         <% @push = Push.where(proposal_id: proposal.id) %>

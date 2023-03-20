@@ -36,7 +36,9 @@
 }
 
 .btn:hover {
-  color: #ffffff;
-  background-color: #18181a;
-  box-shadow: 0 0 5 15 rgba(0,0,0,0.5);
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-color: #ffffff;
+  border-radius: 15px;
 }
