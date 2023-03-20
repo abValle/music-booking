@@ -1,56 +1,45 @@
-
-<div row>
-  <div class="container text-center">
-    <div class="row align-items-center mt-4" id="profile-container">
-      <div class="col-6">
-        <div class="card" >
-          <h1><strong><%= @musician.user.nickname%></h1></strong>
-          <p><strong>Gêneros musicias:</strong> <%=@musician.category%></p>
-          <p><strong>Descrição:</strong> <%= @musician.description%></p>
-          <p><strong>Contato:</strong> <%= @musician.phone%></p>
-          <p><strong>Endereço:</strong> <%= @musician.address%></p>
-
-          <% if @musician.photo.attached? %>
-          <div id="profile-img">
-            <%= cl_image_tag @musician.photo.key, height: 300, width: 400, crop: :fill, style:"border-radius: 20px" %>
-            </div>
-          <% else %>
-            <div id="profile-img">
-              <%= image_tag("musician.jpg", height: 300) %>
-            </div>
-          <% end %>
-        </div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card-musician align-items-center" >
+      <% if @musician.photo.attached? %>
+        <%= cl_image_tag @musician.photo.key, id: 'place-image'%>
+      <% else %>
+          <%= image_tag("placeholder-image.jpg", id: 'place-image') %>
+      <% end %>
+      <div class="text-card">
+        <h1><strong><%= @musician.user.nickname%></h1></strong>
+        <p><strong>Endereço:</strong> <%=@musician.address%></p>
+        <p><strong>Contato:</strong> <%= @musician.phone%></p>
+        <p><strong>Gêneros musicias:</strong> <%= @musician.category%></p>
+        <p><strong>Descrição:</strong> <span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Descrição" data-bs-content="<%= @musician.description%>"><%= @musician.description.truncate(200)%></span></p>
       </div>
-      <div class="col-6">
-        <div class="card" >
-          <div style="border-radius: 10px; overflow: hidden;">
-            <iframe width="600" height="360"
-            src="https://www.youtube.com/embed/tgbNymZ7vqY">
-            </iframe>
-          </div>
-        <div id="redes-sociais-links">
-          <h4><strong>Redes Sociais</strong></h4>
-          <%= link_to @musician.facebook_url do %>
+      <div class="redes-sociais-links">
+        <ul>
+          <li><%= link_to @musician.facebook_url do %>
               <i class="fa-brands fa-facebook"></i>
             <% end %>
-          <%= link_to @musician.instagram_url do %>
+          </li>
+          <li><%= link_to @musician.instagram_url do %>
               <i class="fa-brands fa-instagram"></i>
             <% end %>
-          <%= link_to @musician.spotify_url do %>
+          </li>
+          <li><%= link_to @musician.spotify_url do %>
              <i class="fa-brands fa-spotify"></i>
             <% end %>
-          <%= link_to @musician.youtube_url do %>
+          </li>
+            <li><%= link_to @musician.youtube_url do %>
              <i class="fa-brands fa-youtube"></i>
             <% end %>
-          <%= link_to @musician.soundcloud_url do %>
+          </li>
+          <li><%= link_to @musician.soundcloud_url do %>
              <i class="fa-brands fa-soundcloud"></i>
             <% end %>
-        <div>
-        </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-</div>
-  <%= link_to 'Editar usuário', edit_musician_path(@musician), class:'btn' if current_user.id == @musician.id %>
-  <%= link_to 'Inicio', root_path, class:'btn'%>
+    <div class='musician-video-show col-sm-8'>
+      <iframe id='video' src=<%= "http://www.youtube.com/embed/#{@musician.youtube_id}" %>></iframe>
+    </div>
 </div>
