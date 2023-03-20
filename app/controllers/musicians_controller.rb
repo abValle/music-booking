@@ -43,7 +43,7 @@ class MusiciansController < ApplicationController
   end
 
   def musician_params
-    params.require(:musician).permit(:first_name, :last_name, :phone, :address, :birth_date, :description, :phone, :rating, :photo, category: []).tap do |whitelisted|
+    params.require(:musician).permit(:instagram_url, :first_name, :last_name, :phone, :address, :birth_date, :description, :phone, :rating, :photo, category: []).tap do |whitelisted|
       whitelisted[:category] = params[:musician][:category].compact_blank!.join(", ")
     end
   end

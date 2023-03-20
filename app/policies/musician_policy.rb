@@ -15,7 +15,7 @@ class MusicianPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user == user
+    true
   end
 
   def new?
