@@ -73,11 +73,15 @@
         <% @push = Push.where(proposal_id: proposal.id) %>
         <div class='avatar-position'>
           <% if proposal.musician.photo.attached?  %>
-            <%= cl_image_tag(proposal.musician.photo.key, class: "avatar-perfil")%>
-            <p><strong></strong><%= proposal.musician.user.nickname%></strong></p>
+            <%= link_to musician_path(proposal.musician.id) do %>
+              <%= cl_image_tag(proposal.musician.photo.key, class: "avatar-perfil")%>
+            <% end %>
+              <p><strong></strong><%= proposal.musician.user.nickname%></strong></p>
           <% else %>
-            <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
-            <p><strong><%= proposal.musician.user.nickname%></strong></p>
+            <%= link_to musician_path(proposal.musician.id) do %>
+              <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
+            <% end %>
+              <p><strong><%= proposal.musician.user.nickname%></strong></p>
           <% end %>
           <% if @push.any? %>
             <i class="fa-solid fa-envelope"></i>
@@ -109,12 +113,16 @@
       <div class="card-proposals">
         <% @push = Push.where(proposal_id: proposal.id) %>
         <div class='avatar-position'>
-          <% if proposal.musician.photo.attached?  %>
-            <%= cl_image_tag(proposal.musician.photo.key, class: "avatar-perfil")%>
-            <p><strong></strong><%= proposal.musician.user.nickname%></strong></p>
+               <% if proposal.musician.photo.attached?  %>
+            <%= link_to musician_path(proposal.musician.id) do %>
+              <%= cl_image_tag(proposal.musician.photo.key, class: "avatar-perfil")%>
+            <% end %>
+              <p><strong></strong><%= proposal.musician.user.nickname%></strong></p>
           <% else %>
-            <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
-            <p><strong><%= proposal.musician.user.nickname%></strong></p>
+            <%= link_to musician_path(proposal.musician.id) do %>
+              <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
+            <% end %>
+              <p><strong><%= proposal.musician.user.nickname%></strong></p>
           <% end %>
           <% if @push.any? %>
             <i class="fa-solid fa-envelope"></i>
@@ -147,12 +155,16 @@
       <div class="card-proposals">
         <% @push = Push.where(proposal_id: proposal.id) %>
         <div class='avatar-position'>
-          <% if proposal.musician.photo.attached?  %>
-            <%= cl_image_tag(proposal.musician.photo.key, class: "avatar-perfil")%>
-            <p><strong></strong><%= proposal.musician.user.nickname%></strong></p>
+             <% if proposal.musician.photo.attached?  %>
+            <%= link_to musician_path(proposal.musician.id) do %>
+              <%= cl_image_tag(proposal.musician.photo.key, class: "avatar-perfil")%>
+            <% end %>
+              <p><strong></strong><%= proposal.musician.user.nickname%></strong></p>
           <% else %>
-            <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
-            <p><strong><%= proposal.musician.user.nickname%></strong></p>
+            <%= link_to musician_path(proposal.musician.id) do %>
+              <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
+            <% end %>
+              <p><strong><%= proposal.musician.user.nickname%></strong></p>
           <% end %>
           <% if @push.any? %>
             <i class="fa-solid fa-envelope"></i>

@@ -16,7 +16,10 @@
       <div class="redes-sociais-links">
         <ul>
           <li><i class="fa-brands fa-facebook"></i></li>
-          <li><i class="fa-brands fa-instagram"></i></li>
+          <li><%= link_to @musician.instagram_url do %>
+              <i class="fa-brands fa-instagram"></i>
+            <% end %>
+          </li>
           <li><i class="fa-brands fa-spotify"></i></li>
           <li><i class="fa-brands fa-youtube"></i></li>
           <li><i class="fa-brands fa-soundcloud"></i></li>
@@ -43,16 +46,20 @@
         <div class="card-musician-proposals">
           <% @push = Push.where(proposal_id: proposal.id) %>
           <div class='avatar-position'>
-            <% if proposal.event.company.photo.attached?  %>
+         <% if proposal.event.company.photo.attached?  %>
+            <%= link_to company_path(proposal.event.company.id) do %>
               <%= cl_image_tag(proposal.event.company.photo.key, class: "avatar-perfil")%>
+            <% end %>
               <p><strong><span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Empresa" data-bs-content="<%= proposal.event.company.title%>"><%= proposal.event.company.title.truncate(30)%></span></strong></p>
-            <% else %>
+          <% else %>
+            <%= link_to company_path(proposal.event.company.id) do %>
               <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
+            <% end %>
               <p><strong><span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Empresa" data-bs-content="<%= proposal.event.company.title%>"><%= proposal.event.company.title.truncate(30)%></span></strong></p>
-            <% end %>
-            <% if @push.any? %>
-              <i class="fa-solid fa-envelope"></i>
-            <% end %>
+          <% end %>
+          <% if @push.any? %>
+            <i class="fa-solid fa-envelope"></i>
+          <% end %>
           </div>
           <div class="card-proposals-infos-musician">
             <h2 class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Evento" data-bs-content="<%= proposal.event.title_event%>"><%=link_to "#{proposal.event.title_event.truncate(15)}", event_path(proposal.event)%></h2>
@@ -83,12 +90,16 @@
       <div class="card-proposals">
         <% @push = Push.where(proposal_id: proposal.id) %>
         <div class='avatar-position'>
-          <% if proposal.event.company.photo.attached?  %>
-            <%= cl_image_tag(proposal.event.company.photo.key, class: "avatar-perfil")%>
-            <p><strong></strong><%= proposal.event.company.user.nickname%></strong></p>
+        <% if proposal.event.company.photo.attached?  %>
+            <%= link_to company_path(proposal.event.company.id) do %>
+              <%= cl_image_tag(proposal.event.company.photo.key, class: "avatar-perfil")%>
+            <% end %>
+              <p><strong></strong><%= proposal.event.company.user.nickname%></strong></p>
           <% else %>
-            <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
-            <p><strong><%= proposal.event.company.user.nickname%></strong></p>
+            <%= link_to company_path(proposal.event.company.id) do %>
+              <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
+            <% end %>
+              <p><strong><%= proposal.event.company.user.nickname%></strong></p>
           <% end %>
           <% if @push.any? %>
             <i class="fa-solid fa-envelope"></i>
@@ -122,12 +133,16 @@
       <div class="card-proposals">
         <% @push = Push.where(proposal_id: proposal.id) %>
         <div class='avatar-position'>
-          <% if proposal.event.company.photo.attached?  %>
-            <%= cl_image_tag(proposal.event.company.photo.key, class: "avatar-perfil")%>
-            <p><strong></strong><%= proposal.event.company.user.nickname%></strong></p>
+        <% if proposal.event.company.photo.attached?  %>
+            <%= link_to company_path(proposal.event.company.id) do %>
+              <%= cl_image_tag(proposal.event.company.photo.key, class: "avatar-perfil")%>
+            <% end %>
+              <p><strong></strong><%= proposal.event.company.user.nickname%></strong></p>
           <% else %>
-            <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
-            <p><strong><%= proposal.event.company.user.nickname%></strong></p>
+            <%= link_to company_path(proposal.event.company.id) do %>
+              <%= image_tag("new-avatar.jpg", class: "avatar-perfil") %>
+            <% end %>
+              <p><strong><%= proposal.event.company.user.nickname%></strong></p>
           <% end %>
           <% if @push.any? %>
             <i class="fa-solid fa-envelope"></i>
