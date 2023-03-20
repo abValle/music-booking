@@ -1,0 +1,59 @@
+<%= turbo_stream_from current_user %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-novo">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center gap-5 text-white px-3">
+      <%= link_to root_path, class: "navbar-brand text-white" do %>
+        <i class="fa-solid fa-music"></i>
+        <strong>Music</strong>Booking
+        <%= link_to "Ínicio", root_path, class: "nav-link", id:"change-color-rover" %>
+        <%= link_to "Sou Empresa", root_path(anchor: "secao2"), class: "nav-link", id: "change-color-rover" unless user_signed_in? %>
+        <%= link_to "Sou músico", root_path(anchor: "secao1"), class: "nav-link", id: "change-color-rover" unless user_signed_in? %>
+        <%= link_to "Sobre nós", root_path(anchor: "secao3"), class: "nav-link", id: "change-color-rover"  %>
+        <%= link_to "Eventos", events_path, class: "nav-link", id:"change-color-rover" if user_signed_in? && current_user.musician %>
+      <% end %>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto gap-3 px-3">
+        <% if user_signed_in? && (current_user.company || current_user.musician) %>
+          <div id="pushes">
+            <div class="dropdown">
+              <button class="dropdown-toggle notification-icon" type="button" id="change-color" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-regular fa-bell" ></i>
+                <%= current_user.pushes.count if current_user.pushes.count != 0 %>
+              </button>
+              <% if current_user.pushes.count != 0 && current_user.boolean_company %>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li class="nav-item dropdown"><a><%= link_to "Novas Notificações",profile_company_path,  style:"text-decoration:none;" %></a></li>
+                </ul>
+              <% elsif current_user.pushes.count != 0 && !current_user.boolean_company %>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li class="nav-item dropdown"><a><%= link_to "Novas Notificações",profile_musician_path, style:"text-decoration:none;"%></a></li>
+                </ul>
+              <% end %>
+            </div>
+          </div>
+        <div id="change-color">
+        <%= link_to current_user.nickname, current_user.company ? profile_company_path : profile_musician_path, class: "dropdown-item" %>
+        </div>
+        <div>
+          <% if current_user.musician && current_user.musician.photo.attached? %>
+            <%= cl_image_tag(current_user.musician.photo.key, class: "avatar dropdown-toggle avatar-nav", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false )%>
+          <% elsif current_user.company && current_user.company.photo.attached?%>
+            <%= cl_image_tag(current_user.company.photo.key, class: "avatar dropdown-toggle avatar-nav", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false )%>
+          <% else %>
+            <%= image_tag("new-avatar.jpg", class: "avatar dropdown-toggle avatar-nav", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
+          <% end %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Perfil", current_user.company ? profile_company_path : profile_musician_path, class: "dropdown-item" %>
+              <%= link_to "Sair", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
+        </div>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Entrar", new_user_session_path, id: "change-color-rover"%>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

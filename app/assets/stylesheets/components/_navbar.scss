@@ -14,10 +14,10 @@
 }
 
 .navbar-novo {
-  position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+  position: fixed;
 }
 
 .navbar-nav {
@@ -72,4 +72,64 @@
   height: 40px;
   border-radius: 50%;
   border: 2px solid white;
+}
+
+.navbar-toggler{
+  background-color: #ffffff;
+}
+
+.navbar-toggler-icon {
+  height: 1em;
+  width: 1em;
+}
+
+.navbar-toggler:hover {
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-color: #ffffff;
+}
+
+.navbar-responsive{
+  display: flex;
+  align-items: center;
+}
+.navbar-profile{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-name{
+  margin-right: 40px;
+}
+
+
+// @media(max-width: 992px) {
+//   .navbar-responsive{
+//     flex-direction: column;
+//   }
+// }
+
+// @media(max-width: 768px) {
+//   .navbar-responsive{
+//     flex-direction: column;
+//   }
+// }
+
+@media(max-width: 576px) {
+  .navbar-responsive{
+    flex-direction: column;
+    align-items: center;
+  }
+  .navbar-nav{
+    flex-direction: row;
+  }
+  .navbar-profile{
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .profile-name{
+    margin-right: 0;
+  }
 }
