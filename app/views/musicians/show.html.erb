@@ -10,9 +10,9 @@
           <p><strong>Contato:</strong> <%= @musician.phone%></p>
           <p><strong>Endereço:</strong> <%= @musician.address%></p>
 
-          <% if current_user.musician.photo.attached? %>
+          <% if @musician.photo.attached? %>
           <div id="profile-img">
-            <%= cl_image_tag current_user.musician.photo.key, height: 300, width: 400, crop: :fill, style:"border-radius: 20px" %>
+            <%= cl_image_tag @musician.photo.key, height: 300, width: 400, crop: :fill, style:"border-radius: 20px" %>
             </div>
           <% else %>
             <div id="profile-img">
@@ -43,7 +43,6 @@
     </div>
   </div>
 </div>
-
-  <%= link_to 'Editar usuário', edit_musician_path(@musician), class:'btn'%>
+  <%= link_to 'Editar usuário', edit_musician_path(@musician), class:'btn' if current_user.id == @musician.id %>
   <%= link_to 'Inicio', root_path, class:'btn'%>
 </div>
