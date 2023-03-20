@@ -39,17 +39,19 @@
     <% end %>
       <% @company.events.each do |event| %>
         <div class="card-event-comp">
-          <h4><%= link_to "#{event.title_event}", event_path(event)%></h4>
-          <p style="margin-top: 20px;">Data: <%= event.start_time.strftime("%d/%m/%y") %></p>
-          <p>Inicio: <%= event.start_time.strftime("%H:%M:%S") %> / Fim: <%= event.end_time.strftime("%H:%M:%S") %></p>
-          <% if event.category_event.present? %>
-            <p>Gênero: <%= event.category_event %></p>
-          <% else %>
-            <p>Gênero: Não informado</p>
-          <% end %>
-          <p>Cachê: <%= event.price %></p>
-          <p>Descrição: <span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Descrição" data-bs-content="<%= event.description_event%>"><%= event.description_event.truncate(100)%></span></p>
-          <p>Propostas recebidas: <%= event.proposals.count %></p>
+          <div class="first-card-info">
+            <h4><%= link_to "#{event.title_event}", event_path(event)%></h4>
+            <p style="margin-top: 20px;">Data: <%= event.start_time.strftime("%d/%m/%y") %></p>
+            <p>Inicio: <%= event.start_time.strftime("%H:%M:%S") %> / Fim: <%= event.end_time.strftime("%H:%M:%S") %></p>
+            <% if event.category_event.present? %>
+              <p>Gênero: <span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Gêneros" data-bs-content="<%= event.category_event%>"><%= event.category_event.truncate(30)%></span></p>
+            <% else %>
+              <p>Gênero: Não informado</p>
+            <% end %>
+            <p>Cachê: <%= event.price %></p>
+            <p>Descrição: <span class='pop-card' data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Descrição" data-bs-content="<%= event.description_event%>"><%= event.description_event.truncate(100)%></span></p>
+            <p>Propostas recebidas: <%= event.proposals.count %></p>
+          </div>
           <div class="buttons">
             <%= link_to 'Editar evento', edit_company_event_path(@company, event), class:'btn'%>
             <%= link_to 'Deletar evento', company_event_path(@company, event), class:'btn', data: { turbo_confirm: "Tem certeza que deseja excluir esse evento?", turbo_method: :delete }%>
@@ -65,7 +67,7 @@
     <h2 class="title-color">Propostas Pendentes</h2>
     <%= "Sem propostas Pendentes :)" if @pending_proposals.blank?  %>
   </div>
-  <div class="container-pendentes">
+  <div class="grid-propostas">
     <% @pending_proposals.each do |proposal| %>
       <div class="card-proposals">
         <% @push = Push.where(proposal_id: proposal.id) %>
@@ -102,7 +104,7 @@
     <h2 class="title-color">Propostas Aceitas</h2>
     <%= "Sem propostas Aceitas :)" if @accepted_proposals.blank?  %>
   </div>
-  <div class="container-aceitas">
+  <div class="grid-propostas">
     <% @accepted_proposals.each do |proposal| %>
       <div class="card-proposals">
         <% @push = Push.where(proposal_id: proposal.id) %>
@@ -140,7 +142,7 @@
     <h2 class="title-color">Propostas Recusadas</h2>
     <%= "Sem propostas recusadas :)" if @refused_proposals.blank?  %>
   </div>
-  <div class="container-recusadas">
+  <div class="grid-propostas">
     <% @refused_proposals.each do |proposal| %>
       <div class="card-proposals">
         <% @push = Push.where(proposal_id: proposal.id) %>
