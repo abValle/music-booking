@@ -1,2 +1,8 @@
-<h1><%= event.title_event %></h1>
-<%= event.company.address %>
+<div id="popup" class="mapboxgl-popup">
+  <div class="mapboxgl-popup-content">
+    <h2> <i class="fa-solid fa-building"></i> <%= event.company.title %> </h2>
+    <p><i class="fa-solid fa-map"></i><%= event.company.address %> </p>
+    <p> <i class="fa-solid fa-money-bill"></i> <%= event.price %> </p>
+    <p><%#= link_to "ver detalhes >>", events_path, class: "nav-link" %></p>
+  </div>
+</div>
