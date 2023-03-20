@@ -1,40 +1,23 @@
-@media(max-width: 992px) {
-  .container-pendentes {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media(max-width: 768px) {
-  .container-pendentes {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media(max-width: 576px) {
-  .container-pendentes {
-    grid-template-columns: 1fr;
-  }
-}
-
 .container-proposals {
-  margin: 16px;
+  margin: 16px auto;
   text-align: center;
+  width: 90%;
 }
-.container-pendentes {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 16px;
-  width: 100%;
-}
+// .container-pendentes {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr 1fr;
+//   grid-gap: 16px;
+//   width: 100%;
+// }
 
-.container-aceitas {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  width: 100%;
-}
+// .container-aceitas {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr 1fr;
+//   grid-gap: 16px;
+//   width: 100%;
+// }
 
-.container-recusadas {
+.grid-propostas {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 16px;
@@ -47,7 +30,6 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   margin-bottom: 8px;
   border-radius: 20px;
-  width: 300px;
 }
 
 .proposals-buttons {
@@ -96,4 +78,22 @@
   opacity: 0.5; // para diminuir a opacidade do botão
   pointer-events: none; // para desativar o evento de clique do botão
   // outros estilos que você deseja aplicar para um botão desativado
+}
+
+@media(max-width: 992px) {
+  .grid-propostas {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 768px) {
+  .grid-propostas {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 576px) {
+  .grid-propostas {
+    grid-template-columns: 1fr;
+  }
 }

@@ -28,3 +28,18 @@
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.7);
   text-align: center;
 }
+
+.card-proposals-infos-musician {
+  justify-content: center;
+  align-items: center;
+  height: 270px;
+
+  a {
+    text-decoration: none;
+    color: #6564db;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
