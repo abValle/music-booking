@@ -2,12 +2,12 @@
   <div class="container">
     <div>
       <h2>Busque locais para tocar</h2>
-      <p>Seja contratado hoje mesmo para tocar nos melhores pubs, bares e restaurantes com música ao vivo de Sâo Paulo</p>
+      <p>Seja contratado hoje mesmo para tocar nos melhores pubs, bares e restaurantes com música ao vivo de São Paulo</p>
       <% if user_signed_in? %>
         <%= link_to "Buscar Eventos", events_path,  class: "btn" if current_user.musician %>
 
         <%= link_to "Crie seu evento", new_company_event_path(@company),  class: "btn" if current_user.company %>
-        
+
       <% end %>
 
 
